@@ -1,0 +1,263 @@
+/*
+CSS File
+
+Sections are as follow:
+
+Globals
+Header
+Footer
+Main
+Shop
+About Us
+Contact Us
+*/ 
+
+
+/*                                        
+ #     #                                    
+ #     # ######   ##   #####  ###### #####  
+ #     # #       #  #  #    # #      #    # 
+ ####### #####  #    # #    # #####  #    # 
+ #     # #      ###### #    # #      #####  
+ #     # #      #    # #    # #      #   #  
+ #     # ###### #    # #####  ###### #    #    
+*/
+
+body {
+  background-color: rgb(12, 12, 12);
+  background-image: url('./pics/Q2.svg');
+  background-size: cover; /* Resize the background image to cover the entire container */
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(86, 83, 83);
+  text-align: justify;
+  padding-top: 1em;
+}
+
+button {
+  background-color: gray;
+  border: 2px solid wheat;
+  border-radius: 10px;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(12, 12, 12);
+  width: 100%;
+  top: 0;
+  position: fixed;
+}
+
+.signAndLogo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  border-radius: 10px;
+  width: 90%;
+  height: 4.5em;
+}
+
+.signAndLogo #q2Logo {
+  border: 0.25em solid green;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  margin-top: 1em;
+  align-self: center;
+}
+
+.signBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.signBtns button {
+  width: 10em;
+}
+
+.line1 {
+  /* border: 2px dashed gray; */
+  align-self: center;
+  width: 90%;
+}
+
+.line2 {
+  border: 1px dashed wheat;
+  margin-left: 1em;
+  margin-right: 1em;
+  align-self: center;
+  width: 90%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+  border-radius: 10px;
+  height: 3em;
+  margin-right: 2em;
+  align-self: center;
+}
+
+.navBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#shoppingCart {
+  width: 3em;
+  height: 3em;
+  border-radius: 10px;
+  border: 0.25em solid wheat;
+}
+
+.navBtns button {
+  width: 10em;
+  height: 3em;
+  text-align: center;
+  font-size: 25;
+}
+
+.container-fluid ul {
+  width: 50%;
+}
+
+/*                                
+ #######                                   
+ #        ####   ####  ##### ###### #####  
+ #       #    # #    #   #   #      #    # 
+ #####   #    # #    #   #   #####  #    # 
+ #       #    # #    #   #   #      #####  
+ #       #    # #    #   #   #      #   #  
+ #        ####   ####    #   ###### #    #    
+*/
+     
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+footer .footer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  height: 5em;
+  padding-top: 1em;
+}
+
+footer p {
+  align-self: center;
+}
+
+/*                      
+ #     #                 
+ ##   ##   ##   # #    # 
+ # # # #  #  #  # ##   # 
+ #  #  # #    # # # #  # 
+ #     # ###### # #  # # 
+ #     # #    # # #   ## 
+ #     # #    # # #    # 
+*/
+
+.container {
+  margin-top: 11em;
+  text-align: center;
+}
+
+.welcome {
+  text-align: center;
+  font-size: 2.5em;
+  color: wheat;
+}
+
+.q2Logo {
+  width: 15em;
+  height: 15em;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 1em;
+}
+
+.homeImgs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemCardSlide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.itemCardSlide i {
+  color: wheat;
+  z-index: 10;
+  -webkit-text-stroke: 2px black; /* width and color */
+  width: 10%;
+}
+.itemCardSlide i:hover {
+  color: aquamarine;
+}
+
+
+/*
+  #####                       
+ #     # #    #  ####  #####  
+ #       #    # #    # #    # 
+  #####  ###### #    # #    # 
+       # #    # #    # #####  
+ #     # #    # #    # #      
+  #####  #    #  ####  #       
+*/ 
+
+.itemCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  align-self: center;
+}
+
+.itemCards img {
+  width: 20em;
+  height: 20em;
+  border-radius: 10px;
+  border: 2px solid wheat;
+  margin: 1em;
+}
+
+
+                                          
+/*
+    #                                 #     #        
+   # #   #####   ####  #    # #####   #     #  ####  
+  #   #  #    # #    # #    #   #     #     # #      
+ #     # #####  #    # #    #   #     #     #  ####  
+ ####### #    # #    # #    #   #     #     #      # 
+ #     # #    # #    # #    #   #     #     # #    # 
+ #     # #####   ####   ####    #      #####   ####  
+*/
+
+/* 
+  #####                                            #     #        
+ #     #  ####  #    # #####   ##    ####  #####   #     #  ####  
+ #       #    # ##   #   #    #  #  #    #   #     #     # #      
+ #       #    # # #  #   #   #    # #        #     #     #  ####  
+ #       #    # #  # #   #   ###### #        #     #     #      # 
+ #     # #    # #   ##   #   #    # #    #   #     #     # #    # 
+  #####   ####  #    #   #   #    #  ####    #      #####   ####  
+*/

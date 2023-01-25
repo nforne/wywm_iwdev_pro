@@ -60,7 +60,7 @@ button {
   height: 4.5em;
 }
 
-.signAndLogo #q2Logo {
+.signAndLogo .q2Logo, .V1 .q2Logo {
   border: 0.25em solid green;
   border-radius: 50%;
   width: 5em;

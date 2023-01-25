@@ -1,7 +1,7 @@
 export const navHeader = `
 
 <div class="signAndLogo">
-  <img id="q2Logo" src="../pics/Q2.jpg" alt="q2Logo" srcset="../pics/Q2.jpg">
+  <img class="q2Logo" src="../pics/Q2.jpg" alt="q2Logo" srcset="../pics/Q2.jpg">
   <img src="../pics/headerImg.png" alt="headerImg" srcset="../pics/headerImg.png">
   <div class="signBtns">
     <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | SIGNIN</button>

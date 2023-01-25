@@ -17,6 +17,11 @@ const message = (text) => {
   }, 10000)
 }
 
+const aboutUs = () => {
+  const homeBox = document.getElementById('homeBox');
+  aboutUs.innerHTML = pages.aboutUs;
+}
+
 const slideR = () => {
 
 }

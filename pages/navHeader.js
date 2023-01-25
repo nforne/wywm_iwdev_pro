@@ -42,8 +42,8 @@ export const navHeader = `
         </form>
       
     </div>
-  </nav>
-</div>
-<hr class="line1"></hr>
-
+    </nav>
+  </div>
+    
+  <hr class="line1"></hr>
 `

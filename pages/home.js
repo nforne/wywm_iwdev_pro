@@ -1,12 +1,14 @@
 export const home = `
 
 <span class="welcome">WELCOME</span>
-<div class="homeImgs">
-  <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
-  <img class="q2Logo" src="../pics/Q2.jpg" alt="q2Logo" srcset="../pics/Q2.jpg">
-  <span class="welcome">OUR OCCUPATION?</span>
-  <span class="welcome">QUALITY & QUANTITY FOR YOU!</span>
-  <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+<div class="homeBox">
+  <div class="homeImgs">
+    <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+    <img class="q2Logo" src="../pics/Q2.jpg" alt="q2Logo" srcset="../pics/Q2.jpg">
+    <span class="welcome">OUR OCCUPATION?</span>
+    <span class="welcome">QUALITY & QUANTITY FOR YOU!</span>
+    <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+  </div>
 </div>
 <hr class="line1">
 

@@ -233,7 +233,7 @@ footer p {
   -webkit-text-stroke: 2px black; /* width and color */
   width: 10%;
 }
-.itemCardSlide i:hover {
+.itemCardSlide i:hover, .sLeft:hover, .sRight:hover {
   color: aquamarine;
 }
 
@@ -257,11 +257,10 @@ footer p {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
   align-self: center;
 }
 
-.itemCards img {
+.itemCards img, .itemPic img  {
   width: 20em;
   height: 20em;
   border-radius: 10px;
@@ -270,13 +269,13 @@ footer p {
 }
 
 .item {
-  border: 0.25em dashed wheat;
+  border: 0.25em dashed grey;
   border-radius: 10px;
-  padding: 1em;
   height: 25%;
   width: 25%;
-  color: wheat;
-  font-size: 1.5em;
+  color: black;
+  font-size: 0.5em;
+  background-color: bisque;
 }
 
 .item, .item .V2, .item .V5 {
@@ -304,36 +303,54 @@ footer p {
 }
 
 .item .V6 {
-  width: 75%;
+  width: 90%;
   align-self: center;
+}
+
+.V6 button {
+  font-size: 1.2em;
+  margin: 0.25em;
 }
 
 .shop {
   display: flex;
   flex-direction: column;
+  align-self: center;
+  width: 100%;
 }
 
 .shop span {
   color: wheat;
   font-size: 3em;
-  padding: 1em;
 }
 
 .gold, .silver, .premium {
   display: flex;
   flex-direction: column;
+}
+
+.H {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1em;
 }
 
-.gold .H, .silver .H, .premium .H {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  padding: 1em;
+.H div {
+  padding: 0.5em;
+  margin: 1em;
+}
+
+.item div span {
+  font-size: 2em;
+  color: gray;
+}
+
+.sLeft, .sRight {
+  margin: 0.25em;
+  color: wheat;
+  -webkit-text-stroke: 2px black; /* width and color */
 }
                                           
 /*

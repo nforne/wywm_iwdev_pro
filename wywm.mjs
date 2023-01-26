@@ -31,7 +31,7 @@ const slideLR = () => {
       slides += `<img src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png"> `
       if (indexTracker.length === 4) slideTracker = indexTracker;
     }
-  } while (indexTracker.length <= 4);
+  } while (indexTracker.length <= 3);
   slideBox.innerHTML = slides;
 }
 slideLR();
@@ -53,7 +53,7 @@ function home(cntainer) {
 }
 
 const shop = (cntainer) => {
-  cntainer.innerHTML = pages.shop;
+  cntainer.innerHTML = pages.shop();
 }
 
 const aboutUs = (homeBox) => {
@@ -77,10 +77,21 @@ for (let hme of [document.getElementById('logo'), document.getElementById('home'
 }
 
 // shop button event listener
-const shp = document.getElementById('shop');
-shp.addEventListener('click', () => {
-  shop(container);
-})
+const shopfn = () => {
+  const shp = document.getElementById('shop');
+  shp.addEventListener('click', () => {
+    shop(container);
+    // event listeners for sLeft and sRight
+    for (let shopLR of [...document.getElementsByClassName('sLeft'), ...document.getElementsByClassName('sRight')]) {
+      shopLR.addEventListener('click', () => {
+        shopfn() // ================================================= responding only once. Y?
+      })
+    }
+  })
+}
+shopfn();
+
+
 
 // aboutUs button and footer link event listeners
 for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('aboutUsF')])  {
@@ -88,6 +99,8 @@ for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('
     home(container);
     const homeBox = document.getElementById('homeBox');
     aboutUs(homeBox);
+    slideLR();
+    slideLRListener();
   })
 };
 

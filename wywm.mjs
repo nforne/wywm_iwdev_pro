@@ -11,9 +11,11 @@ container.innerHTML = pages.home;
 const footer = document.getElementById('footer');
 footer.innerHTML = pages.navFooter;
 
-const message = (text) => {
+const message = (textsList) => {
   const msg = document.getElementById('messages');
-  msg.innerHTML = `<div><p>${text}</p></div>`;
+  let txt = '';
+  for (let text of textsList) { txt += `<p>${text}</p>`; };
+  msg.innerHTML = `<div><p>${txt}</p></div>`;
   setTimeout(() => {
     msg.innerHTML = '';
   }, 10000)
@@ -40,7 +42,7 @@ slideLR();
 const slideLRListener = () => {
   for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
     slideBtn.addEventListener('click', () => {
-      message('Click on "SHOP" above to choose and add items to your shopping cart!')
+      message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
       slideLR();
     })
   }
@@ -67,7 +69,7 @@ const contactUs = (cntainer) => {
 // home button and logo event listeners
 for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
   hme.addEventListener('click', () => {
-    message('Welcome Home!');
+    message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!']);
     home(container);
     slideLR();
 

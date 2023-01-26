@@ -77,21 +77,20 @@ for (let hme of [document.getElementById('logo'), document.getElementById('home'
 }
 
 // shop button event listener
-const shopfn = () => {
-  const shp = document.getElementById('shop');
-  shp.addEventListener('click', () => {
-    shop(container);
-    // event listeners for sLeft and sRight
-    for (let shopLR of [...document.getElementsByClassName('sLeft'), ...document.getElementsByClassName('sRight')]) {
-      shopLR.addEventListener('click', () => {
-        shopfn() // ================================================= responding only once. Y?
+const shp = document.getElementById('shop');
+shp.addEventListener('click', () => {
+  shop(container);
+  // event listeners for sLeft and sRight
+  const shopLR = [document.getElementsByClassName('sLeft'), document.getElementsByClassName('sRight')]
+  for (let i = 0; i < 6; i++ ) {
+    for (let sLR of [shopLR[0][i], shopLR[1][i]]) {
+      sLR.addEventListener('click', () => {
+        const H = document.getElementById(`sH${i+1}`);
+        H.innerHTML = pages.itemCard();
       })
     }
-  })
-}
-shopfn();
-
-
+  }
+})
 
 // aboutUs button and footer link event listeners
 for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('aboutUsF')])  {

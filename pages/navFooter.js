@@ -14,9 +14,15 @@ export const navFooter = `
     <a href="#"> <p>DOCUMENTATION</p></a>
   </div>
   <div>
-    <a href="#"> <p>ABOUT US</p></a>
-    <a href="#"> <p>CONTACT US</p></a>
-    <a href="#"> <p>NEWS</p></a>
+    <div id="aboutUsF">
+      <a href="#"> <p>ABOUT US</p></a>
+    </div>
+    <div id="contactUsF">
+      <a href="#"> <p>CONTACT US</p></a>
+    </div>
+    <div>
+      <a href="#"> <p>NEWS</p></a>
+    </div>
   </div>
 
 </div>

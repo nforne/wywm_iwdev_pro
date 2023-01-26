@@ -10,6 +10,7 @@ const container = document.getElementById('container');
 container.innerHTML = pages.home;
 
 const message = (text) => {
+  console.log(text) // =======================
   const msg = document.getElementById('messages');
   msg.innerHTML = `<div><p>${text}</p></div>`;
   setTimeout(() => {
@@ -54,17 +55,19 @@ shp.addEventListener('click', () => {
   shop(container);
 })
 
-// aboutUs button event listener
-const abtUs = document.getElementById('aboutUs');
-abtUs.addEventListener('click', () => {  
-  home(container);
-  const homeBox = document.getElementById('homeBox');
-  aboutUs(homeBox);
-})
+// aboutUs button and footer link event listeners
+for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('aboutUsF')])  {
+  abtUs.addEventListener('click', () => {
+    home(container);
+    const homeBox = document.getElementById('homeBox');
+    aboutUs(homeBox);
+  })
+};
 
-// contactUs butten event listener
-const cntctUs = document.getElementById('contactUs');
-cntctUs.addEventListener('click', () => {
-  contactUs(container);
-})
+// contactUs butten and footer link event listeners
+for (let cntctUs of [document.getElementById('contactUs'), document.getElementById('contactUsF')]) {
+  cntctUs.addEventListener('click', () => {
+    contactUs(container);
+  })
+};
 

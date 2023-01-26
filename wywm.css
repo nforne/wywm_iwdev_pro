@@ -46,7 +46,7 @@ button:hover {
 #header {
   display: flex;
   flex-direction: column;
-  background-image: radial-gradient(circle at 10% 50%, white, rgb(100, 96, 96));
+  background-image: radial-gradient(circle at 10% 10%, black,  rgb(255, 255, 255));
   border-bottom: 2px solid white;
   width: 100%;
   top: 0;

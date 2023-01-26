@@ -46,7 +46,8 @@ button:hover {
 #header {
   display: flex;
   flex-direction: column;
-  background-color: rgb(12, 12, 12);
+  background-image: radial-gradient(circle at 10% 50%, white, rgb(100, 96, 96));
+  border-bottom: 2px solid white;
   width: 100%;
   top: 0;
   position: fixed;
@@ -71,6 +72,14 @@ button:hover {
   width: 5em;
   height: 5em;
   align-self: center;
+}
+
+.signAndLogo .q2Logo {
+  width: 10em;
+  height: 10em;
+  z-index: 50;
+  margin-top: 7em;
+  position: fixed;
 }
 
 .signBtns {
@@ -112,6 +121,17 @@ button:hover {
   align-items: center;
 }
 
+.d-flex button, .d-flex input {
+  border-radius: 10px;
+}
+
+.d-flex button {
+  background-color: rgb(170, 176, 162);
+  border: 2px solid black;
+  color: white;
+  border-radius: 10px;
+}
+
 #shoppingCart {
   width: 3em;
   height: 3em;
@@ -135,23 +155,23 @@ button:hover {
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  top: 12em;
+  top: 10.5em;
   width: 100%;
   height:fit-content;
   position: fixed;
-  z-index: 50;
+  z-index: 0;
+  padding: 1em;
 }
 
 .messages div {
-  background-color: rgb(12, 12, 12);
+  background-color: rgba(63, 61, 61, 0.8);
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   font-size: 2em;
-  color: white;
-  border: 2px dashed rgb(176, 77, 77);
   border-radius: 10px;
   width: 90%;
   height: fit-content;
+  margin-top: 1em;
 }
 
 /*                                

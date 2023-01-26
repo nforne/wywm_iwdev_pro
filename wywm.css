@@ -309,7 +309,14 @@ footer p {
 
 .V6 button {
   font-size: 1.2em;
-  margin: 0.25em;
+  margin: 0.5em;
+  background-color: gainsboro;
+  color: black;
+  border: 2px solid rgb(146, 139, 139);
+}
+
+.V6 button:hover {
+  border: 2px solid green;
 }
 
 .shop {

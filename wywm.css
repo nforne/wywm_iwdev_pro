@@ -237,6 +237,10 @@ footer p {
   color: aquamarine;
 }
 
+#slideL, #slideR {
+  z-index: 20;
+} 
+
 
 /*
   #####                       
@@ -253,7 +257,7 @@ footer p {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 180%;
+
   align-self: center;
 }
 
@@ -409,4 +413,8 @@ footer p {
   width: 0.25px;
   border-radius: 50%;
   border: 2px solid black;
+}
+
+.info div div:hover {
+  border-color: aqua;
 }

@@ -1,16 +1,17 @@
 const pages = {...await import('./pages/index.js')}.pages;
+let slideTracker = [];
 
 const header = document.getElementById('header');
 header.innerHTML = pages.navHeader;
 
-const footer = document.getElementById('footer');
-footer.innerHTML = pages.navFooter;
-
 const container = document.getElementById('container');
 container.innerHTML = pages.home;
 
+
+const footer = document.getElementById('footer');
+footer.innerHTML = pages.navFooter;
+
 const message = (text) => {
-  console.log(text) // =======================
   const msg = document.getElementById('messages');
   msg.innerHTML = `<div><p>${text}</p></div>`;
   setTimeout(() => {
@@ -18,15 +19,36 @@ const message = (text) => {
   }, 10000)
 }
 
-const slideR = () => {
-
+// to randomly but unrepeatedly load and run the home slides
+const slideLR = () => {
+  const slideBox = document.getElementById('itemCards')
+  let slides = '';
+  let indexTracker = [];
+  do {
+    const index = Math.floor(Math.random() * 9) + 1;
+    if (!indexTracker.includes(index) && !slideTracker.includes(index)) {
+      indexTracker.push(index)
+      slides += `<img src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png"> `
+      if (indexTracker.length === 4) slideTracker = indexTracker;
+    }
+  } while (indexTracker.length <= 4);
+  slideBox.innerHTML = slides;
 }
+slideLR();
 
-const slideL = () => {
-  
+// slide left and right event lister
+const slideLRListener = () => {
+  for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
+    slideBtn.addEventListener('click', () => {
+      message('Click on "SHOP" above to choose and add items to your shopping cart!')
+      slideLR();
+    })
+  }
 }
+slideLRListener();
 
-const home = (cntainer) => {
+// methods to unboard the different views
+function home(cntainer) {
   cntainer.innerHTML = pages.home;
 }
 
@@ -42,12 +64,17 @@ const contactUs = (cntainer) => {
   cntainer.innerHTML = pages.contactUs;
 }
 
-// home button event listener
-const hme = document.getElementById('home');
-hme.addEventListener('click', () => {
-  message('Welcome Home!');
-  home(container);
-})
+// home button and logo event listeners
+for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
+  hme.addEventListener('click', () => {
+    message('Welcome Home!');
+    home(container);
+    slideLR();
+
+    // slide left and right event lister
+    slideLRListener();
+  })
+}
 
 // shop button event listener
 const shp = document.getElementById('shop');

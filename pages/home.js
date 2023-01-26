@@ -16,7 +16,7 @@ export const home = `
 <hr class="line3">
 
 <div class="itemCardSlide">
-  <i class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
+  <i id='slideL' class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
   <div id="itemCards" class="itemCards">
     <!-- make a slide show of available item pictures -->
     <img src="./pics/items/pic1.png" alt="pic1" srcset="./pics/items/pic1.png">
@@ -24,7 +24,7 @@ export const home = `
     <img src="./pics/items/pic3.png" alt="pic3" srcset="./pics/items/pic3.png">
     <img src="./pics/items/pic4.png" alt="pic4" srcset="./pics/items/pic4.png">
   </div>
-  <i class="fa fa-chevron-circle-right fa-5x" aria-hidden="true"></i>
+  <i id='slideR' class="fa fa-chevron-circle-right fa-5x" aria-hidden="true"></i>
 </div>
 
 

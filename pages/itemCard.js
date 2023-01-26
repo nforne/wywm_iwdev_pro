@@ -12,7 +12,7 @@ export const itemCard = () => {
           <i class="fa fa-caret-left fa-2x" style="width: 20%;" aria-hidden="true"></i>
           <img class="q2Logo" src="../pics/Q2.jpg" alt="q2Logo" srcset="../pics/Q2.jpg">
           <div>
-            <i class="fa fa-cog fa-1x" aria-hidden="true"></i>
+            <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
             <i class="fa fa-times fa-2x" aria-hidden="true"></i>
           </div>
         </div>
@@ -27,7 +27,7 @@ export const itemCard = () => {
       
         <div class="V3">
           <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
-          <div id="itemPic" class="itemPic">
+          <div class="itemPic">
             <img src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png">
           </div>
           <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>

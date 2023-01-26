@@ -355,7 +355,7 @@ footer p {
 }
 
 .sLeft, .sRight {
-  margin: 0.25em;
+  margin: 0.1em;
   color: wheat;
   -webkit-text-stroke: 2px black; /* width and color */
 }

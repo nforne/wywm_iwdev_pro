@@ -23,11 +23,11 @@ const message = (textsList, color='wheat') => {
 
 // to randomly but unrepeatedly load and run the home slides
 const slideLR = () => {
-  const slideBox = document.getElementById('itemCards')
+  const slideBox = document.getElementById('itemCards');
   let slides = '';
   let indexTracker = [];
   do {
-    const index = Math.floor(Math.random() * 9) + 1;
+    const index = Math.floor(Math.random() * 25) + 1;
     if (!indexTracker.includes(index) && !slideTracker.includes(index)) {
       indexTracker.push(index)
       slides += `<img src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png"> `
@@ -69,7 +69,7 @@ const contactUs = (cntainer) => {
 // home button and logo event listeners
 for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
   hme.addEventListener('click', () => {
-    message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'greenyellow');
+    message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'green');
     home(container);
     slideLR();
 

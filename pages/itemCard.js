@@ -4,7 +4,7 @@ export const itemCard = () => {
 
   while (indexTracker.length < 4) {
 
-    const index = Math.floor(Math.random() * 9) + 1;
+    const index = Math.floor(Math.random() * 25) + 1;
     const cart = `
 
       <div class="item">

@@ -27,5 +27,4 @@ export const home = `
   <i id='slideR' class="fa fa-chevron-circle-right fa-5x" aria-hidden="true"></i>
 </div>
 
-
 `

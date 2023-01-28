@@ -1,8 +1,8 @@
 export const navHeader = `
 
 <div class="signAndLogo container-fluid">
-  <img id="logo" class="q2Logo" src="../pics/Q2.png" alt="q2Logo" srcset="../pics/Q2.png">
-  <img class="homeRose" src="../pics/headerImg.png" alt="headerImg" srcset="../pics/headerImg.png">
+  <img id="logo" class="q2Logo" src="../pics/items/Q2.png" alt="q2Logo" srcset="../pics/items/Q2.png">
+  <img class="homeRose" src="../pics/items/headerImg.png" alt="headerImg" srcset="../pics/items/headerImg.png">
   <div class="signBtns">
     <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | SIGNIN</button>
     <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SIGN-UP</button>
@@ -45,7 +45,6 @@ export const navHeader = `
     </nav>
     
   </div>
-  <hr class="line1"></hr>
-    
+  <hr class="line1"></hr> 
 
 `

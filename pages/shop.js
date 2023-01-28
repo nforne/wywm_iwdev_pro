@@ -4,7 +4,7 @@ export const shop = () => {
 
   return ` <div class="shop">
               <span>GOLD</span>
-              <img class="gothicLine" src="../pics/gothicLine.png" alt="gothicLine">
+              <img class="gothicLine" src="../pics/itmems/gothicLine.png" alt="gothicLine">
               <div id="gold" class="gold">
                 <div class="H">
                   <i class="fa fa-chevron-circle-left fa-5x sLeft" aria-hidden="true"></i>
@@ -23,7 +23,7 @@ export const shop = () => {
               </div>
           
               <span>SILVER</span>
-              <img class="gothicLine" src="../pics/gothicLine.png" alt="gothicLine">
+              <img class="gothicLine" src="../pics/itmems/gothicLine.png" alt="gothicLine">
               <div id="silver" class="silver">
                 <div class="H">
                   <i class="fa fa-chevron-circle-left fa-5x sLeft" aria-hidden="true"></i>
@@ -42,7 +42,7 @@ export const shop = () => {
               </div>
           
               <span>PREMIUM</span>
-              <img class="gothicLine" src="../pics/gothicLine.png" alt="gothicLine">
+              <img class="gothicLine" src="../pics/itmems/gothicLine.png" alt="gothicLine">
               <div id="premium" class="premium">
                 <div class="H">
                   <i class="fa fa-chevron-circle-left fa-5x sLeft" aria-hidden="true"></i>

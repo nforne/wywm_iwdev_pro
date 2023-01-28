@@ -31,6 +31,8 @@ body {
   color: rgb(86, 83, 83);
   text-align: justify;
   padding-top: 1em;
+  margin: 0;
+  padding: 0;
 }
 
 button {
@@ -79,13 +81,13 @@ button:hover {
   height: 10em;
   z-index: 50;
   margin-top: 7em;
-  position: fixed;
 }
 
 .signBtns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  row-gap: 0.1em;
   width: 40%;
 }
 
@@ -183,11 +185,13 @@ button:hover {
  #       #    # #    #   #   #      #   #  
  #        ####   ####    #   ###### #    #    
 */
-     
+
+    
 footer {
   display: flex;
   flex-direction: column;
   width: 100%;
+  bottom: 0;
 }
 
 footer .footer {
@@ -258,7 +262,7 @@ footer p {
 }
 
 #slideL, #slideR {
-  z-index: 20;
+  z-index: 5;
 } 
 
 
@@ -390,16 +394,13 @@ footer p {
  #     # #####   ####   ####    #      #####   ####  
 */
 
-.aboutUs {
+.homeBox .aboutUs {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 90%;
   color: wheat;
   text-align: justify;
   font-size: 2em;
-  align-self: center;
-  margin-left: 2em;
+  padding: 0 3em;
 }
 
 .aboutUs .aboutUsImg {
@@ -407,6 +408,9 @@ footer p {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+.aboutUs .aboutUsImg img {
+  margin: 1em;
 }
 
 /* 
@@ -439,13 +443,17 @@ footer p {
   color: wheat;
 }
 
+.info p {
+  font-size: 1.5em;
+}
+
 .info div {
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
   align-items: center;
   width: 100%;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 .info div div {
@@ -462,3 +470,93 @@ footer p {
 .info div div:hover {
   border-color: aqua;
 }
+
+/* 
+MEDIA QUERIES to make the design responsive
+======================================================
+*/
+
+@media only screen and (max-width: 1000px) {
+  html body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+  }
+
+  body #header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-content: space-between;
+    width: 100%;
+  }
+
+  .signAndLogo .q2Logo {
+    margin-top: 1em;
+  }
+
+  .signAndLogo {
+    width: 100%;
+    position: relative;
+  }
+
+  .signAndLogo .homeRose {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+  }
+ 
+  header .signAndLogo, 
+  header .signAndLogo .signBtns, 
+  .container-fluid .navBtns,
+  nav .container-fluid, .nav nav {
+    flex-direction: column;
+    height: initial;
+    width: 100%;
+  }
+
+  header .signAndLogo .signBtns, 
+  .container-fluid .navBtns {
+    z-index: 1;
+  }
+
+  header .signAndLogo .signBtns button, 
+  .container-fluid .navBtns button {
+    margin: 0.25em;
+  }
+
+  body .container {
+    padding-top: 0;
+  }
+
+  .gothicLine {
+    width: 100%;
+  }
+
+  body .container .aboutUs {
+    margin-left: initial;
+    width: 100%;
+  }
+  body .container .aboutUs .aboutUsImg {
+    flex-direction: column;
+    align-items: center;
+  }
+  .aboutUsImg img {
+    width: 15em;
+    height: 15em;
+  }
+ 
+  footer .footer, 
+  .container .itemCardSlide, 
+  .itemCardSlide .itemCards {
+    flex-direction: column;
+  }
+
+  footer .footer {
+    height: initial;
+  }
+}
+

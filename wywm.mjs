@@ -11,14 +11,14 @@ container.innerHTML = pages.home;
 const footer = document.getElementById('footer');
 footer.innerHTML = pages.navFooter;
 
-const message = (textsList, color='wheat') => {
+const message = (textsList, color='wheat', time=10000) => {
   const msg = document.getElementById('messages');
   let txt = '';
   for (let text of textsList) { txt += `<p>${text}</p>`; };
   msg.innerHTML = `<div style="color:${color};">${txt}</div>`;
   setTimeout(() => {
     msg.innerHTML = '';
-  }, 10000)
+  }, time)
 }
 
 // to randomly but unrepeatedly load and run the home slides
@@ -69,7 +69,7 @@ const contactUs = (cntainer) => {
 // home button and logo event listeners
 for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
   hme.addEventListener('click', () => {
-    message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'green');
+    message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
     home(container);
     slideLR();
 

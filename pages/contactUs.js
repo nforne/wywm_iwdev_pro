@@ -4,7 +4,7 @@ export const contactUs = `
   <span>CONTACT US</span>
   <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
   <div class="info">
-    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, sapiente porro? Porro laboriosam nostrum provident! Eos possimus aut nesciunt. Quasi ducimus ullam eaque, porro sunt dolore consequatur dolores nostrum sapiente.</span>
+    <span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, sapiente porro? Porro laboriosam nostrum provident! Eos possimus aut nesciunt. Quasi ducimus ullam eaque, porro sunt dolore consequatur dolores nostrum sapiente.</span>
     
     <br><hr>
     <p>E-mail: ----------------------------------------------</p>

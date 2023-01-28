@@ -14,9 +14,9 @@ export const navHeader = `
 <hr id="line1" class="line1">
 
 <div class="nav">
-  <nav class="navbar  navbar-light">
+  <nav class="navbar  navbar-dark">
     <div class="container-fluid">
-      
+        
         <ul class="navbar-nav navBtns">
             
             <button id="home">

@@ -80,6 +80,7 @@ button:hover {
   height: 11em;
   z-index: 50;
   margin-top: 8.5em;
+  box-shadow: 0 0 50px rgba(3, 247, 247, 0.3);
 }
 
 .homeRose {
@@ -93,11 +94,21 @@ button:hover {
   align-items: center;
   width: 40%;
   flex-wrap: wrap;
+  z-index: 10;
 }
 
 .signBtns button {
   width: 10em;
   font-size: 0.75em;
+}
+
+#shop {
+  color: white;
+  box-shadow: 0 0 50px rgb(0, 255, 255);
+}
+#shop:hover {
+  color: white;
+  box-shadow: 0 0 50px greenyellow;
 }
 
 .line1 {
@@ -131,12 +142,17 @@ button:hover {
 
 .d-flex button, .d-flex input {
   border-radius: 10px;
+  box-shadow: 0 0 50px rgba(132, 130, 130, 0.5);
 }
 
 .d-flex button {
   background-color: gray;
+  border: 2px solid wheat;
+  color: black;
+}
+
+.d-flex input {
   border: 2px solid black;
-  color: white;
 }
 
 #shoppingCart {
@@ -144,13 +160,15 @@ button:hover {
   height: 3em;
   border-radius: 10px;
   border: 0.25em solid wheat;
+  box-shadow: 0 0 50px #ccc;
 }
 
 .navBtns button {
   width: 7em;
-  height: 2.5em;
+  height: 2.75em;
   text-align: center;
   font-size: 1em;
+  background-color: rgba(65, 62, 62, 0.5);
 }
 
 .container-fluid ul {
@@ -497,6 +515,10 @@ MEDIA QUERIES to make the design responsive
     position: relative;
     align-content: space-between;
     width: 100%;
+  }
+
+  body #container {
+    margin-top: 5em;
   }
 
   .signAndLogo .q2Logo {

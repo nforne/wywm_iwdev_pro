@@ -83,12 +83,16 @@ button:hover {
   margin-top: 7em;
 }
 
+.homeRose {
+  position: absolute;
+}
+
 .signBtns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  row-gap: 0.1em;
   width: 40%;
+  flex-wrap: wrap;
 }
 
 .signBtns button {
@@ -121,6 +125,7 @@ button:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .d-flex button, .d-flex input {
@@ -483,6 +488,7 @@ MEDIA QUERIES to make the design responsive
     align-items: center;
     justify-content: space-evenly;
     justify-items: center;
+    height: inherit;
   }
 
   body #header {
@@ -507,12 +513,12 @@ MEDIA QUERIES to make the design responsive
     height: inherit;
     position: absolute;
     z-index: 0;
+    display: inline;
   }
  
   header .signAndLogo, 
   header .signAndLogo .signBtns, 
-  .container-fluid .navBtns,
-  nav .container-fluid, .nav nav {
+  .container-fluid .navBtns, .nav nav {
     flex-direction: column;
     height: initial;
     width: 100%;
@@ -520,7 +526,16 @@ MEDIA QUERIES to make the design responsive
 
   header .signAndLogo .signBtns, 
   .container-fluid .navBtns {
+    align-items: center;
     z-index: 1;
+    width: initial;
+  }
+
+  .nav nav div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    text-align: center;
   }
 
   header .signAndLogo .signBtns button, 
@@ -536,6 +551,10 @@ MEDIA QUERIES to make the design responsive
     width: 100%;
   }
 
+  #aboutUs, #contactUs {
+    visibility: hidden;
+  }
+
   body .container .aboutUs {
     margin-left: initial;
     width: 100%;
@@ -547,6 +566,10 @@ MEDIA QUERIES to make the design responsive
   .aboutUsImg img {
     width: 15em;
     height: 15em;
+  }
+
+  .H {
+    flex-direction: column;
   }
  
   footer .footer, 

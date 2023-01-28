@@ -1,13 +1,13 @@
 export const navHeader = `
 
-<div class="signAndLogo">
+<div class="signAndLogo container-fluid">
   <img id="logo" class="q2Logo" src="../pics/Q2.png" alt="q2Logo" srcset="../pics/Q2.png">
   <img class="homeRose" src="../pics/headerImg.png" alt="headerImg" srcset="../pics/headerImg.png">
   <div class="signBtns">
     <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | SIGNIN</button>
-    <BUTton><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SIGN-UP</BUTton>
-    <BUTton id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | ABOUT US</BUTton>
-    <BUTton id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | CONTACT US</BUTton>
+    <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SIGN-UP</button>
+    <button id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | ABOUT US</button>
+    <button id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | CONTACT US</button>
   </div>
 </div>
 
@@ -17,8 +17,8 @@ export const navHeader = `
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 navBtns">
-    
+        <ul class="navbar-nav navBtns">
+            
             <button id="home">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-home fa-1x" aria-hidden="true"></i> | HOME </a>
@@ -31,7 +31,7 @@ export const navHeader = `
             </button>
             
             <li class="nav-item">          
-              <a class="nav-link" href="#">[<img id="shoppingCart" src="./pics/shoppingCart.jpg" alt="shoppingCart" srcset="./pics/shoppingCart.jpg">]</a>
+              <a class="nav-link" href="#"><img id="shoppingCart" src="./pics/shoppingCart.jpg" alt="shoppingCart" srcset="./pics/shoppingCart.jpg"></a>
             </li>                  
           
         </ul>

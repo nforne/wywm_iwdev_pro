@@ -10,7 +10,7 @@ export const itemCard = () => {
       <div class="item">
         <div class="V1">
           <i class="fa fa-caret-left fa-2x" style="width: 20%;" aria-hidden="true"></i>
-          <img class="q2Logo" src="../pics/items/Q2.png" alt="q2Logo" srcset="../pics/items/Q2.png">
+          <img class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
           <div>
             <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
             <i class="fa fa-times fa-2x" aria-hidden="true"></i>

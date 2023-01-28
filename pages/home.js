@@ -4,11 +4,11 @@ export const home = `
 <div id="homeBox" class="homeBox">
 
   <div class="homeImgs">
-    <img class="gothicLine" src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
-    <img class="q2Logo" src="../pics/Q2.png" alt="q2Logo" srcset="../pics/Q2.png">
+    <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
+    <img class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
     <span class="welcome">OUR OCCUPATION?</span>
     <span class="welcome">QUALITY & QUANTITY FOR YOU!</span>
-    <img class="gothicLine" src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+    <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
   </div>
 
 </div>

@@ -1,7 +1,7 @@
 export const aboutUs = `
 
 <div class="aboutUs">
-  <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+  <img src="../pics/items/gothicLine.png" alt="gothicLine" srcset="../pics/items/gothicLine.png">
 
   <div class="aboutUsImg">
       <div>

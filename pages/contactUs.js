@@ -2,7 +2,7 @@ export const contactUs = `
 
 <div class="contactUs">
   <span>CONTACT US</span>
-  <img src="../pics/gothicLine.png" alt="gothicLine" srcset="../pics/gothicLine.png">
+  <img src="../pics/items/gothicLine.png" alt="gothicLine" srcset="../pics/items/gothicLine.png">
   <div class="info">
     <span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, sapiente porro? Porro laboriosam nostrum provident! Eos possimus aut nesciunt. Quasi ducimus ullam eaque, porro sunt dolore consequatur dolores nostrum sapiente.</span>
     

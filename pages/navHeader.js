@@ -11,10 +11,10 @@ export const navHeader = `
   </div>
 </div>
 
-<hr class="line1">
+<hr id="line1" class="line1">
 
 <div class="nav">
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar  navbar-light">
     <div class="container-fluid">
       
         <ul class="navbar-nav navBtns">
@@ -45,6 +45,6 @@ export const navHeader = `
     </nav>
     
   </div>
-  <hr class="line1"></hr> 
+  <hr id="line1" class="line1"></hr> 
 
 `

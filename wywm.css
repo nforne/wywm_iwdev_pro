@@ -117,9 +117,8 @@ button:hover {
   flex-direction: column;
   justify-content: space-evenly;
   align-self: center;
-  width: 75%;
+  width: 63%;
   height: 3em;
-  margin-left: 10%;
 }
 
 .navBtns {
@@ -138,7 +137,6 @@ button:hover {
   background-color: gray;
   border: 2px solid black;
   color: white;
-  border-radius: 10px;
 }
 
 #shoppingCart {
@@ -520,36 +518,30 @@ MEDIA QUERIES to make the design responsive
  
   header .signAndLogo, 
   header .signAndLogo .signBtns, 
-  .container-fluid .navBtns, .nav nav {
+  .container-fluid .navBtns, .nav nav, .nav nav div {
     flex-direction: column;
     height: initial;
     width: 100%;
   }
 
   header .signAndLogo .signBtns, 
-  .container-fluid .navBtns {
+  .container-fluid .navBtns, .nav nav div {
     align-items: center;
     z-index: 1;
     width: initial;
   }
 
-  .nav nav div, .nav nav div ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center !important;
-    text-align: center;
+  header .signAndLogo .signBtns button {
+    margin: 0.15em;
   }
 
-  header .signAndLogo .signBtns button, 
-  .container-fluid .navBtns button {
+  .nav nav div ul button {
+    text-align: center;
+    font-size: 0.85em;
     margin: 0.25em;
   }
 
-  body .container {
-    padding-top: 0;
-  }
-
-  .gothicLine {
+  .nav nav, .gothicLine {
     width: 100%;
   }
 
@@ -561,7 +553,11 @@ MEDIA QUERIES to make the design responsive
     margin-left: initial;
     width: 100%;
   }
-  body .container .aboutUs .aboutUsImg {
+
+  footer .footer, 
+  .container .itemCardSlide, 
+  .itemCardSlide .itemCards,
+  body .container .aboutUs .aboutUsImg, .H {
     flex-direction: column;
     align-items: center;
   }
@@ -569,17 +565,7 @@ MEDIA QUERIES to make the design responsive
     width: 15em;
     height: 15em;
   }
-
-  .H {
-    flex-direction: column;
-  }
- 
-  footer .footer, 
-  .container .itemCardSlide, 
-  .itemCardSlide .itemCards {
-    flex-direction: column;
-  }
-
+  
   footer .footer {
     height: initial;
   }

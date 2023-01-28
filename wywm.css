@@ -531,7 +531,7 @@ MEDIA QUERIES to make the design responsive
     width: initial;
   }
 
-  .nav nav div{
+  .nav nav div, .nav nav div ul{
     display: flex;
     flex-direction: column;
     justify-content: center !important;

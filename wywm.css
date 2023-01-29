@@ -54,6 +54,7 @@ button:hover {
   top: 0;
   position: fixed;
   z-index: 15;
+  height: 5.5em;
 }
 
 .signAndLogo {
@@ -515,6 +516,7 @@ MEDIA QUERIES to make the design responsive
     position: relative;
     align-content: space-between;
     width: 100%;
+    height: initial;
   }
 
   body #container {

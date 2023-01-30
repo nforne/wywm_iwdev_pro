@@ -1,7 +1,7 @@
 const pages = {...await import('./pages/index.js')}.pages;
 let slideTracker = []; // to track for elimination of repeatition of slides on display
 
-$(document).ready(() => {
+$(window).ready(() => {
   
   const header = document.getElementById('header');
   header.innerHTML = pages.navHeader;
@@ -21,6 +21,42 @@ $(document).ready(() => {
       msg.innerHTML = '';
     }, time)
   }
+
+  const dialogFn = (id) => {
+    $( "#dialogBox" ).dialog({  
+      autoOpen: false,
+      closeonescape: true,
+      // height: 700,
+      with: 700,
+      modal : true,
+      position: { my: "center", at: "center", of: window },
+      hide: { effect: "blind", duration: 100 },  
+      show : { effect: "blind", duration: 100 },
+      title : id.toUpperCase(),
+      dialogClass: "dialogBoxBR",
+      buttons: [{
+          text: ` [ ✖ ] ➖ Close 💬 `,
+          click: function () {                  
+            $( this ).dialog( "destroy" );
+          }}],
+    });
+
+    $( "#dialogBox" ).dialog( "open" );
+
+    /* since the jq-ui dialog widget is blocking, we handle it 
+    assynchronously to enable dialog close on click anywhere else on the screen. */
+    setTimeout(() => {
+      $(window).on('click', () => {
+        if ($("#dialogBox").data("ui-dialog")) {
+          setTimeout(() => {
+            $("#dialogBox").dialog("destroy");
+            $(window).off('click');
+          }, 0);
+        }
+      });
+    }, 0);
+
+  }
   
   // to randomly but unrepeatedly load and run the home slides
   const slideLR = () => {
@@ -36,66 +72,28 @@ $(document).ready(() => {
       }
     } while (indexTracker.length <= 3);
     slideBox.innerHTML = slides; 
-
+    
+    // to setup modal view for home pics
     const dialogMode = document.getElementById('dialog');
     const imgSlides = document.getElementsByClassName('homeSlidesLR');
     for (let imgSlide of imgSlides) {
       $(imgSlide).on('click', () => {
-        dialogMode.innerHTML = '';
         const dialog = `
           <dialog id="dialogBox" class="dialogBox"> 
             <img id="${imgSlide.id}" class="homeSlidesLR" src="./pics/items/${imgSlide.id}.png" alt="${imgSlide.id}" srcset="./pics/items/${imgSlide.id}.png"> 
           </dialog> `
         dialogMode.innerHTML = dialog; 
 
-        $( "#dialogBox" ).dialog({  
-          autoOpen: false,
-          closeonescape: true,
-          // height: 700,
-          with: 700,
-          modal : true,
-          clickOutside: true, // clicking outside the dialog will close it
-			    clickOutsideTrigger: "#dialogBox",
-          position: { my: "center", at: "center", of: window },
-          hide: { effect: "blind", duration: 100 },  
-          show : { effect: "blind", duration: 100 },
-          title : imgSlide.id.toUpperCase(),
-          dialogClass: "dialogBoxBR",
-          buttons: [{
-              text: ` [ ✖ ] ➖ Close 💬 `,
-              click: function () {                  
-                $( this ).dialog( "destroy" );
-              }}],
-        });
+        dialogFn(imgSlide.id);
 
-        $( "#dialogBox" ).dialog( "open" );
-
-        const index = Math.floor(Math.random() * 3) + 1;
-        index === 3 ? message(['Press "ESCAPE" to close dialog box!']) : '';
-
-        /* since the jq-ui dialog widget is blocking, we handle it 
-        assynchronously to enable dialog close on clik anywhere else on the screen.
-        */
-        setTimeout(() => {
-          $(window).on('click', () => {
-            if ($("#dialogBox").data("ui-dialog")) {
-              setTimeout(() => {
-                $("#dialogBox").dialog("destroy");
-                $(window).off('click');
-              }, 0);
-            }
-          });
-        }, 0)
-
-        
-        
       })
     }
 
   }
   slideLR();
+
   
-  // slide left and right event lister
+  // slide left and right event listener for home and aboutUs carousel
   const slideLRListener = () => {
     for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
       slideBtn.addEventListener('click', () => {
@@ -130,25 +128,41 @@ $(document).ready(() => {
       home(container);
       slideLR();
   
-      // slide left and right event lister
+      // slide left and right event listener
       slideLRListener();
     })
   }
+
+  // modal view for shop items 
+  const shopItemListener = () => {
+    const dialogMode = document.getElementById('dialog');
+    const items = document.getElementsByClassName('item');
+    for (let item of items) {
+      $(item).on('click', () => {
+        dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
+        dialogFn(item.id);
+      })
+    }
+  };
   
   // shop button event listener
   const shp = document.getElementById('shop');
   shp.addEventListener('click', () => {
     shop(container);
-    // event listeners for sLeft and sRight
+    // event listeners for sLeft and sRight on shop
     const shopLR = [document.getElementsByClassName('sLeft'), document.getElementsByClassName('sRight')]
     for (let i = 0; i < 6; i++ ) {
       for (let sLR of [shopLR[0][i], shopLR[1][i]]) {
         sLR.addEventListener('click', () => {
           const H = document.getElementById(`sH${i+1}`);
           H.innerHTML = pages.itemCard();
+          shopItemListener();
         })
       }
     }
+
+    shopItemListener();
+
   })
   
   // aboutUs button and footer link event listeners

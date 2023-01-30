@@ -1,13 +1,13 @@
-export const itemCard = () => {
+export const itemCard = (i='', numItems=4) => {
   let outPut = '';
   const indexTracker = [];
 
-  while (indexTracker.length < 4) {
+  while (indexTracker.length < (i ? 1 : numItems)) {
 
     const index = Math.floor(Math.random() * 25) + 1;
     const cart = `
 
-      <div class="item">
+      <div id='item${i ? i : index}' class="item">
         <div class="V1">
           <i class="fa fa-caret-left fa-2x" style="width: 20%;" aria-hidden="true"></i>
           <img class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
@@ -21,21 +21,21 @@ export const itemCard = () => {
           <span>Item Name: Lorem</span>
           <div>
             <span>[ Item found on www.example.com ] </span>
-            <span> [ Picture ${index} of 9 ] </span>
+            <span> [ Picture ${i ? i : index} of 9 ] </span>
           </div>
         </div>
       
         <div class="V3">
           <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
           <div class="itemPic">
-            <img src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png">
+            <img src="./pics/items/pic${i ? i : index}.png" alt="pic${i ? i : index}" srcset="./pics/items/pic${i ? i : index}.png">
           </div>
           <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
         </div>
       
         <div class="V5">
             <span>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-            <span> $${index * 55.5} | <a href="">Edit</a></span>
+            <span> $${(i ? i : index) * 55.5} | <a href="">Edit</a></span>
         </div>
       
         <div class="V6">
@@ -46,11 +46,10 @@ export const itemCard = () => {
       
       </div>  `
 
-    if (!indexTracker.includes(index)) {
-      indexTracker.push(index)
+    if (!indexTracker.includes(i ? i : index)) {
+      indexTracker.push(i ? i : index)
       outPut += cart;
-    }
-
+    } 
   }
 
   return outPut;

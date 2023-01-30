@@ -499,13 +499,10 @@ footer p {
 
 /* 
 MODALS
+======================================================
 */
 
-/* .dialog {
-  position: absolute;
-} */
-
-#dialogBox img {
+#dialogBox .homeSlidesLR {
   width: 16em;
   height: 16em;
   border: 2px solid gray;

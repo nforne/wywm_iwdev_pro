@@ -321,11 +321,13 @@ footer p {
 .item {
   border: 0.25em dashed grey;
   border-radius: 10px;
-  height: 25%;
-  width: 25%;
+  height: inherit;
+  width: inherit;
   color: black;
   font-size: 0.5em;
   background-color: bisque;
+  padding-left:  1em;
+  padding-right:  1em;
 }
 
 .item, .item .V2, .item .V5 {
@@ -363,6 +365,7 @@ footer p {
   background-color: gainsboro;
   color: black;
   border: 2px solid rgb(146, 139, 139);
+  height: 3.5em;
 }
 
 .V6 button:hover {

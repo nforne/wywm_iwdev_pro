@@ -46,11 +46,11 @@ $(window).ready(() => {
     /* since the jq-ui dialog widget is blocking, we handle it 
     assynchronously to enable dialog close on click anywhere else on the screen. */
     setTimeout(() => {
-      $("div:not(.dialogBoxBR, .ui-dialog-titlebar, .ui-dialog-buttonpane, .shop div)").on('click', () => {
+      $("div:not(.ui-dialog, .ui-dialog div, .shop div)").on('click', () => {
         if ($("#dialogBox").data("ui-dialog")) {
           setTimeout(() => {
             $("#dialogBox").dialog("destroy");
-            $("div:not(.dialogBoxBR, .ui-dialog-titlebar, .ui-dialog-buttonpane, .shop div)").off('click');
+            $("div:not(.ui-dialog, .ui-dialog div, .shop div)").off('click');
           }, 0);
         }
       });

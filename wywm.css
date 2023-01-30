@@ -498,6 +498,35 @@ footer p {
 }
 
 /* 
+MODALS
+*/
+
+/* .dialog {
+  position: absolute;
+} */
+
+#dialogBox img {
+  width: 16em;
+  height: 16em;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+.dialogBoxBR {
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgb(0, 255, 255);
+  width: 10em;
+  position: fixed;
+}
+
+.dialogBoxBR .ui-dialog-titlebar-close {
+  display: none;
+}
+
+#dialogBox {
+  border-radius: 10px;  
+}
+
+/* 
 MEDIA QUERIES to make the design responsive
 ======================================================
 */

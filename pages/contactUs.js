@@ -16,6 +16,7 @@ export const contactUs = `
         <div class="t" style="background-color: rgb(4, 113, 209);"><i class="fa fa-twitter fa-1x" aria-hidden="true"></i></div>
         <div class="i" style="background-color: palevioletred;"><i class="fa fa-instagram fa-1x" aria-hidden="true"></i></div> 
         <div class="y" style="background-color: red;"><i class="fa fa-youtube-play fa-1x" aria-hidden="true"></i></div>  
+        <div class="y" style="background-color: blue;"><i class="fa fa-linkedin-square fa-1x" aria-hidden="true"></i></div>  
     </div>
   </div>
 </div>

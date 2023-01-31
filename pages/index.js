@@ -6,4 +6,6 @@ export const pages = {
   navFooter : {...await import('./navFooter.js')}.navFooter,
   itemCard : {...await import('./itemCard.js')}.itemCard,
   home : {...await import('./home.js')}.home,
+  shoppingCart : {...await import('./cart/shoppingCart.js')}.shoppingCart,
+  dbRW : {...await import('./cart/dbQ2Shop.js')}.dbRW,
 };

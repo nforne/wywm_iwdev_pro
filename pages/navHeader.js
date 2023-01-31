@@ -30,8 +30,9 @@ export const navHeader = `
               </li>
             </button>
             
-            <li class="nav-item">          
-              <a class="nav-link" href="#"><img id="shoppingCart" src="./pics/shoppingCart.jpg" alt="shoppingCart" srcset="./pics/shoppingCart.jpg"></a>
+            <li class="nav-item">             
+              <div id=cartCount> 0 </div>        
+              <a class="nav-link" href="#"><img id="shoppingCartBtn" src="./pics/shoppingCart.jpg" alt="shoppingCart" srcset="./pics/shoppingCart.jpg"></a>
             </li>                  
           
         </ul>

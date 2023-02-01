@@ -53,10 +53,10 @@ export const shoppingCart = (dataList) => {
             <span>[ Name ]</span>
           </div>
           <div>
-            <span>[ Unit Price ] </span>
+            <span>[ U-Price ] </span>
           </div>
           <div>
-            <span>[ Quantity(Q) ]</span>
+            <span>[ Qty(Q) ]</span>
           </div>
         </div>
 

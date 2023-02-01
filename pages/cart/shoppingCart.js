@@ -48,6 +48,18 @@ export const shoppingCart = (dataList) => {
           </div>
         </div>
 
+        <div class="cartPhoneHeader">
+          <div class='cartFirstAttr'>
+            <span>[ Name ]</span>
+          </div>
+          <div>
+            <span>[ Unit Price ] </span>
+          </div>
+          <div>
+            <span>[ Quantity(Q) ]</span>
+          </div>
+        </div>
+
         <hr class="line0">
 
         ${cartItems}

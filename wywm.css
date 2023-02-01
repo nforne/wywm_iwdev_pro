@@ -336,6 +336,10 @@ shopping Cart
   width: 100%;
 }
 
+.cartPhoneHeader {
+ display: none;
+}
+
 .cartCheckoutBtn button {
   width: 40%;
   font-size: 1.25em;
@@ -599,6 +603,8 @@ footer p {
   color: wheat;
   -webkit-text-stroke: 2px black; /* width and color */
 }
+
+
                                           
 /*
     #                                 #     #        
@@ -848,12 +854,34 @@ MEDIA QUERIES to make the design responsive
     display: none;
   }
 
+  .cartPhoneHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: wheat;
+    background-color: gray;
+    border-radius: 5px;
+    width: 100%;
+    height: 5em;
+    padding-left: 0.25em;
+  }
+
+  .cartPhoneHeader div {
+    width: 33%;
+  }
+
   .cartIem {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 0.75em;
     width: 100%;
+    border: 1px dashed wheat;
+    align-self: center;
+    margin: 0.1em 0;
+    padding: 0.25em;
   }
 
   .cartIem .addSubBtns {
@@ -895,7 +923,7 @@ MEDIA QUERIES to make the design responsive
     margin: 1em 0;
   }
 
-  #checkoutCloseBtn {
+  .checkoutCRUDs button {
     height: inherit;
   }
 

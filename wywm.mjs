@@ -144,6 +144,9 @@ $(window).ready(() => {
   const shp = document.getElementById('shop');
   shp.addEventListener('click', () => {
     shop(container);
+    
+    message(['Double click to zoom-in on item!'], 'wheat', 5000);
+    
     // event listeners for sLeft and sRight on shop
     const shopLR = [document.getElementsByClassName('sLeft'), document.getElementsByClassName('sRight')]
     for (let i = 0; i < 6; i++ ) {
@@ -216,7 +219,7 @@ $(window).ready(() => {
       
       // random directive message  
       $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
-        const index = Math.floor(Math.random() * 3) + 1;
+        const index = Math.floor(Math.random() * 5) + 1;
         index === 3 ? message(['Double click to zoom-in on item!'],'wheat', 5000) : "";
       })
 
@@ -283,7 +286,6 @@ $(window).ready(() => {
     
   
  
-
 })
 
 

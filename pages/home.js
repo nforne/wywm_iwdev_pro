@@ -1,3 +1,4 @@
+
 export const home = `
 
 <span class="welcome">WELCOME</span>
@@ -12,7 +13,7 @@ export const home = `
   </div>-->
 
   <!--1------------------------------------------------------------------------->
-  
+ 
   <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
   <div id="shoppingCart" class="shoppingCart">
       <div class="cartTop">
@@ -51,7 +52,7 @@ export const home = `
 
             <div class="itemValues">
               <div class='cartFirstAttr'>
-                <span>ITEM1</span>
+                <a href="#"><span>Item: &nbsp; ITEM1</span></a>
               </div>
               <div>
                 <span>$14.95</span>

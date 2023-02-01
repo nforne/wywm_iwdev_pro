@@ -1,5 +1,12 @@
 const pages = {...await import('./pages/index.js')}.pages;
+const { dialogFn, message } = pages.dialogsFns;
+
 let slideTracker = []; // to track for elimination of repeatition of slides on display
+
+const print = (...args) => { //----------------------------------------------dev-tl
+  console.log(...args)
+}
+// pages.dbRW.dbDelete(); // db flush
 
 $(window).ready(() => {
   
@@ -11,52 +18,14 @@ $(window).ready(() => {
   
   const footer = document.getElementById('footer');
   footer.innerHTML = pages.navFooter;
-  
-  const message = (textsList, color='wheat', time=10000) => {
-    const msg = document.getElementById('messages');
-    let txt = '';
-    for (let text of textsList) { txt += `<p>${text}</p>`; };
-    msg.innerHTML = `<div style="color:${color};">${txt}</div>`;
-    setTimeout(() => {
-      msg.innerHTML = '';
-    }, time)
-  }
 
-  const dialogFn = (id) => {
-    $( "#dialogBox" ).dialog({  
-      autoOpen: false,
-      closeonescape: true,
-      // height: 700,
-      with: 700,
-      modal : true,
-      position: { my: "center", at: "center", of: window },
-      hide: { effect: "blind", duration: 100 },  
-      show : { effect: "blind", duration: 100 },
-      title : id.toUpperCase(),
-      dialogClass: "dialogBoxBR",
-      buttons: [{
-          text: ` [ ✖ ] ➖ Close 💬 `,
-          click: function () {                  
-            $( this ).dialog( "destroy" );
-          }}],
-    });
-
-    $( "#dialogBox" ).dialog( "open" );
-
-    /* since the jq-ui dialog widget is blocking, we handle it 
-    assynchronously to enable dialog close on click anywhere else on the screen. */
-    setTimeout(() => {
-      $("div:not(.ui-dialog, .ui-dialog div, .shop div)").on('click', () => {
-        if ($("#dialogBox").data("ui-dialog")) {
-          setTimeout(() => {
-            $("#dialogBox").dialog("destroy");
-            $("div:not(.ui-dialog, .ui-dialog div, .shop div)").off('click');
-          }, 0);
-        }
-      });
-    }, 0);
-
-  }
+  // to notify if there are items in the cart or not
+  const cartData = pages.dbRW.dbRead(message) ?? {};
+  if (Object.keys(cartData).length > 0) {
+    $('#cartCount').html(Object.keys(cartData).length).css('visibility', 'visible');
+  } else {
+    $('#cartCount').css('visibility', 'hidden');
+  }  
   
   // to randomly but unrepeatedly load and run the home slides
   const slideLR = () => {
@@ -120,6 +89,20 @@ $(window).ready(() => {
   const contactUs = (cntainer) => {  
     cntainer.innerHTML = pages.contactUs;
   }
+
+  const addToCartClickListener = (item) => {
+    $(`#addToCart${item.id.slice(4)}`).on('click', () => {
+      const db = pages.dbRW.dbRead(message) ?? {}; 
+      if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
+        message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'])
+      } else {
+        db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
+        pages.dbRW.dbWrite(db, message);
+        $('#cartCount').html(Number($('#cartCount').html()) + 1 )
+        $('#cartCount').css('visibility', 'visible');
+      }
+    })
+  }
   
   // home button and logo event listeners
   for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
@@ -138,8 +121,9 @@ $(window).ready(() => {
     const dialogMode = document.getElementById('dialog');
     const items = document.getElementsByClassName('item');
     for (let item of items) {
-      $(item).on('click', () => {
+      $(item).on('dblclick', () => {
         dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
+        addToCartClickListener(item);
         dialogFn(item.id);
       })
     }
@@ -162,6 +146,12 @@ $(window).ready(() => {
     }
 
     shopItemListener();
+
+    // addToCart click lister
+    const shopItems = document.getElementsByClassName('item') ?? [];
+    for (let item of shopItems) {    
+      addToCartClickListener(item);      
+    }
 
   })
   

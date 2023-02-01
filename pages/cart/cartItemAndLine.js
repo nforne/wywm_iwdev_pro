@@ -1,12 +1,12 @@
 export const cartElements = {
   cartItem : (data) => ` 
   
-        <div class="cartIem">
+        <div id="cartIem${data.item.toUpperCase()}" class="cartIem">
           <div class="itemValuesAndCRUDs">
 
             <div class="itemValues">
-              <div class='cartFirstAttr'>
-                <span>Item: &nbsp; ${data.item.toUpperCase()}</span>
+              <div id="cartItemClick${data.item.slice(3)}" class='cartFirstAttr cartItemClick'>
+                <a href="#"><span>Item: &nbsp; ${data.item.toUpperCase()}</span></a>
               </div>
               <div>
                 <span>${Number(data.item.slice(3)) * 55.5}</span>

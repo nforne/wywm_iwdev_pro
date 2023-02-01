@@ -18,7 +18,7 @@ export const itemCard = (i='', numItems=4) => {
         </div>
       
         <div class="V2">
-          <span>Item Name: Lorem</span>
+          <span>Item Name: Item PIC${i ? i : index}</span>
           <div>
             <span>[ Item found on www.example.com ] </span>
             <span> [ Picture ${i ? i : index} of 9 ] </span>
@@ -39,7 +39,7 @@ export const itemCard = (i='', numItems=4) => {
         </div>
       
         <div class="V6">
-          <button> <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i> | Add to Cart</button>
+          <button id="addToCart${i ? i : index}"> <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i> | Add to Cart</button>
           <button> <i class="fa fa-list fa-1x" aria-hidden="true"></i> | Add to Wish List</button>
           <button><i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i> | Item Reviews</button>
         </div>

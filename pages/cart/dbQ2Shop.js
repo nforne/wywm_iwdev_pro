@@ -8,11 +8,16 @@ const dbWrite = (data, msg=(e)=>{}) => {
 }
 
 const dbRead = (msg=(e)=>{}) => {
-  if (typeof(Storage) !== "undefined" && localStorage.q2shop) {
-    return JSON.parse(localStorage.getItem("q2Shop"));
+  // console.log(localStorage.q2Shop) // ------------------------
+  if (typeof(Storage) !== "undefined" && localStorage.q2Shop) {
+    return JSON.parse(localStorage.q2Shop);
   } else {
-    msg(['Sorry! No Web Storage support..']);
+    msg(['Sorry! Empty cart or no Web Storage support..']);
   }
+}
+
+const dbDelete = () => {
+  localStorage.removeItem('q2Shop');
 }
 
 class dbItemClass {
@@ -23,4 +28,4 @@ class dbItemClass {
   };
 }
 
-export const dbRW = {dbWrite, dbRead, dbItemClass };
+export const dbRW = {dbWrite, dbRead, dbDelete, dbItemClass };

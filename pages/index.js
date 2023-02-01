@@ -8,4 +8,6 @@ export const pages = {
   home : {...await import('./home.js')}.home,
   shoppingCart : {...await import('./cart/shoppingCart.js')}.shoppingCart,
   dbRW : {...await import('./cart/dbQ2Shop.js')}.dbRW,
+  cartDialog : {...await import('./cart/cartDialog.js')}.cartDialog, 
+  dialogsFns : {...await import('./dialogsFns.js')}.dialogsFns, 
 };

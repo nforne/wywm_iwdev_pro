@@ -172,7 +172,7 @@ shopping Cart
 }
 
 #cartCount {
-  /* display: none; */
+  visibility: hidden;
   color: wheat;
   border-radius: 10px;
   background-color: red;

@@ -114,12 +114,11 @@ $(window).ready(() => {
     $(`#addToCart${item.id.slice(4)}`).on('click', () => {
       const db = pages.dbRW.dbRead(message) ?? {}; 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
-        message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], time=3000)
+        message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], 'wheat', 3000);
       } else {
         db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
         pages.dbRW.dbWrite(db, message);
-        $('#cartCount').html(Number($('#cartCount').html()) + 1 )
-        $('#cartCount').css('visibility', 'visible');
+        $('#cartCount').html(Number($('#cartCount').html()) + 1).css('visibility', 'visible');
       }
     })
   }
@@ -197,12 +196,16 @@ $(window).ready(() => {
     return total;
   }
 
+  // shopping cart click listener
   $('#shoppingCartBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message) ?? {});
     home(container);
     slideLR();
     slideLRListener();
     $('#homeBox').html(pages.shoppingCart(cartDataList));
+
+    message(['Double click to zoom-in on item!'], 'wheat', 5000);
+
     const cartItems = document.getElementsByClassName('cartIem') ?? [];
     for (let cartIem of cartItems) {
       // dialog view listener
@@ -210,11 +213,12 @@ $(window).ready(() => {
         $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
         dialogFn(cartIem.id.slice(7));
       })
-
-      // $(item).on('click', () => {
-      //   const index = Math.floor(Math.random() * 3) + 1;
-      //   index === 3 ? message(['Double click to zoom-in on item!']) : "";
-      // })
+      
+      // random directive message  
+      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
+        const index = Math.floor(Math.random() * 3) + 1;
+        index === 3 ? message(['Double click to zoom-in on item!'],'wheat', 5000) : "";
+      })
 
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
@@ -230,8 +234,7 @@ $(window).ready(() => {
           slideLR();
           slideLRListener();
           message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
-          $('#cartCount').html(0)
-          $('#cartCount').css('visibility', 'hidden');
+          $('#cartCount').html(0).css('visibility', 'hidden');
         }
 
         if ($(`#${cartIem.id}`).index() - 2 === cartDBNum - 1) {

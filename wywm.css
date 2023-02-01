@@ -363,6 +363,7 @@ shopping Cart
   box-shadow: 0 0 50px white;
   margin: 2em;
   margin-bottom: 2em;
+  z-index: 15;
 }
 
 .shopnCartBBtn img:hover {
@@ -444,6 +445,7 @@ footer .footer {
   align-items: center;
   height: 5em;
   padding-top: 1em;
+  z-index: 10;
 }
 
 footer p {

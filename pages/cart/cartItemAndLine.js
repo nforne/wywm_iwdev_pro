@@ -1,11 +1,11 @@
 export const cartElements = {
 
   line : `<hr class="lineB">`,
-  
+
   cartItem : (data) => ` 
   
         <div id="cartIem${data.item.toUpperCase()}" class="cartIem">
-          <div class="itemValuesAndCRUDs">
+          <div id='itemValuesAndCRUDs${data.item.slice(3)}' class="itemValuesAndCRUDs">
 
             <div class="itemValues">
               <div id="cartItemClick${data.item.slice(3)}" class='cartFirstAttr cartItemClick'>

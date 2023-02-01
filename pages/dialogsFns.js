@@ -24,7 +24,7 @@ const dialogFn = (id) => {
   /* since the jq-ui dialog widget is blocking, we handle it 
   assynchronously to enable dialog close on click anywhere else on the screen. */
   setTimeout(() => {
-    const dialogCntrl = "div:not(.ui-dialog, .ui-dialog div, .shop div, .V6 button, .cartIem, .cartCRUDBtns, .addSubBtns )";
+    const dialogCntrl = "div:not(.ui-dialog, .ui-dialog div, .shop div, .V6 button, .cartIem, .itemValuesAndCRUDs, .cartCRUDBtns, .addSubBtns)";
     $(dialogCntrl).on('click', () => {
       if ($("#dialogBox").data("ui-dialog")) {
         setTimeout(() => {

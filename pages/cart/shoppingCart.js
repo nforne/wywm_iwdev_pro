@@ -56,7 +56,7 @@ export const shoppingCart = (dataList) => {
         
         <div class="total">
           <div id='totalL'>TOTAL</div>
-          <div id="total">${total}</div>
+          <div id="total">$${total}</div>
         </div>
 
         <hr class="lineA">

@@ -28,16 +28,4 @@ class dbItemClass {
   };
 }
 
-const addSubCart = (a) => {
-
-}
-
-const delFromCart = (item) => {
-
-}
-
-const closeCart = () => {
-
-}
-
 export const dbRW = {dbWrite, dbRead, dbDelete, dbItemClass };

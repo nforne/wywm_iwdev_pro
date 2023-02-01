@@ -188,7 +188,7 @@ $(window).ready(() => {
   // cart button click listener
   const calculateTotal = () => {
     let total = 0;
-    const cartItems = Object.values(pages.dbRW.dbRead(message))
+    const cartItems = Object.values(pages.dbRW.dbRead(message) ?? {});
     if (pages.dbRW.dbRead(message) && cartItems.length > 0) {
       for (let cartItem of cartItems) {
         total += Number(cartItem.price) * Number(cartItem.quantity);
@@ -206,10 +206,16 @@ $(window).ready(() => {
     const cartItems = document.getElementsByClassName('cartIem') ?? [];
     for (let cartIem of cartItems) {
       // dialog view listener
-      $(`#${cartIem.id}`).on('click', () => {
+      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
         $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
         dialogFn(cartIem.id.slice(7));
       })
+
+      // $(item).on('click', () => {
+      //   const index = Math.floor(Math.random() * 3) + 1;
+      //   index === 3 ? message(['Double click to zoom-in on item!']) : "";
+      // })
+
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
         let cartDBNum = 0;
@@ -234,12 +240,38 @@ $(window).ready(() => {
           $('.cartItemsBox').children().eq($(`#${cartIem.id}`).index() + 1).remove();
           $(`#${cartIem.id}`).remove();
         }
-        
+
         $('#total').html(`$${calculateTotal()}`);
       })
+
+      // +/- cart items buttons click listeners
+      const addSubBtns = (a/* 0 ?? 1 */, cartItemID) => {
+        const id = cartItemID.slice(7).toLowerCase();
+        const cartDB = pages.dbRW.dbRead(message);
+        if (a === 0 && cartDB[id].quantity === 1) {
+          message(['That is the least of the item quantity you can get!']);
+        } else if (cartDB[id].quantity >= 1) {
+          a === 0 ? cartDB[id].quantity -= 1 : cartDB[id].quantity += 1; 
+        }
+               
+        pages.dbRW.dbWrite(cartDB, message);
+      
+        $(`#cartItemQty${cartItemID.slice(10)}`).html(Number(cartDB[id].quantity));
+        $('#total').html(`$${calculateTotal()}`);
+      }
     
-      $().on('click', () => {
-    
+      $(`#add${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
+        addSubBtns(1, cartIem.id);
+      })
+      $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
+        addSubBtns(0, cartIem.id);
+      })
+
+      $('#checkoutCloseBtn').on('click', () => {
+        home(container);
+        slideLR();
+        slideLRListener();
+        message(['Thank you for your buisness! 📝',  'Come back soon!'])
       })
     }
   

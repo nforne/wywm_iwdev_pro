@@ -1,4 +1,6 @@
 export const cartElements = {
+
+  line : `<hr class="lineB">`,
   cartItem : (data) => ` 
   
         <div id="cartIem${data.item.toUpperCase()}" class="cartIem">
@@ -9,10 +11,10 @@ export const cartElements = {
                 <a href="#"><span>Item: &nbsp; ${data.item.toUpperCase()}</span></a>
               </div>
               <div>
-                <span>${Number(data.item.slice(3)) * 55.5}</span>
+                <span>$${Number(data.item.slice(3)) * 55.5}</span>
               </div>
               <div>
-                <span>${data.quantity}</span>
+                <span id="cartItemQty${data.item.slice(3)}">${data.quantity}</span>
               </div>
             </div>
             <hr class="lineB">
@@ -30,6 +32,4 @@ export const cartElements = {
           </div>
 
         </div>  `,
-
-  line : `<hr class="lineB">`
 }

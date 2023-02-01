@@ -8,8 +8,8 @@ const dbWrite = (data, msg=(e)=>{}) => {
 }
 
 const dbRead = (msg=(e)=>{}) => {
-  // console.log(localStorage.q2Shop) // ------------------------
   if (typeof(Storage) !== "undefined" && localStorage.q2Shop) {
+    // Code for localStorage/sessionStorage.
     return JSON.parse(localStorage.q2Shop);
   } else {
     msg(['Sorry! Empty cart or no Web Storage support..']);
@@ -26,6 +26,18 @@ class dbItemClass {
     this.price = price;
     this.quantity = quantity;
   };
+}
+
+const addSubCart = (a) => {
+
+}
+
+const delFromCart = (item) => {
+
+}
+
+const closeCart = () => {
+
 }
 
 export const dbRW = {dbWrite, dbRead, dbDelete, dbItemClass };

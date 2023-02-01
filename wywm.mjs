@@ -3,10 +3,12 @@ const { dialogFn, message } = pages.dialogsFns;
 
 let slideTracker = []; // to track for elimination of repeatition of slides on display
 
-const print = (...args) => { //----------------------------------------------dev-tl
-  console.log(...args)
+// -----------------------------------------------------------------------------------
+const print = (...args) => { //----------------------------------------------dev-t00ls
+  console.log(...args);
 }
 // pages.dbRW.dbDelete(); // db flush
+// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
   
@@ -66,7 +68,9 @@ $(window).ready(() => {
   const slideLRListener = () => {
     for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
       slideBtn.addEventListener('click', () => {
-        message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
+        if (Object.keys(cartData).length === 0) {
+          message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
+        }
         slideLR();
       })
     }
@@ -89,7 +93,22 @@ $(window).ready(() => {
   const contactUs = (cntainer) => {  
     cntainer.innerHTML = pages.contactUs;
   }
-
+  
+  // home button and logo event listeners
+  for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
+    hme.addEventListener('click', () => {
+      if (Object.keys(cartData).length === 0) {
+        message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
+      }
+      home(container);
+      slideLR();
+  
+      // slide left and right event listener
+      slideLRListener();
+    })
+  }
+  
+  // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
     $(`#addToCart${item.id.slice(4)}`).on('click', () => {
       const db = pages.dbRW.dbRead(message) ?? {}; 
@@ -103,20 +122,8 @@ $(window).ready(() => {
       }
     })
   }
-  
-  // home button and logo event listeners
-  for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
-    hme.addEventListener('click', () => {
-      message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
-      home(container);
-      slideLR();
-  
-      // slide left and right event listener
-      slideLRListener();
-    })
-  }
 
-  // modal view for shop items 
+  // Fn for modal view of shop items 
   const shopItemListener = () => {
     const dialogMode = document.getElementById('dialog');
     const items = document.getElementsByClassName('item');
@@ -126,7 +133,12 @@ $(window).ready(() => {
         addToCartClickListener(item);
         dialogFn(item.id);
       })
+      $(item).on('click', () => {
+        const index = Math.floor(Math.random() * 3) + 1;
+        index === 3 ? message(['Double click to zoom-in on item!']) : "";
+      })
     }
+
   };
   
   // shop button event listener
@@ -147,7 +159,7 @@ $(window).ready(() => {
 
     shopItemListener();
 
-    // addToCart click lister
+    // addToCart click listener
     const shopItems = document.getElementsByClassName('item') ?? [];
     for (let item of shopItems) {    
       addToCartClickListener(item);      
@@ -172,6 +184,28 @@ $(window).ready(() => {
       contactUs(container);
     })
   };
+
+// cart button click lister
+$('#shoppingCartBtn').on('click', () => {
+  const cartDataList = Object.values(pages.dbRW.dbRead(message));
+  home(container);
+  $('#homeBox').html(pages.shoppingCart(cartDataList));
+  $().on('click', () => {
+    
+  })
+
+  $().on('click', () => {
+
+  })
+
+  $().on('click', () => {
+
+  })
+
+
+ 
+})
+
 
 })
 

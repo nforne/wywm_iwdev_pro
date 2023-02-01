@@ -10,7 +10,7 @@ export const shoppingCart = (dataList) => {
     } else {
       cartItems += cartElements.cartItem(dataList[i]) + cartElements.line;
     }
-    total += date[i].price * data[i].quantity;
+    total += dataList[i].price * dataList[i].quantity;
   }
 
   return `

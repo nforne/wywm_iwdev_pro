@@ -24,11 +24,12 @@ const dialogFn = (id) => {
   /* since the jq-ui dialog widget is blocking, we handle it 
   assynchronously to enable dialog close on click anywhere else on the screen. */
   setTimeout(() => {
-    $("div:not(.ui-dialog, .ui-dialog div, .shop div, .V6 button)").on('click', () => {
+    const dialogCntrl = "div:not(.ui-dialog, .ui-dialog div, .shop div, .V6 button, .cartIem, .cartCRUDBtns, .addSubBtns )";
+    $(dialogCntrl).on('click', () => {
       if ($("#dialogBox").data("ui-dialog")) {
         setTimeout(() => {
           $("#dialogBox").dialog("destroy");
-          $("div:not(.ui-dialog, .ui-dialog div, .shop div, .V6 button)").off('click');
+          $(dialogCntrl).off('click');
         }, 0);
       }
     });

@@ -14,6 +14,8 @@ $(window).ready(() => {
   
   const header = document.getElementById('header');
   header.innerHTML = pages.navHeader;
+
+  const dialogMode = document.getElementById('dialog');
   
   const container = document.getElementById('container');
   container.innerHTML = pages.home;
@@ -45,7 +47,6 @@ $(window).ready(() => {
     slideBox.innerHTML = slides; 
     
     // to setup modal view for home pics
-    const dialogMode = document.getElementById('dialog');
     const imgSlides = document.getElementsByClassName('homeSlidesLR');
     for (let imgSlide of imgSlides) {
       $(imgSlide).on('click', () => {
@@ -68,7 +69,7 @@ $(window).ready(() => {
   const slideLRListener = () => {
     for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
       slideBtn.addEventListener('click', () => {
-        if (Object.keys(cartData).length === 0) {
+        if (Object.keys(pages.dbRW.dbRead(message) ?? {}).length === 0) {
           message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
         }
         slideLR();
@@ -97,7 +98,7 @@ $(window).ready(() => {
   // home button and logo event listeners
   for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
     hme.addEventListener('click', () => {
-      if (Object.keys(cartData).length === 0) {
+      if (Object.keys(pages.dbRW.dbRead(message) ?? {}).length === 0) {
         message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
       }
       home(container);
@@ -125,7 +126,6 @@ $(window).ready(() => {
 
   // Fn for modal view of shop items 
   const shopItemListener = () => {
-    const dialogMode = document.getElementById('dialog');
     const items = document.getElementsByClassName('item');
     for (let item of items) {
       $(item).on('dblclick', () => {
@@ -185,27 +185,69 @@ $(window).ready(() => {
     })
   };
 
-// cart button click lister
-$('#shoppingCartBtn').on('click', () => {
-  const cartDataList = Object.values(pages.dbRW.dbRead(message));
-  home(container);
-  $('#homeBox').html(pages.shoppingCart(cartDataList));
-  $().on('click', () => {
+  // cart button click listener
+  const calculateTotal = () => {
+    let total = 0;
+    const cartItems = Object.values(pages.dbRW.dbRead(message))
+    if (pages.dbRW.dbRead(message) && cartItems.length > 0) {
+      for (let cartItem of cartItems) {
+        total += Number(cartItem.price) * Number(cartItem.quantity);
+      }
+    }
+    return total;
+  }
+
+  $('#shoppingCartBtn').on('click', () => {
+    const cartDataList = Object.values(pages.dbRW.dbRead(message) ?? {});
+    home(container);
+    slideLR();
+    slideLRListener();
+    $('#homeBox').html(pages.shoppingCart(cartDataList));
+    const cartItems = document.getElementsByClassName('cartIem') ?? [];
+    for (let cartIem of cartItems) {
+      // dialog view listener
+      $(`#${cartIem.id}`).on('click', () => {
+        $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
+        dialogFn(cartIem.id.slice(7));
+      })
+      // delete item from cart
+      $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
+        let cartDBNum = 0;
+        const cartDB = {...pages.dbRW.dbRead(message)};
+        cartDBNum = Object.keys(cartDB).length;
+        delete cartDB[cartIem.id.slice(7).toLowerCase()];
+        if (Object.keys(cartDB).length > 0) {
+          pages.dbRW.dbWrite(cartDB, message);
+        } else {
+          pages.dbRW.dbDelete();
+          home(container);
+          slideLR();
+          slideLRListener();
+          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
+          $('#cartCount').html(0)
+          $('#cartCount').css('visibility', 'hidden');
+        }
+
+        if ($(`#${cartIem.id}`).index() - 2 === cartDBNum - 1) {
+          $(`#${cartIem.id}`).remove();
+        } else {
+          $('.cartItemsBox').children().eq($(`#${cartIem.id}`).index() + 1).remove();
+          $(`#${cartIem.id}`).remove();
+        }
+        
+        $('#total').html(`$${calculateTotal()}`);
+      })
     
+      $().on('click', () => {
+    
+      })
+    }
+  
+  
   })
-
-  $().on('click', () => {
-
-  })
-
-  $().on('click', () => {
-
-  })
-
-
+    
+  
  
-})
-
 
 })
 

@@ -1,6 +1,7 @@
 export const cartElements = {
 
   line : `<hr class="lineB">`,
+  
   cartItem : (data) => ` 
   
         <div id="cartIem${data.item.toUpperCase()}" class="cartIem">

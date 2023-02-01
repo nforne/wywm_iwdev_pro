@@ -200,14 +200,14 @@ $(window).ready(() => {
   }
 
   // shopping cart click listener
-  $('#shoppingCartBtn').on('click', () => {
+  $('#shoppingCartBtn, .shopnCartBBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message) ?? {});
     home(container);
     slideLR();
     slideLRListener();
     $('#homeBox').html(pages.shoppingCart(cartDataList));
 
-    message(['Double click to zoom-in on item!'], 'wheat', 5000);
+    message(['Double click on item to zoom-in on it!'], 'wheat', 5000);
 
     const cartItems = document.getElementsByClassName('cartIem') ?? [];
     for (let cartIem of cartItems) {
@@ -220,7 +220,7 @@ $(window).ready(() => {
       // random directive message  
       $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
         const index = Math.floor(Math.random() * 5) + 1;
-        index === 3 ? message(['Double click to zoom-in on item!'],'wheat', 5000) : "";
+        index === 3 ? message(['Double click on item to zoom-in on it'],'wheat', 5000) : "";
       })
 
       // delete item from cart
@@ -258,10 +258,8 @@ $(window).ready(() => {
           message(['That is the least of the item quantity you can get!']);
         } else if (cartDB[id].quantity >= 1) {
           a === 0 ? cartDB[id].quantity -= 1 : cartDB[id].quantity += 1; 
-        }
-               
+        }       
         pages.dbRW.dbWrite(cartDB, message);
-      
         $(`#cartItemQty${cartItemID.slice(10)}`).html(Number(cartDB[id].quantity));
         $('#total').html(`$${calculateTotal()}`);
       }
@@ -273,7 +271,8 @@ $(window).ready(() => {
         addSubBtns(0, cartIem.id);
       })
 
-      $('#checkoutCloseBtn').on('click', () => {
+      // close cart session 
+      $('#checkoutCloseBtn, shopnCartBBtn').on('click', () => {
         home(container);
         slideLR();
         slideLRListener();

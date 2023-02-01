@@ -1,6 +1,11 @@
 export const navFooter = `
+  
+  <div class='shopnCartBBtn'> 
+   <img id="shopnCartBBtn" src="./pics/shoppingCart.jpg" alt="shoppingCart" srcset="./pics/shoppingCart.jpg">
+  </div>
 
   <hr class="line1">
+  
   <div class="footer">
     
     <div>

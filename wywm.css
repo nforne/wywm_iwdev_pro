@@ -164,9 +164,9 @@ shopping Cart
 */
 
 #shoppingCartBtn {
-  width: 3em;
-  height: 3em;
-  border-radius: 10px;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
   border: 0.25em solid wheat;
   box-shadow: 0 0 50px #ccc;
 }
@@ -343,6 +343,31 @@ shopping Cart
 .cartCheckoutBtn button {
   width: 40%;
   font-size: 1.25em;
+}
+
+.shopnCartBBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.shopnCartBBtn img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 2px solid wheat;
+  box-shadow: 0 0 50px white;
+  margin: 2em;
+  margin-bottom: 2em;
+}
+
+.shopnCartBBtn img:hover {
+  box-shadow: 0 0 50px aqua;
+  border: 2px solid black;
 }
 
 .cartIem .addSubBtns {

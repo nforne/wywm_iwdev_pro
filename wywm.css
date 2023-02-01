@@ -353,7 +353,6 @@ shopping Cart
   border-radius: 5px;
 }
 
-/* ---------------------------------------------------------------dev */
 .navBtns button {
   width: 7em;
   height: 2.75em;
@@ -837,5 +836,69 @@ MEDIA QUERIES to make the design responsive
   footer .footer {
     height: initial;
   }
+  
+  /* shopping cart */
+
+  .shoppingCart {
+    width: 100%;
+    padding: initial;
+  }
+
+  .cartItemsHeader {
+    display: none;
+  }
+
+  .cartIem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75em;
+    width: 100%;
+  }
+
+  .cartIem .addSubBtns {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 1em;
+  }
+
+  .cartIem .itemValuesAndCRUDs {
+    padding: 0;
+    width: 100%;
+  }
+  .cartIem .itemValuesAndCRUDs .cartCRUDBtns button,
+  .cartCheckoutBtn .checkoutCRUDs button {
+    width: 33%;
+  }
+
+  .cartIem div {
+    padding: 2px;
+    width: 100%;
+  }
+
+  .cartCheckoutBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cartCheckoutBtn .checkoutCRUDs {
+    width: 100%;
+  }
+
+  .cartCheckoutBtn button {
+    width: 97.5%;
+    font-weight: 1em;
+    height: 25%;
+    margin: 1em 0;
+  }
+
+  #checkoutCloseBtn {
+    height: inherit;
+  }
+
+
 }
 

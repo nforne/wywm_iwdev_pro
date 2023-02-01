@@ -62,12 +62,12 @@ export const shoppingCart = (dataList) => {
         <hr class="lineA">
 
         <div class="cartCheckoutBtn">
-        <div class="checkoutCRUDs">
-          <button id='checkoutCloseBtn' style="background-color: rgb(128, 62, 62); color: white;"> [&nbsp; ✖ &nbsp;] | close!</button>
-          <button> [&nbsp; 💾 &nbsp;] | Saved!</button>
-          <button> [&nbsp; 🤍 &nbsp;] | Favorites!</button>
-        </div>
-        <button><i class="fa fa-credit-card-alt fa-2x" aria-hidden="true"></i> | Continue to Checkout!</button>
+          <div class="checkoutCRUDs">
+            <button id='checkoutCloseBtn' style="background-color: rgb(128, 62, 62); color: white;"> [&nbsp; ✖ &nbsp;] | close!</button>
+            <button> [&nbsp; 💾 &nbsp;] | Saved!</button>
+            <button> [&nbsp; 🤍 &nbsp;] | Favorites!</button>
+          </div>
+          <button><i class="fa fa-credit-card-alt fa-2x" aria-hidden="true"></i> | Continue to Checkout!</button>
         </div>
 
       </div>

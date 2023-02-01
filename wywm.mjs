@@ -114,7 +114,7 @@ $(window).ready(() => {
     $(`#addToCart${item.id.slice(4)}`).on('click', () => {
       const db = pages.dbRW.dbRead(message) ?? {}; 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
-        message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'])
+        message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], time=3000)
       } else {
         db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
         pages.dbRW.dbWrite(db, message);

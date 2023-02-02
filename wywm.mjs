@@ -246,8 +246,8 @@ $(window).ready(() => {
         } else {
           pages.dbRW.dbDelete();
           $('#cartCount').html(0).css('visibility', 'hidden');
-          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
           $('#homeBox').html(pages.shoppingCart(cartDataList));
+          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
           shopSetTimeOuts['A1'] = setTimeout(() => {
             $("#shop").trigger("click");
           }, 5000);

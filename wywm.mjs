@@ -23,6 +23,15 @@ $(window).ready(() => {
   const footer = document.getElementById('footer');
   footer.innerHTML = pages.navFooter;
 
+  const q2ShopSetTimeOuts = {};
+  q2ShopSetTimeOuts['A1'] = setTimeout(() => { // upon home load, default to shop if no acitvity in 5s
+    $("#shop").trigger("click");
+  }, 5000);
+
+  $(window).on('click', () => {
+    if (q2ShopSetTimeOuts['A1']) clearTimeout(q2ShopSetTimeOuts['A1']);
+  })
+
   // to notify if there are items in the cart or not
   const cartData = pages.dbRW.dbRead(message);
   if (Object.keys(cartData).length > 0) {
@@ -96,18 +105,16 @@ $(window).ready(() => {
   }
   
   // home button and logo event listeners
-  for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
-    hme.addEventListener('click', () => {
-      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-        message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
-      }
-      home(container);
-      slideLR();
-  
-      // slide left and right event listener
-      slideLRListener();
-    })
-  }
+  $('#logo, #home').on('click', () => {
+    if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
+      message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
+    }
+    home(container);
+    slideLR();
+
+    // slide left and right event listener
+    slideLRListener();
+  })
   
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
@@ -141,8 +148,7 @@ $(window).ready(() => {
   };
   
   // shop button event listener
-  const shp = document.getElementById('shop');
-  shp.addEventListener('click', () => {
+  $('#shop').on('click', () => {
     shop(container);
     
     message(['Double click to zoom-in on item!'], 'wheat', 5000);
@@ -170,22 +176,19 @@ $(window).ready(() => {
   })
   
   // aboutUs button and footer link event listeners
-  for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('aboutUsF')])  {
-    abtUs.addEventListener('click', () => {
-      home(container);
-      const homeBox = document.getElementById('homeBox');
-      aboutUs(homeBox);
-      slideLR();
-      slideLRListener();
-    })
-  };
+  $('#aboutUs, #aboutUsF').on('click', () => {
+    home(container);
+    const homeBox = document.getElementById('homeBox');
+    aboutUs(homeBox);
+    slideLR();
+    slideLRListener();
+  });
   
   // contactUs butten and footer link event listeners
-  for (let cntctUs of [document.getElementById('contactUs'), document.getElementById('contactUsF')]) {
-    cntctUs.addEventListener('click', () => {
-      contactUs(container);
-    })
-  };
+  $('#contactUs, #contactUsF').on('click', () => {
+    contactUs(container);
+  })
+  
 
   // for cart button click listener
   const calculateTotal = () => {
@@ -246,8 +249,8 @@ $(window).ready(() => {
         } else {
           pages.dbRW.dbDelete();
           $('#cartCount').html(0).css('visibility', 'hidden');
-          $('#homeBox').html(pages.shoppingCart(cartDataList));
           message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
+          $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | "Continue Shopping!"');
           shopSetTimeOuts['A1'] = setTimeout(() => {
             $("#shop").trigger("click");
           }, 5000);

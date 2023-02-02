@@ -266,7 +266,7 @@ $(window).ready(() => {
           pages.dbRW.dbDelete();
           $('#cartCount').html(0).css('visibility', 'hidden');
           message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
-          $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | "Continue Shopping!"');
+          $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Continue Shopping!');
           
           q2ShopSetTimeOuts['S1'] = setTimeout(() => {
             $("#shop").trigger("click");

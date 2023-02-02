@@ -203,12 +203,12 @@ $(window).ready(() => {
   $('#shoppingCartBtn, .shopnCartBBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
-    let shopSetTimeOut = '';
+    const shopSetTimeOuts = {};
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
       // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
       // dialogFn('Q2-Shop! | CART')
-      shopSetTimeOut = setTimeout(() => {
+      shopSetTimeOuts['A1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
       // return ;
@@ -295,7 +295,7 @@ $(window).ready(() => {
     $('#cartChkOutBtn').on('click', () => {
       if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
         message(['Your cart is empty.', 'Lets go pickup some items!'])
-        if (shopSetTimeOut) clearTimeout(shopSetTimeOut);
+        if (shopSetTimeOuts['A1']) clearTimeout(shopSetTimeOuts['A1']);
         $("#shop").trigger("click");
       }
     })

@@ -187,7 +187,7 @@ $(window).ready(() => {
     })
   };
 
-  // cart button click listener
+  // for cart button click listener
   const calculateTotal = () => {
     let total = 0;
     const cartItems = Object.values(pages.dbRW.dbRead(message) ?? {});
@@ -225,12 +225,12 @@ $(window).ready(() => {
 
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
-        let cartDBNum = 0;
         const cartDB = {...pages.dbRW.dbRead(message)};
-        cartDBNum = Object.keys(cartDB).length;
+        const priorCartDBLength = Object.keys(cartDB).length;
         delete cartDB[cartIem.id.slice(7).toLowerCase()];
         if (Object.keys(cartDB).length > 0) {
           pages.dbRW.dbWrite(cartDB, message);
+          $('#cartCount').html(Object.keys(cartDB).length);
         } else {
           pages.dbRW.dbDelete();
           home(container);
@@ -240,7 +240,7 @@ $(window).ready(() => {
           $('#cartCount').html(0).css('visibility', 'hidden');
         }
 
-        if ($(`#${cartIem.id}`).index() - 2 === cartDBNum - 1) {
+        if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {
           $(`#${cartIem.id}`).remove();
         } else {
           $('.cartItemsBox').children().eq($(`#${cartIem.id}`).index() + 1).remove();

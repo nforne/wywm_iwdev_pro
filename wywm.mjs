@@ -11,6 +11,8 @@ const print = (...args) => { //----------------------------------------------dev
 // -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
+
+  const q2ShopSetTimeOuts = {}; // for short burst events like auto redirects
   
   const header = document.getElementById('header');
   header.innerHTML = pages.navHeader;
@@ -22,6 +24,15 @@ $(window).ready(() => {
   
   const footer = document.getElementById('footer');
   footer.innerHTML = pages.navFooter;
+
+  // upon home load, default to shop if no acitvity in 5s
+  q2ShopSetTimeOuts['A1'] = setTimeout(() => { 
+    $("#shop").trigger("click");
+  }, 5000);
+
+  $(window).on('click', () => { // A##.. for all or global, S##.. for shop, .....
+    if (q2ShopSetTimeOuts['A1']) clearTimeout(q2ShopSetTimeOuts['A1']);
+  })
 
   // to notify if there are items in the cart or not
   const cartData = pages.dbRW.dbRead(message);
@@ -67,14 +78,12 @@ $(window).ready(() => {
   
   // slide left and right event listener for home and aboutUs carousel
   const slideLRListener = () => {
-    for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
-      slideBtn.addEventListener('click', () => {
-        if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-          message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
-        }
-        slideLR();
-      })
-    }
+    $('#slideL, #slideR').on('click', () => {
+      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
+        message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
+      }
+      slideLR();
+    }) 
   }
   slideLRListener();
   
@@ -96,18 +105,16 @@ $(window).ready(() => {
   }
   
   // home button and logo event listeners
-  for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
-    hme.addEventListener('click', () => {
-      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-        message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
-      }
-      home(container);
-      slideLR();
-  
-      // slide left and right event listener
-      slideLRListener();
-    })
-  }
+  $('#logo, #home').on('click', () => {
+    if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
+      message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
+    }
+    home(container);
+    slideLR();
+
+    // slide left and right event listener
+    slideLRListener();
+  })
   
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
@@ -141,8 +148,7 @@ $(window).ready(() => {
   };
   
   // shop button event listener
-  const shp = document.getElementById('shop');
-  shp.addEventListener('click', () => {
+  $('#shop').on('click', () => {
     shop(container);
     
     message(['Double click to zoom-in on item!'], 'wheat', 5000);
@@ -170,22 +176,19 @@ $(window).ready(() => {
   })
   
   // aboutUs button and footer link event listeners
-  for (let abtUs of [document.getElementById('aboutUs'), document.getElementById('aboutUsF')])  {
-    abtUs.addEventListener('click', () => {
-      home(container);
-      const homeBox = document.getElementById('homeBox');
-      aboutUs(homeBox);
-      slideLR();
-      slideLRListener();
-    })
-  };
+  $('#aboutUs, #aboutUsF').on('click', () => {
+    home(container);
+    const homeBox = document.getElementById('homeBox');
+    aboutUs(homeBox);
+    slideLR();
+    slideLRListener();
+  });
   
   // contactUs butten and footer link event listeners
-  for (let cntctUs of [document.getElementById('contactUs'), document.getElementById('contactUsF')]) {
-    cntctUs.addEventListener('click', () => {
-      contactUs(container);
-    })
-  };
+  $('#contactUs, #contactUsF').on('click', () => {
+    contactUs(container);
+  })
+  
 
   // for cart button click listener
   const calculateTotal = () => {
@@ -203,10 +206,11 @@ $(window).ready(() => {
   $('#shoppingCartBtn, #shopnCartBBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
-    const shopSetTimeOuts = {};
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
-      shopSetTimeOuts['A1'] = setTimeout(() => {
+      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
+      // dialogFn('Q2-Shop! | CART')
+      q2ShopSetTimeOuts['A2'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
     }
@@ -235,19 +239,25 @@ $(window).ready(() => {
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
         const cartDB = {...pages.dbRW.dbRead(message)};
+
         const priorCartDBLength = Object.keys(cartDB).length;
         delete cartDB[cartIem.id.slice(7).toLowerCase()];
+
         if (Object.keys(cartDB).length > 0) {
           pages.dbRW.dbWrite(cartDB, message);
           $('#cartCount').html(Object.keys(cartDB).length);
+
         } else {
           pages.dbRW.dbDelete();
           $('#cartCount').html(0).css('visibility', 'hidden');
           $('#homeBox').html(pages.shoppingCart(cartDataList));
           message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
-          shopSetTimeOuts['A1'] = setTimeout(() => {
+          $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | "Continue Shopping!"');
+          
+          q2ShopSetTimeOuts['S1'] = setTimeout(() => {
             $("#shop").trigger("click");
           }, 5000);
+
         }
 
         if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {
@@ -293,7 +303,7 @@ $(window).ready(() => {
     $('#cartChkOutBtn').on('click', () => {
       if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
         message(['Your cart is empty.', 'Lets go pickup some items!'])
-        if (shopSetTimeOuts['A1']) clearTimeout(shopSetTimeOuts['A1']);
+        if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
       }
     })

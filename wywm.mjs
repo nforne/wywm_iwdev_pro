@@ -200,7 +200,7 @@ $(window).ready(() => {
   }
 
   // shopping cart click listener
-  $('#shoppingCartBtn, .shopnCartBBtn').on('click', () => {
+  $('#shoppingCartBtn, #shopnCartBBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
     const shopSetTimeOuts = {};
@@ -245,11 +245,12 @@ $(window).ready(() => {
           $('#cartCount').html(Object.keys(cartDB).length);
         } else {
           pages.dbRW.dbDelete();
-          home(container);
-          slideLR();
-          slideLRListener();
-          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
           $('#cartCount').html(0).css('visibility', 'hidden');
+          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
+          $('#homeBox').html(pages.shoppingCart(cartDataList));
+          shopSetTimeOuts['A1'] = setTimeout(() => {
+            $("#shop").trigger("click");
+          }, 5000);
         }
 
         if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {

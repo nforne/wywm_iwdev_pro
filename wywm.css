@@ -463,6 +463,7 @@ footer .footer {
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 0;
 }
 
 .shopnCartBBtn img {
@@ -472,7 +473,6 @@ footer .footer {
   border: 2px solid wheat;
   box-shadow: 0 0 50px white;
   margin: 2em;
-  margin-bottom: 2em;
   z-index: 15;
   cursor: pointer;
 }

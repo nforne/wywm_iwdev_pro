@@ -179,8 +179,6 @@ $(window).ready(() => {
       }
     }
 
-    
-
     // addToCart click listener
     const shopItems = document.getElementsByClassName('item') ?? [];
     for (let item of shopItems) {    
@@ -222,8 +220,7 @@ $(window).ready(() => {
 
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
-      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
-      // dialogFn('Q2-Shop! | CART')
+      
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);

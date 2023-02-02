@@ -9,6 +9,7 @@ export const cartElements = {
 
             <div class="itemValues">
               <div id="cartItemClick${data.item.slice(3)}" class='cartFirstAttr cartItemClick'>
+                <img src="./pics/items/pic${data.item.slice(3)}.png" alt="pic${data.item.slice(3)}" srcset="./pics/items/pic${data.item.slice(3)}.png">
                 <a href="#"><span>Item: &nbsp; ${data.item.toUpperCase()}</span></a>
               </div>
               <div>

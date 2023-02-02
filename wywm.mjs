@@ -11,6 +11,8 @@ const print = (...args) => { //----------------------------------------------dev
 // -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
+
+  const q2ShopSetTimeOuts = {}; // for short burst events like auto redirects
   
   const header = document.getElementById('header');
   header.innerHTML = pages.navHeader;
@@ -23,12 +25,12 @@ $(window).ready(() => {
   const footer = document.getElementById('footer');
   footer.innerHTML = pages.navFooter;
 
-  const q2ShopSetTimeOuts = {};
-  q2ShopSetTimeOuts['A1'] = setTimeout(() => { // upon home load, default to shop if no acitvity in 5s
+  // upon home load, default to shop if no acitvity in 5s
+  q2ShopSetTimeOuts['A1'] = setTimeout(() => { 
     $("#shop").trigger("click");
   }, 5000);
 
-  $(window).on('click', () => {
+  $(window).on('click', () => { // A##.. for all or global, S##.. for shop, .....
     if (q2ShopSetTimeOuts['A1']) clearTimeout(q2ShopSetTimeOuts['A1']);
   })
 
@@ -76,14 +78,12 @@ $(window).ready(() => {
   
   // slide left and right event listener for home and aboutUs carousel
   const slideLRListener = () => {
-    for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
-      slideBtn.addEventListener('click', () => {
-        if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-          message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
-        }
-        slideLR();
-      })
-    }
+    $('#slideL, #slideR').on('click', () => {
+      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
+        message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
+      }
+      slideLR();
+    }) 
   }
   slideLRListener();
   
@@ -206,12 +206,11 @@ $(window).ready(() => {
   $('#shoppingCartBtn, #shopnCartBBtn').on('click', () => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
-    const shopSetTimeOuts = {};
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
       // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
       // dialogFn('Q2-Shop! | CART')
-      shopSetTimeOuts['A1'] = setTimeout(() => {
+      q2ShopSetTimeOuts['A2'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
       // return ;
@@ -241,19 +240,24 @@ $(window).ready(() => {
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
         const cartDB = {...pages.dbRW.dbRead(message)};
+
         const priorCartDBLength = Object.keys(cartDB).length;
         delete cartDB[cartIem.id.slice(7).toLowerCase()];
+
         if (Object.keys(cartDB).length > 0) {
           pages.dbRW.dbWrite(cartDB, message);
           $('#cartCount').html(Object.keys(cartDB).length);
+
         } else {
           pages.dbRW.dbDelete();
           $('#cartCount').html(0).css('visibility', 'hidden');
           message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
           $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | "Continue Shopping!"');
-          shopSetTimeOuts['A1'] = setTimeout(() => {
+          
+          q2ShopSetTimeOuts['S1'] = setTimeout(() => {
             $("#shop").trigger("click");
           }, 5000);
+
         }
 
         if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {
@@ -299,7 +303,7 @@ $(window).ready(() => {
     $('#cartChkOutBtn').on('click', () => {
       if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
         message(['Your cart is empty.', 'Lets go pickup some items!'])
-        if (shopSetTimeOuts['A1']) clearTimeout(shopSetTimeOuts['A1']);
+        if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
       }
     })

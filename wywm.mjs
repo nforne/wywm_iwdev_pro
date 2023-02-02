@@ -139,6 +139,7 @@ $(window).ready(() => {
         addToCartClickListener(item);
         dialogFn(item.id);
       })
+
       $(item).on('click', () => {
         const index = Math.floor(Math.random() * 3) + 1;
         index === 3 ? message(['Double click to zoom-in on item!']) : "";
@@ -152,7 +153,10 @@ $(window).ready(() => {
     shop(container);
     
     message(['Double click to zoom-in on item!'], 'wheat', 5000);
-    
+
+    // to enable dialog for all shop items
+    shopItemListener();
+
     // event listeners for sLeft and sRight on shop
     const shopLR = [document.getElementsByClassName('sLeft'), document.getElementsByClassName('sRight')]
     for (let i = 0; i < 6; i++ ) {
@@ -160,12 +164,22 @@ $(window).ready(() => {
         sLR.addEventListener('click', () => {
           const H = document.getElementById(`sH${i+1}`);
           H.innerHTML = pages.itemCard();
+          
+          // to rehook addToCart event listeners to all shop items
+          const items = document.getElementsByClassName('item');
+          for (let item of items) {
+            $(item).on('click', () => {
+              addToCartClickListener(item);
+            })
+          }
+          
+          // to reenable dialog for all shop items
           shopItemListener();
         })
       }
     }
 
-    shopItemListener();
+    
 
     // addToCart click listener
     const shopItems = document.getElementsByClassName('item') ?? [];
@@ -208,7 +222,8 @@ $(window).ready(() => {
 
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
-
+      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
+      // dialogFn('Q2-Shop! | CART')
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);

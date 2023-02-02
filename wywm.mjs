@@ -210,7 +210,7 @@ $(window).ready(() => {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
       // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
       // dialogFn('Q2-Shop! | CART')
-      q2ShopSetTimeOuts['A2'] = setTimeout(() => {
+      q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
       // return ;

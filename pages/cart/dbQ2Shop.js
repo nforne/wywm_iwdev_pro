@@ -3,16 +3,16 @@ const dbWrite = (data, msg=(e)=>{}) => {
     // Code for localStorage/sessionStorage.
     localStorage.setItem('q2Shop', JSON.stringify(data))
   } else {
-    msg(['Sorry! No Web Storage support..']);
+    msg(['Sorry! No Web Storage support ...']);
   }
 }
 
 const dbRead = (msg=(e)=>{}) => {
-  if (typeof(Storage) !== "undefined" && localStorage.q2Shop) {
+  if (typeof(Storage) !== "undefined") {
     // Code for localStorage/sessionStorage.
-    return JSON.parse(localStorage.q2Shop);
+    return localStorage.q2Shop ? JSON.parse(localStorage.q2Shop) : {};
   } else {
-    msg(['Sorry! Empty cart or no Web Storage support..']);
+    msg(['Sorry! No Web Storage support ...']);
   }
 }
 

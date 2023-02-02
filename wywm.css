@@ -582,6 +582,10 @@ footer p {
   padding-right:  1em;
 }
 
+.itemValuesAndCRUDs:hover, .item:hover {
+  box-shadow: 0 0 50px aqua;
+}
+
 .item, .item .V2, .item .V5 {
   display: flex;
   flex-direction: column;

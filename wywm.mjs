@@ -24,7 +24,7 @@ $(window).ready(() => {
   footer.innerHTML = pages.navFooter;
 
   // to notify if there are items in the cart or not
-  const cartData = pages.dbRW.dbRead(message) ?? {};
+  const cartData = pages.dbRW.dbRead(message);
   if (Object.keys(cartData).length > 0) {
     $('#cartCount').html(Object.keys(cartData).length).css('visibility', 'visible');
   } else {
@@ -69,7 +69,7 @@ $(window).ready(() => {
   const slideLRListener = () => {
     for (let slideBtn of [document.getElementById('slideL'), document.getElementById('slideR')]) {
       slideBtn.addEventListener('click', () => {
-        if (Object.keys(pages.dbRW.dbRead(message) ?? {}).length === 0) {
+        if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
           message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
         }
         slideLR();
@@ -98,7 +98,7 @@ $(window).ready(() => {
   // home button and logo event listeners
   for (let hme of [document.getElementById('logo'), document.getElementById('home')]) {
     hme.addEventListener('click', () => {
-      if (Object.keys(pages.dbRW.dbRead(message) ?? {}).length === 0) {
+      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
         message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
       }
       home(container);
@@ -112,7 +112,7 @@ $(window).ready(() => {
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
     $(`#addToCart${item.id.slice(4)}`).on('click', () => {
-      const db = pages.dbRW.dbRead(message) ?? {}; 
+      const db = pages.dbRW.dbRead(message); 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
         message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], 'wheat', 3000);
       } else {
@@ -201,13 +201,25 @@ $(window).ready(() => {
 
   // shopping cart click listener
   $('#shoppingCartBtn, .shopnCartBBtn').on('click', () => {
-    const cartDataList = Object.values(pages.dbRW.dbRead(message) ?? {});
+    const cartDataList = Object.values(pages.dbRW.dbRead(message));
+
+    let shopSetTimeOut = '';
+    if (cartDataList.length === 0 ) {
+      message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
+      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
+      // dialogFn('Q2-Shop! | CART')
+      shopSetTimeOut = setTimeout(() => {
+        $("#shop").trigger("click");
+      }, 5000);
+      // return ;
+    }
+
     home(container);
     slideLR();
     slideLRListener();
     $('#homeBox').html(pages.shoppingCart(cartDataList));
 
-    message(['Double click on item to zoom-in on it!'], 'wheat', 5000);
+    if (cartDataList.length !== 0) message(['Double click on item to zoom-in on it!'], 'wheat', 5000);
 
     const cartItems = document.getElementsByClassName('cartIem') ?? [];
     for (let cartIem of cartItems) {
@@ -250,7 +262,7 @@ $(window).ready(() => {
         $('#total').html(`$${calculateTotal()}`);
       })
 
-      // +/- cart items buttons click listeners
+      // For +/- cart items buttons click listeners
       const addSubBtns = (a/* 0 ?? 1 */, cartItemID) => {
         const id = cartItemID.slice(7).toLowerCase();
         const cartDB = pages.dbRW.dbRead(message);
@@ -280,6 +292,13 @@ $(window).ready(() => {
       })
     }
   
+    $('#cartChkOutBtn').on('click', () => {
+      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
+        message(['Your cart is empty.', 'Lets go pickup some items!'])
+        if (shopSetTimeOut) clearTimeout(shopSetTimeOut);
+        $("#shop").trigger("click");
+      }
+    })
   
   })
     

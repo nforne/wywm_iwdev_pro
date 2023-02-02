@@ -79,7 +79,7 @@ export const shoppingCart = (dataList) => {
             <button> [&nbsp; 💾 &nbsp;] | Saved!</button>
             <button> [&nbsp; 🤍 &nbsp;] | Favorites!</button>
           </div>
-          <button><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Continue to Checkout!</button>
+          <button id="cartChkOutBtn"><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | ${dataList.length > 0 ? "Continue to Checkout!" : "Continue Shopping!"}</button>
         </div>
 
       </div>

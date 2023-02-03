@@ -48,12 +48,12 @@ const message = (textsList, color='wheat', time=10000) => {
   }, time)
 }
 
-  // random directive message
-  const randomDMessage = (item, msgs=[], chances) => {
-    $(item).on('click', () => {
-      const index = Math.floor(Math.random() * chances) + 1;
-      index === 3 ? message(msgs) : "";
-    })
-  }
+// random directive message
+const randomDMessage = (item, msgs=[], chances) => {
+  $(item).on('click', () => {
+    const index = Math.floor(Math.random() * chances) + 1;
+    index === 3 ? message(msgs) : "";
+  })
+}
 
 export const dialogsFns = {dialogFn, message, randomDMessage};

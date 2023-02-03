@@ -44,13 +44,17 @@ export const checkout = (data) => {
       
       <div class="total">
         <div id='totalC'>TOTAL</div>
-        <div id="total">$${checkouts.total}</div>
+        <div id="total">$${checkouts.total.toFixed(2)}</div>
       </div>
 
       <hr class="lineA">
 
-      <div class="ChkOutBtn">
-        <button id="ChkOutBtn"><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Preceed to Payment!</button>
+      <div class="chkOutBtn">
+        <div class='chkPaymentCardTypes'>
+          <i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>
+          <i class="fa fa-cc-mastercard fa-3x" aria-hidden="true"></i>
+        </div>
+        <button id="chkOutBtn"><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Preceed to Payment!</button>
       </div>
 
     </div>

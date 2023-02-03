@@ -13,7 +13,7 @@ export const cartElements = {
                 <a href="#"><span>Item: &nbsp; ${data.item.toUpperCase()}</span></a>
               </div>
               <div>
-                <span>$${Number(data.item.slice(3)) * 55.5}</span>
+                <span>$${(Number(data.item.slice(3)) * 55.5).toFixed(2)}</span>
               </div>
               <div>
                 <span id="cartItemQty${data.item.slice(3)}">${data.quantity}</span>

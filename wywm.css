@@ -436,18 +436,35 @@ checkout
   padding: 0.25em;
 }
 
-.ChkOutBtn {
+.chkOutBtn {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   width: 100%;
 }
 
-#ChkOutBtn {
+#chkOutBtn {
   width: 40%;
   height: 2.5em;
   font-size: 1.5em;
   color: black;
+}
+
+.chkOutBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chkPaymentCardTypes {
+  width: 50%;
+}
+
+.chkPaymentCardTypes i {
+  margin: 2px;
+  color: white;
 }
 
 .checkoutItem div img {
@@ -457,6 +474,10 @@ checkout
   border: 1px solid black;
   margin: 0.25em;
 }
+
+/* 
+==========================================
+*/
 
 .navBtns button {
   width: 7em;
@@ -1064,13 +1085,13 @@ MEDIA QUERIES to make the design responsive
     font-size: 1em;
   }
 
-  #ChkOutBtn {
+  #chkOutBtn {
     font-size: 1em;
     height: 3.5em;
   }
 
   .checkoutItem .checkoutItemName {
-    flex-direction: column;
+    flex-direction: column ;
   }
 
   .checkoutItemName span {

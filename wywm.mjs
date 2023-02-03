@@ -322,7 +322,7 @@ $(window).ready(() => {
       $('#back2Cart').on('click', () => {
         $("#shoppingCartBtn").trigger("click");
       });
-
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

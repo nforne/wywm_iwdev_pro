@@ -50,11 +50,12 @@ export const checkout = (data) => {
       <hr class="lineA">
 
       <div class="chkOutBtn">
+        <button id="back2Cart"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i> <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i></button>
         <div class='chkPaymentCardTypes'>
           <i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>
           <i class="fa fa-cc-mastercard fa-3x" aria-hidden="true"></i>
         </div>
-        <button id="chkOutBtn"><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Preceed to Payment!</button>
+        <button id="chkOutBtn"> <i class="fa fa-chevron-circle-right fa-1x" aria-hidden="true"></i> <i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Preceed to Payment!</button>
       </div>
 
     </div>

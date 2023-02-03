@@ -35,7 +35,7 @@ export const itemCard = (i='', numItems=4) => {
       
         <div class="V5">
             <span>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-            <span> $${(i ? i : index) * 55.5} | <a href="">Edit</a></span>
+            <span> $${((i ? i : index) * 55.5).toFixed(2)} | <a href="">Edit</a></span>
         </div>
       
         <div class="V6">

@@ -129,12 +129,12 @@ $(window).ready(() => {
     for (let item of items) {
       $(item).on('dblclick', () => {
         dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
-        addToCartClickListener(item);
+        // addToCartClickListener(item);
         dialogFn(item.id);
       })
       
       // random directive message 
-      randomDMessage(item, ['Double click to zoom-in on item!'], 5);
+      randomDMessage(item, ['Double click to zoom-in on item!'], 10);
     }
 
   };
@@ -142,7 +142,6 @@ $(window).ready(() => {
   // shop button event listener
   $('#shop').on('click', () => {
     shop(container);
-    
     message(['Double click to zoom-in on item!'], 'wheat', 5000);
 
     // to enable dialog for all shop items
@@ -227,7 +226,7 @@ $(window).ready(() => {
     const cartItems = document.getElementsByClassName('cartIem') ?? [];
     for (let cartIem of cartItems) {
       // dialog view listener
-      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
+      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('dblclick', () => {
         $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
         dialogFn(cartIem.id.slice(7));
       })
@@ -288,26 +287,33 @@ $(window).ready(() => {
       $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
         addSubBtns(0, cartIem.id);
       })
-
-      // close cart session 
-      $('#checkoutCloseBtn').on('click', () => {
-        home(container);
-        slideLR();
-        slideLRListener();
-        message(['Thank you for your buisness! 📝',  'Come back soon!'])
-      })
     }
+
+    // close cart session 
+    $('#checkoutCloseBtn').on('click', () => {
+      home(container);
+      slideLR();
+      slideLRListener();
+      message(['Thank you for your buisness! 📝',  'Come back soon!'])
+    })
   
     $('#cartChkOutBtn').on('click', () => {
+      
       if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-        message(['Your cart is empty.', 'Lets go pickup some items!'])
+        message(['Your cart is empty.', 'Lets go pickup some items!']);
         if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
       } else {
+        
         $('#homeBox').html(pages.checkout(Object.values(pages.dbRW.dbRead(message))));
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    })
+      };
+
+      $('#back2Cart').on('click', () => {
+        $("#shoppingCartBtn").trigger("click");
+      });
+
+    });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   

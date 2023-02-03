@@ -15,13 +15,13 @@ export const checkoutItems = (data) => {
           <a href="#"><span>Item: &nbsp; ${data[i].item.toUpperCase()}</span></a>
         </div>
         <div class='checkoutFirstAttr'>
-          <span>$${Number(data[i].item.slice(3)) * 55.5}</span>
+          <span>$${(Number(data[i].item.slice(3)) * 55.5).toFixed(2)}</span>
         </div>
         <div>
           <span >${data[i].quantity}</span>
         </div>
         <div>
-          <span >$${Number(data[i].price) * Number(data[i].quantity)}</span>
+          <span >$${(Number(data[i].price) * Number(data[i].quantity)).toFixed(2)}</span>
         </div>
       </div>  ` ;
 

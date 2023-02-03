@@ -130,6 +130,14 @@ $(window).ready(() => {
     })
   }
 
+  // random directive message
+  const randomDMessage = (item, msgs=[], chances) => {
+    $(item).on('click', () => {
+      const index = Math.floor(Math.random() * chances) + 1;
+      index === 3 ? message(msgs) : "";
+    })
+  }
+
   // Fn for modal view of shop items 
   const shopItemListener = () => {
     const items = document.getElementsByClassName('item');
@@ -139,11 +147,9 @@ $(window).ready(() => {
         addToCartClickListener(item);
         dialogFn(item.id);
       })
-
-      $(item).on('click', () => {
-        const index = Math.floor(Math.random() * 3) + 1;
-        index === 3 ? message(['Double click to zoom-in on item!']) : "";
-      })
+      
+      // random directive message 
+      randomDMessage(item, ['Double click to zoom-in on item!'], 5);
     }
 
   };
@@ -178,8 +184,6 @@ $(window).ready(() => {
         })
       }
     }
-
-    
 
     // addToCart click listener
     const shopItems = document.getElementsByClassName('item') ?? [];
@@ -246,10 +250,7 @@ $(window).ready(() => {
       })
       
       // random directive message  
-      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('click', () => {
-        const index = Math.floor(Math.random() * 5) + 1;
-        index === 3 ? message(['Double click on item to zoom-in on it'],'wheat', 5000) : "";
-      })
+      randomDMessage(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`, ['Double click to zoom-in on item!'], 5);
 
       // delete item from cart
       $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
@@ -319,6 +320,8 @@ $(window).ready(() => {
         message(['Your cart is empty.', 'Lets go pickup some items!'])
         if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
+      } else {
+        $('#homeBox').html(pages.checkout(Object.values(pages.dbRW.dbRead(message))));
       }
     })
   

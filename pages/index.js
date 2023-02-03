@@ -10,4 +10,5 @@ export const pages = {
   dbRW : {...await import('./cart/dbQ2Shop.js')}.dbRW,
   cartDialog : {...await import('./cart/cartDialog.js')}.cartDialog, 
   dialogsFns : {...await import('./dialogsFns.js')}.dialogsFns, 
+  checkout : {...await import('./cart/checkout.js')}.checkout, 
 };

@@ -295,6 +295,7 @@ $(window).ready(() => {
       slideLR();
       slideLRListener();
       message(['Thank you for your buisness! 📝',  'Come back soon!'])
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     })
   
     $('#cartChkOutBtn').on('click', () => {

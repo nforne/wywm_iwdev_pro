@@ -390,6 +390,74 @@ shopping Cart
   border-radius: 5px;
 }
 
+/* 
+checkout
+===============================================
+*/
+
+#checkoutItemTop, .checkoutItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  color: wheat;
+  width: 100%;
+  height: 3em;
+}
+
+#checkoutItemTop {
+  background-color: gray;
+  font-size: 1.5em;
+}
+
+.checkoutItem .checkoutItemName {
+  color: wheat;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+#checkoutItemTop div, .checkoutItem div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+}
+
+#totalC {
+  padding-left: 2em;
+}
+
+.total {
+  border: 1px dashed wheat;
+  padding: 0.25em;
+}
+
+.ChkOutBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#ChkOutBtn {
+  width: 40%;
+  height: 2.5em;
+  font-size: 1.5em;
+  color: black;
+}
+
+.checkoutItem div img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 0.25em;
+}
+
 .navBtns button {
   width: 7em;
   height: 2.75em;
@@ -992,6 +1060,19 @@ MEDIA QUERIES to make the design responsive
     height: inherit;
   }
 
+  #checkoutItemTop  {
+    font-size: 1em;
+  }
+
+  #ChkOutBtn {
+    font-size: 1em;
+    height: 3.5em;
+  }
+
+  .checkoutItemName span {
+    font-size: 0.75em;
+    color: wheat;
+  }
 
 }
 

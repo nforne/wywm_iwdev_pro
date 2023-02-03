@@ -1097,6 +1097,10 @@ MEDIA QUERIES to make the design responsive
     height: 3.5em;
   }
 
+  #back2Cart {
+    display: none;
+  }
+
   .checkoutItem .checkoutItemName {
     flex-direction: column ;
   }

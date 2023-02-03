@@ -294,7 +294,7 @@ $(window).ready(() => {
       home(container);
       slideLR();
       slideLRListener();
-      message(['Thank you for your buisness! 📝',  'Come back soon!'])
+      message(['Thank you for your buisness! 📝',  'Come back soon!']);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     })
   
@@ -313,7 +313,7 @@ $(window).ready(() => {
       $('#back2Cart').on('click', () => {
         $("#shoppingCartBtn").trigger("click");
       });
-
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

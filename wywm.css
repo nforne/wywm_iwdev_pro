@@ -1069,6 +1069,10 @@ MEDIA QUERIES to make the design responsive
     height: 3.5em;
   }
 
+  .checkoutItem .checkoutItemName {
+    flex-direction: column;
+  }
+
   .checkoutItemName span {
     font-size: 0.75em;
     color: wheat;

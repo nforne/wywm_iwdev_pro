@@ -22,7 +22,7 @@ export const checkout = (data) => {
     <div class="cartItemsBox">
 
       <div id='checkoutItemTop' class="checkoutItem">
-        <div class='cartFirstAttr'>
+        <div>
           <span>[ Name ]</span>
         </div>
         <div>

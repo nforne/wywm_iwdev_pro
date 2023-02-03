@@ -299,7 +299,7 @@ $(window).ready(() => {
       })
 
       // close cart session 
-      $('#checkoutCloseBtn, shopnCartBBtn').on('click', () => {
+      $('#checkoutCloseBtn').on('click', () => {
         home(container);
         slideLR();
         slideLRListener();
@@ -314,12 +314,13 @@ $(window).ready(() => {
         $("#shop").trigger("click");
       } else {
         $('#homeBox').html(pages.checkout(Object.values(pages.dbRW.dbRead(message))));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     })
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   
   })
-    
-  
  
 })
 

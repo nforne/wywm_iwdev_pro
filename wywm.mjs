@@ -1,14 +1,6 @@
 const pages = {...await import('./pages/index.js')}.pages;
-const { dialogFn, message } = pages.dialogsFns;
+const { dialogFn, message, randomDMessage } = pages.dialogsFns;
 
-let slideTracker = []; // to track for elimination of repeatition of slides on display
-
-// -----------------------------------------------------------------------------------
-const print = (...args) => { //----------------------------------------------dev-t00ls
-  console.log(...args);
-}
-// pages.dbRW.dbDelete(); // db flush
-// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
 
@@ -43,6 +35,7 @@ $(window).ready(() => {
   }  
   
   // to randomly but unrepeatedly load and run the home slides
+  let slideTracker = []; // to track for and eliminate repeatition of slides on display
   const slideLR = () => {
     const slideBox = document.getElementById('itemCards');
     let slides = '';
@@ -127,14 +120,6 @@ $(window).ready(() => {
         pages.dbRW.dbWrite(db, message);
         $('#cartCount').html(Number($('#cartCount').html()) + 1).css('visibility', 'visible');
       }
-    })
-  }
-
-  // random directive message
-  const randomDMessage = (item, msgs=[], chances) => {
-    $(item).on('click', () => {
-      const index = Math.floor(Math.random() * chances) + 1;
-      index === 3 ? message(msgs) : "";
     })
   }
 

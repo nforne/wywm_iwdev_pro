@@ -660,7 +660,6 @@ footer p {
 #dialogBox .item  {
   box-shadow: 0 0 50px aqua;
   color: green;
-  font-size-adjust: inherit;
   width: fit-content;
   height: fit-content;
 }

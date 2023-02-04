@@ -305,19 +305,19 @@ $(window).ready(() => {
   
     $('#cartChkOutBtn').on('click', () => {
       
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
         message(['Your cart is empty.', 'Lets go pickup some items!']);
         if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
-        return;
-      } else {
+        
+      } else {  
         $('#homeBox').html(pages.checkout(Object.values(pages.dbRW.dbRead(message))));
-
+        
         $('#back2Cart').on('click', () => {
           $("#shoppingCartBtn").trigger("click");
         });
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       };
       
     });

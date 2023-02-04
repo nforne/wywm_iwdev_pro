@@ -20,8 +20,8 @@ export const itemCard = (i='', numItems=4) => {
         <div class="V2">
           <span>Item Name: Item PIC${i ? i : index}</span>
           <div>
-            <span>[ Item found on www.example.com ] </span>
-            <span> [ Picture ${i ? i : index} of 9 ] </span>
+            <span>[ Item found on www.example.com ] </span><br>
+            <span> [ Picture ${i ? i : index} of 25 ] </span>
           </div>
         </div>
       

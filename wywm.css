@@ -838,13 +838,18 @@ footer p {
 }
 
 .info {
-  width: 60%;
-  text-align: justify;
+  width: 70%;
   align-self: center;
   color: wheat;
 }
 
-.info p {
+.info #footerInfoText {
+  text-align: justify;
+  color: aqua;
+  font-size: 1em;
+}
+
+.info p, .info div {
   font-size: 1.5em;
 }
 
@@ -854,7 +859,7 @@ footer p {
   justify-content:space-evenly;
   align-items: center;
   width: 100%;
-  font-size: 1.5em;
+  align-self: center;
 }
 
 .info div div {

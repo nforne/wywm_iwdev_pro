@@ -107,6 +107,7 @@ $(window).ready(() => {
 
     // slide left and right event listener
     slideLRListener();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   })
   
   // Fn to add addToCart click listers to shop items add to cart buttons
@@ -129,7 +130,7 @@ $(window).ready(() => {
     for (let item of items) {
       $(item).on('dblclick', () => {
         dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
-        // addToCartClickListener(item);
+        addToCartClickListener(item);
         dialogFn(item.id);
       })
       
@@ -142,6 +143,7 @@ $(window).ready(() => {
   // shop button event listener
   $('#shop').on('click', () => {
     shop(container);
+    if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
     message(['Double click to zoom-in on item!'], 'wheat', 5000);
 
     // to enable dialog for all shop items
@@ -210,7 +212,6 @@ $(window).ready(() => {
 
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
-      
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
@@ -221,73 +222,77 @@ $(window).ready(() => {
     slideLRListener();
     $('#homeBox').html(pages.shoppingCart(cartDataList));
 
-    if (cartDataList.length !== 0) message(['Double click on item to zoom-in on it!'], 'wheat', 5000);
+    if (cartDataList.length !== 0) {
 
-    const cartItems = document.getElementsByClassName('cartIem') ?? [];
-    for (let cartIem of cartItems) {
-      // dialog view listener
-      $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('dblclick', () => {
-        $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
-        dialogFn(cartIem.id.slice(7));
-      })
-      
-      // random directive message  
-      randomDMessage(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`, ['Double click to zoom-in on item!'], 5);
-
-      // delete item from cart
-      $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
-        const cartDB = {...pages.dbRW.dbRead(message)};
-
-        const priorCartDBLength = Object.keys(cartDB).length;
-        delete cartDB[cartIem.id.slice(7).toLowerCase()];
-
-        if (Object.keys(cartDB).length > 0) {
+      message(['Double click on item to zoom-in on it!'], 'wheat', 5000);
+  
+      const cartItems = document.getElementsByClassName('cartIem') ?? [];
+      for (let cartIem of cartItems) {
+        // dialog view listener
+        $(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`).on('dblclick', () => {
+          $('#dialog').html(`<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(Number(cartIem.id.slice(10)))} </dialog> `);
+          dialogFn(cartIem.id.slice(7));
+        })
+        
+        // random directive message  
+        randomDMessage(`#itemValuesAndCRUDs${cartIem.id.slice(10)}`, ['Double click to zoom-in on item!'], 5);
+  
+        // delete item from cart
+        $(`#cartItem${cartIem.id.slice(10)}`).on('click', () => {
+          const cartDB = {...pages.dbRW.dbRead(message)};
+  
+          const priorCartDBLength = Object.keys(cartDB).length;
+          delete cartDB[cartIem.id.slice(7).toLowerCase()];
+  
+          if (Object.keys(cartDB).length > 0) {
+            pages.dbRW.dbWrite(cartDB, message);
+            $('#cartCount').html(Object.keys(cartDB).length);
+  
+          } else {
+            pages.dbRW.dbDelete();
+            $('#cartCount').html(0).css('visibility', 'hidden');
+            message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
+            $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Continue Shopping!');
+            
+            q2ShopSetTimeOuts['S1'] = setTimeout(() => {
+              $("#shop").trigger("click");
+            }, 5000);
+  
+          }
+  
+          if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {
+            $(`#${cartIem.id}`).remove();
+          } else {
+            $('.cartItemsBox').children().eq($(`#${cartIem.id}`).index() + 1).remove();
+            $(`#${cartIem.id}`).remove();
+          }
+  
+          $('#total').html(`$${calculateTotal()}`);
+        })
+  
+        // For +/- cart items buttons click listeners
+        const addSubBtns = (a/* 0 ?? 1 */, cartItemID) => {
+          const id = cartItemID.slice(7).toLowerCase();
+          const cartDB = pages.dbRW.dbRead(message);
+          if (a === 0 && cartDB[id].quantity === 1) {
+            message(['That is the least of the item quantity you can get!']);
+          } else if (cartDB[id].quantity >= 1) {
+            a === 0 ? cartDB[id].quantity -= 1 : cartDB[id].quantity += 1; 
+          }       
           pages.dbRW.dbWrite(cartDB, message);
-          $('#cartCount').html(Object.keys(cartDB).length);
-
-        } else {
-          pages.dbRW.dbDelete();
-          $('#cartCount').html(0).css('visibility', 'hidden');
-          message(['Oops! Your cart is empty.', 'Lets go pickup some items'])
-          $('#cartChkOutBtn').html('<i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> | Continue Shopping!');
-          
-          q2ShopSetTimeOuts['S1'] = setTimeout(() => {
-            $("#shop").trigger("click");
-          }, 5000);
-
+          $(`#cartItemQty${cartItemID.slice(10)}`).html(Number(cartDB[id].quantity));
+          $('#total').html(`$${calculateTotal()}`);
         }
-
-        if ($(`#${cartIem.id}`).index() - 2 === priorCartDBLength - 1) {
-          $(`#${cartIem.id}`).remove();
-        } else {
-          $('.cartItemsBox').children().eq($(`#${cartIem.id}`).index() + 1).remove();
-          $(`#${cartIem.id}`).remove();
-        }
-
-        $('#total').html(`$${calculateTotal()}`);
-      })
-
-      // For +/- cart items buttons click listeners
-      const addSubBtns = (a/* 0 ?? 1 */, cartItemID) => {
-        const id = cartItemID.slice(7).toLowerCase();
-        const cartDB = pages.dbRW.dbRead(message);
-        if (a === 0 && cartDB[id].quantity === 1) {
-          message(['That is the least of the item quantity you can get!']);
-        } else if (cartDB[id].quantity >= 1) {
-          a === 0 ? cartDB[id].quantity -= 1 : cartDB[id].quantity += 1; 
-        }       
-        pages.dbRW.dbWrite(cartDB, message);
-        $(`#cartItemQty${cartItemID.slice(10)}`).html(Number(cartDB[id].quantity));
-        $('#total').html(`$${calculateTotal()}`);
+      
+        $(`#add${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
+          addSubBtns(1, cartIem.id);
+        })
+        $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
+          addSubBtns(0, cartIem.id);
+        })
       }
-    
-      $(`#add${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
-        addSubBtns(1, cartIem.id);
-      })
-      $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
-        addSubBtns(0, cartIem.id);
-      })
-    }
+
+    } 
 
     // close cart session 
     $('#checkoutCloseBtn').on('click', () => {
@@ -304,16 +309,17 @@ $(window).ready(() => {
         message(['Your cart is empty.', 'Lets go pickup some items!']);
         if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
         $("#shop").trigger("click");
+        return;
       } else {
-        
         $('#homeBox').html(pages.checkout(Object.values(pages.dbRW.dbRead(message))));
+
+        $('#back2Cart').on('click', () => {
+          $("#shoppingCartBtn").trigger("click");
+        });
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
-
-      $('#back2Cart').on('click', () => {
-        $("#shoppingCartBtn").trigger("click");
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

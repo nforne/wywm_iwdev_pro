@@ -559,7 +559,6 @@ footer .footer {
   width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 0;
 }
 
 .shopnCartBBtn img {
@@ -627,17 +626,13 @@ footer p {
 
 .itemCardSlide i {
   color: wheat;
-  z-index: 10;
   -webkit-text-stroke: 2px black; /* width and color */
   width: 10%;
+  background-color: transparent;
 }
 .itemCardSlide i:hover, .sLeft:hover, .sRight:hover {
   color: aquamarine;
 }
-
-#slideL, #slideR {
-  z-index: 5;
-} 
 
 
 /*
@@ -650,6 +645,34 @@ footer p {
   #####  #    #  ####  #       
 */ 
 
+.item {
+  border: 0.25em dashed grey;
+  border-radius: 10px;
+  color: black;
+  font-size: 0.45em;
+  background-color: bisque;
+  padding: 0.25em 1em;
+  width: fit-content;
+  height: fit-content;
+  margin: 2em;
+}
+
+#dialogBox .item  {
+  box-shadow: 0 0 50px aqua;
+  color: green;
+  font-size-adjust: inherit;
+  width: fit-content;
+  height: fit-content;
+}
+
+.gold .H, .silver .H, .premium .H {
+  margin: 1em 0;
+}
+
+.H .H {
+  margin: 0 0.5em;
+}
+
 .itemCards {
   display: flex;
   flex-direction: row;
@@ -658,24 +681,20 @@ footer p {
   align-self: center;
 }
 
-.itemCards img, .itemPic img {
-  width: 20em;
-  height: 20em;
+.itemCards img {
+  width: 19.5em;
+  height: 19.5em;
   border-radius: 10px;
   border: 2px solid wheat;
   margin: 1em;
 }
 
-.item {
-  border: 0.25em dashed grey;
+.itemPic img {
+  width: 28em;
+  height: 28em;
   border-radius: 10px;
-  height: inherit;
-  width: inherit;
-  color: black;
-  font-size: 0.5em;
-  background-color: bisque;
-  padding-left:  1em;
-  padding-right:  1em;
+  border: 2px solid black;
+  margin: 0.5em;
 }
 
 .itemValuesAndCRUDs:hover, .item:hover {
@@ -713,11 +732,12 @@ footer p {
 
 .V6 button {
   font-size: 1.2em;
-  margin: 0.5em;
-  background-color: gainsboro;
+  margin: 1em;
+  border-radius: 7.5px;
+  background-color: rgb(228, 254, 245);
   color: black;
-  border: 2px solid rgb(146, 139, 139);
-  height: 3.5em;
+  border: 2px solid grey;
+  height: 4em;
 }
 
 .V6 button:hover {
@@ -749,8 +769,7 @@ footer p {
   width: 100%;
 }
 
-.H div {
-  padding: 0.5em;
+.H .item {
   margin: 1em;
 }
 

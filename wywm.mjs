@@ -1,6 +1,12 @@
 const pages = {...await import('./pages/index.js')}.pages;
 const { dialogFn, message, randomDMessage } = pages.dialogsFns;
 
+// -----------------------------------------------------------------------------------
+const print = (...args) => { //----------------------------------------------dev-t00ls
+  console.log(...args);
+}
+// pages.dbRW.dbDelete(); // db flush
+// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
 
@@ -212,9 +218,12 @@ $(window).ready(() => {
 
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
+      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
+      // dialogFn('Q2-Shop! | CART')
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
+      // return ;
     }
 
     home(container);

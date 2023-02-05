@@ -9,7 +9,7 @@ export const itemCard = (i='', numItems=4) => {
 
       <div id='item${i ? i : index}' class="item">
         <div class="V1">
-          <i class="fa fa-caret-left fa-2x" style="width: 20%;" aria-hidden="true"></i>
+          <i class="fa fa-caret-left fa-5x" style="width: 20%;" aria-hidden="true"></i>
           <img class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
           <div>
             <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
@@ -26,11 +26,11 @@ export const itemCard = (i='', numItems=4) => {
         </div>
       
         <div class="V3">
-          <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-chevron-left fa-4x" aria-hidden="true"></i>
           <div class="itemPic">
             <img src="./pics/items/pic${i ? i : index}.png" alt="pic${i ? i : index}" srcset="./pics/items/pic${i ? i : index}.png">
           </div>
-          <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-chevron-right fa-4x" aria-hidden="true"></i>
         </div>
       
         <div class="V5">

@@ -548,7 +548,7 @@ checkout
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /*                                
@@ -1161,7 +1161,7 @@ MEDIA QUERIES to make the design responsive
     font-size: 0.75em;
     color: wheat;
   }
-  
+
   /* bootstrap toast */
   .toast {
     margin-left: inherit;

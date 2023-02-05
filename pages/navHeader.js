@@ -4,10 +4,10 @@ export const navHeader = `
   <img id="logo" class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
   <img class="homeRose" src="./pics/headerImg.png" alt="headerImg" srcset="./pics/headerImg.png">
   <div class="signBtns">
-    <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | SIGNIN</button>
-    <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SIGN-UP</button>
-    <button id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | ABOUT US</button>
-    <button id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | CONTACT US</button>
+    <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | LogIn</button>
+    <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SignUp</button>
+    <button id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | About Us</button>
+    <button id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | Contact Us</button>
   </div>
 </div>
 

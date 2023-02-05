@@ -1,5 +1,5 @@
 const pages = {...await import('./pages/index.js')}.pages;
-const { dialogFn, message, randomDMessage } = pages.dialogsFns;
+const { dialogFn, message, randomDMessage, bsToast } = pages.dialogsFns;
 
 // -----------------------------------------------------------------------------------
 const print = (...args) => { //----------------------------------------------dev-t00ls
@@ -118,7 +118,8 @@ $(window).ready(() => {
   
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
-    $(`#addToCart${item.id.slice(4)}`).on('click', () => {
+    const shopItem = document.getElementById(`addToCart${item.id.slice(4)}`);
+    shopItem.addEventListener('click', () => {
       const db = pages.dbRW.dbRead(message); 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
         message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], 'wheat', 3000);
@@ -126,8 +127,10 @@ $(window).ready(() => {
         db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
         pages.dbRW.dbWrite(db, message);
         $('#cartCount').html(Number($('#cartCount').html()) + 1).css('visibility', 'visible');
+        
+        bsToast("Success!", new Date().getTime(),  `Item: pic${item.id.slice(4)} has been added successfully 😁 !!!`);
       }
-    })
+    }, true)
   }
 
   // Fn for modal view of shop items 
@@ -150,7 +153,7 @@ $(window).ready(() => {
   $('#shop').on('click', () => {
     shop(container);
     if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
-    message(['Double click to zoom-in on item!'], 'wheat', 5000);
+    message(['Double click to zoom-in on item!'], 'wheat', 2500);
 
     // to enable dialog for all shop items
     shopItemListener();

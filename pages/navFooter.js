@@ -12,18 +12,21 @@ export const navFooter = `
       <a href="#"> <p>CLIENT SERVICES</p></a>
       <a href="#"> <p>TEL:___________</p></a>
       <a href="#"> <p>FAX:___________</p></a>
+      <a href="#"> <p>FAQ</p></a>
     </div>
     <hr>
     <div>
       <a href="#"> <p>DEVELOPERS</p></a>
       <a href="#"> <p>CAREERS</p></a>
       <a href="#"> <p>DOCUMENTATION</p></a>
+      <a href="#"> <p>TERMS AND SECURITY</p></a>
     </div>
     <hr>
     <div>
       <a href="#"> <p id="aboutUsF">ABOUT US</p></a>
       <a href="#"> <p id="contactUsF">CONTACT US</p></a>   
       <a href="#"> <p>NEWS</p></a>
+      <a href="#"> <p>PRIVACY POLICY</p></a>
     </div>
 
   </div>

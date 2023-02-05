@@ -24,15 +24,19 @@ Contact Us
 */
 
 body {
-  background-color: rgb(12, 12, 12);
+  background-color: rgb(44, 54, 57);
+  /* background-color: rgb(12, 12, 12); */
   background-image: url('./pics/Q2.svg');
-  background-size: cover; /* Resize the background image to cover the entire container */
   font-family: 'Ubuntu', sans-serif;
   color: rgb(86, 83, 83);
   text-align: justify;
   padding-top: 1em;
   margin: 0;
   padding: 0;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
 }
 
 button {
@@ -498,7 +502,7 @@ checkout
   width: 50%;
 }
 
-.messages {
+.messages, .toastBox {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -520,6 +524,31 @@ checkout
   width: 90%;
   height: fit-content;
   margin-top: 1em;
+}
+
+#toastBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast {
+  border-radius: 10px;
+  background-color: rgba(63, 61, 61, 0.8);
+  color: wheat;
+  margin-left: 80%;
+  margin-bottom: 0.5em;
+  width: fit-content;
+  height: fit-content;
+}
+
+.toast-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
 }
 
 /*                                
@@ -546,7 +575,7 @@ footer .footer {
   text-align: center;
   justify-content: space-around;
   align-items: center;
-  height: 5em;
+  height: 7em;
   padding-top: 1em;
   z-index: 10;
 }
@@ -1131,6 +1160,14 @@ MEDIA QUERIES to make the design responsive
   .checkoutItemName span {
     font-size: 0.75em;
     color: wheat;
+  }
+  
+  /* bootstrap toast */
+  .toast {
+    margin-left: inherit;
+    margin-bottom: 0.1em;
+    width: fit-content;
+    height: fit-content;
   }
 
 }

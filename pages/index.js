@@ -11,4 +11,5 @@ export const pages = {
   cartDialog : {...await import('./cart/cartDialog.js')}.cartDialog, 
   dialogsFns : {...await import('./dialogsFns.js')}.dialogsFns, 
   checkout : {...await import('./cart/checkout.js')}.checkout, 
+  paymentFns : {...await import('./cart/payment.js')}.paymentFns, 
 };

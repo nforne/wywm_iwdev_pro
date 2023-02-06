@@ -380,6 +380,7 @@ shopping Cart
 .cartCheckoutBtn button {
   width: 40%;
   font-size: 1.25em;
+  color: white;
 }
 
 .cartIem .addSubBtns {
@@ -451,7 +452,7 @@ checkout
   width: 40%;
   height: 2.5em;
   font-size: 1.5em;
-  color: black;
+  color: white;
 }
 
 #back2Cart {
@@ -549,6 +550,71 @@ checkout
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+  color: green;
+}
+
+/* 
+Payment
+=========================================
+*/
+
+.paymentContainer {
+  border-radius: 10px;
+  border: 2px dashed black;
+  background-color: rgb(125, 130, 130);
+  text-align: center;
+  padding: 1em;
+  max-width: 960px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+#pay {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pay .w-100 {
+  width: 60%;
+  text-align: center;
+  background-color: gray;
+  border-radius: 10px;
+  font-size: 1.75em;
+}
+
+#pay .back2Cart {
+  width: 40%;
+  font-size: 1.5em;
+  margin-right: 1em;
+  border-radius: 10px;
+}
+
+.form-check, .row {
+  text-align: left;
+  text-indent: 0.1em;
+}
+
+.col-md-7 {
+  border-right: 0.5px dashed gray;
+}
+
+.paymentContainer .cartTop {
+  background-color: gray;
+  border-radius: 10px;
 }
 
 /*                                
@@ -1168,6 +1234,10 @@ MEDIA QUERIES to make the design responsive
     margin-bottom: 0.1em;
     width: fit-content;
     height: fit-content;
+  }
+
+  #mod {
+    display: none !important;
   }
 
 }

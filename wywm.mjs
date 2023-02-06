@@ -1,5 +1,6 @@
 const pages = {...await import('./pages/index.js')}.pages;
-const { dialogFn, message, randomDMessage, bsToast } = pages.dialogsFns;
+const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
+const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
 
 // -----------------------------------------------------------------------------------
 const print = (...args) => { //----------------------------------------------dev-t00ls
@@ -329,6 +330,24 @@ $(window).ready(() => {
         $('#back2Cart').on('click', () => {
           $("#shoppingCartBtn").trigger("click");
         });
+        
+        $('#chkOutBtn').on('click', () => {
+
+          const transactionData = {id: `userSignInID-${new Date().getTime()}`, uuid : crypto.randomUUID()};
+
+          $('#homeBox').html(payment(`$${calculateTotal().toFixed(2)}`));
+          paymentInputListeners(transactionData);
+          payFormValidationListeners();
+
+          $('#paymentBack2Cart').on('click', () => {
+            $("#shoppingCartBtn").trigger("click");
+          });
+         
+          $('#pay').on('click', () => {
+            print(JSON.stringify(transactionData));
+          });
+          
+        });
 
       };
       
@@ -338,6 +357,7 @@ $(window).ready(() => {
   
   })
  
+
 })
 
 

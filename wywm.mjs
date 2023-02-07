@@ -6,7 +6,8 @@ const { payment, paymentInputListeners, payFormValidationListeners } = pages.pay
 const print = (...args) => { //----------------------------------------------dev-t00ls
   console.log(...args);
 }
-// pages.dbRW.dbDelete(); // db flush
+// pages.dbRW.dbDelete(true); // db flush cart
+// pages.dbRW.dbDelete(false); // db flush history
 // -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
@@ -333,18 +334,47 @@ $(window).ready(() => {
         
         $('#chkOutBtn').on('click', () => {
 
-          const transactionData = {id: `userSignInID-${new Date().getTime()}`, uuid : crypto.randomUUID()};
+          const transactionData = {
+            id: `userSignInID-${new Date().getTime()}`, 
+            uuid : crypto.randomUUID(),
+            purchase : pages.dbRW.dbRead(message),
+          };
 
           $('#homeBox').html(payment(`$${calculateTotal().toFixed(2)}`));
           paymentInputListeners(transactionData);
           payFormValidationListeners();
-
+          
           $('#paymentBack2Cart').on('click', () => {
             $("#shoppingCartBtn").trigger("click");
           });
-         
-          $('#pay').on('click', () => {
-            print(JSON.stringify(transactionData));
+          
+          $('#pay').on('click', (e) => {
+            
+            // add cart data to transactionData and safe to database
+            const dbData = pages.dbRW.dbRead(message, false); 
+            dbData[transactionData.id] = transactionData;
+                       
+            // payform input validity check
+            if ($('.paymentForm')[0].checkValidity()) {
+              
+              // write dbData to db
+              pages.dbRW.dbWrite(dbData, message, false)
+              
+
+              // email notification
+
+              // flash notification
+              bsToast('Success!', new Date().getTime(), 'Your purchase has been successfully processed. Check your email for details!', 15000)
+              message(['Thank you for your buisness! 📝',  'Come back soon!']);
+
+              // clear cart
+              pages.dbRW.dbDelete();
+              $('#cartCount').html(0).css('visibility', 'hidden');
+
+              // return home
+              $("#home").trigger("click");
+            };           
+              
           });
           
         });

@@ -11,7 +11,9 @@ const payment = (total) => {
         <!-- <i class="fa fa-times fa-2x" aria-hidden="true"></i> -->
       </div>
     </div>
+
     <hr class="lineA">
+
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-center align-items-center mb-3">
@@ -41,7 +43,7 @@ const payment = (total) => {
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
         <hr class="lineB">
-        <form class="needs-validation" novalidate>
+        <form id='paymentForm' class="needs-validation paymentForm" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
@@ -140,7 +142,7 @@ const payment = (total) => {
           <hr class="lineB">
           <div class="my-3">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input"  required>
               <label class="form-check-label" for="credit">Credit card</label>
             </div>
             <div class="form-check">

@@ -347,6 +347,9 @@ $(window).ready(() => {
           
           $('#pay').on('click', (e) => {
 
+            // redact cc-number
+            transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+           
             // add cart data to transactionData and safe to database
             const dbData = pages.dbRW.dbRead(message, false); 
             dbData[transactionData.id] = transactionData;

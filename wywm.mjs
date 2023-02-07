@@ -223,12 +223,9 @@ $(window).ready(() => {
 
     if (cartDataList.length === 0 ) {
       message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
-      // $('#dialog').html(`<dialog id="dialogBox" class="dialogBox">${pages.shoppingCart(cartDataList)}</dialog> `); // ============= ft. dev in progress
-      // dialogFn('Q2-Shop! | CART')
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
-      // return ;
     }
 
     home(container);
@@ -349,30 +346,50 @@ $(window).ready(() => {
           });
           
           $('#pay').on('click', (e) => {
-            
+
             // add cart data to transactionData and safe to database
             const dbData = pages.dbRW.dbRead(message, false); 
             dbData[transactionData.id] = transactionData;
-                       
+
             // payform input validity check
             if ($('.paymentForm')[0].checkValidity()) {
-              
+              let delay = 0;
               // write dbData to db
               pages.dbRW.dbWrite(dbData, message, false)
               
-
               // email notification
-
+              if (transactionData.email) {
+                const emailData = {
+                  email : transactionData.email,
+                  subject : `${transactionData.id}:   Q2-Shop! | Receipt`,
+                  body :  JSON.stringify(transactionData), 
+                  attachments: []
+                }
+                pages.emailsjs(emailData);
+              } else {
+                message(['You should consider adding an email for receipts', 'Print and or save this receipt page before leaving']);
+                delay += 1;
+              }
+              
               // flash notification
-              bsToast('Success!', new Date().getTime(), 'Your purchase has been successfully processed. Check your email for details!', 15000)
-              message(['Thank you for your buisness! 📝',  'Come back soon!']);
-
+              bsToast('Success!', new Date().getTime(), 'Your purchase has been successfully processed. Check your email for details!', 15000);
+              if (delay > 0) {
+                setTimeout(() => {
+                  message(['Thank you for your buisness! 📝',  'Come back soon!']);
+                  delay = 0;
+                }, 15000)
+              } else {
+                message(['Thank you for your buisness! 📝',  'Come back soon!']);
+              }
+              
               // clear cart
               pages.dbRW.dbDelete();
               $('#cartCount').html(0).css('visibility', 'hidden');
 
               // return home
-              $("#home").trigger("click");
+              setTimeout(() => {
+                $("#home").trigger("click");
+              }, 10000)
             };           
               
           });

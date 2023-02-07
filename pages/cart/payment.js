@@ -167,7 +167,7 @@ const payment = (total) => {
 
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <input type="text" class="form-control" id="cc-number" placeholder="4242 4242 4242 4242" value='4242 4242 4242 4242' required>
               <div class="invalid-feedback">
                 Credit card number is required
               </div>
@@ -205,6 +205,8 @@ const payment = (total) => {
 const paymentInputListeners = (purchaseObj) => {
   $('.paymentContainer input, .paymentContainer select').each((index, item) => {
     $(`#${item.id}`).on('change', () => {
+      // let key = item.id;
+      // key.includes('-') ? key.replace('-', '') : '';
       purchaseObj[item.id] = $(`#${item.id}`).val();
     })
   })
@@ -234,4 +236,5 @@ const payFormValidationListeners = () => {
 
 }
 
-export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners};
+
+export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners };

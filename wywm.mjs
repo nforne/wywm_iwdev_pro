@@ -337,10 +337,17 @@ $(window).ready(() => {
         
         $('#chkOutBtn').on('click', () => {
 
+          const order = pages.dbRW.dbRead(message);
+          // with the image(s) DataURL(s), the transaction data exceeds 40kB the email size limit
+          // so we strip them off
+          for (let item in order) {  
+            delete order[item]['img'];
+          }
+        
           const transactionData = {
             id: `userSignInID-${new Date().getTime()}`, 
             uuid : crypto.randomUUID(),
-            purchase : pages.dbRW.dbRead(message),
+            purchase : order,
           };
 
           $('#homeBox').html(payment(`$${calculateTotal().toFixed(2)}`));
@@ -382,12 +389,12 @@ $(window).ready(() => {
                   attachments: []
                 }
 
-                if (pages.dbRW.emailRate()) {
-                  pages.emailsjs(emailData);
-                  pages.dbRW.emailRate(1);
-                } else {
-                  message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
-                }
+                // if (pages.dbRW.emailRate()) {
+                //   pages.emailsjs(emailData);
+                //   pages.dbRW.emailRate(1);
+                // } else {
+                //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                // }
                 
               } else {
                 message(['You should consider adding an email for receipts', 'Print and or save this receipt page before leaving']);

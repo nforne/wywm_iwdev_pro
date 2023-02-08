@@ -121,12 +121,15 @@ $(window).ready(() => {
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
     const shopItem = document.getElementById(`addToCart${item.id.slice(4)}`);
+
+    const imgAsDataURL = pages.imgToDataURLjs(item);
+   
     shopItem.addEventListener('click', () => {
       const db = pages.dbRW.dbRead(message); 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
         message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], 'wheat', 3000);
       } else {
-        db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
+        db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1, imgAsDataURL); // ----------------------------
         pages.dbRW.dbWrite(db, message);
         $('#cartCount').html(Number($('#cartCount').html()) + 1).css('visibility', 'visible');
         
@@ -141,6 +144,8 @@ $(window).ready(() => {
     for (let item of items) {
       $(item).on('dblclick', () => {
         dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
+
+
         addToCartClickListener(item);
         dialogFn(item.id);
       })

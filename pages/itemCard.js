@@ -28,7 +28,7 @@ export const itemCard = (i='', numItems=4) => {
         <div class="V3">
           <i class="fa fa-chevron-left fa-4x" aria-hidden="true"></i>
           <div class="itemPic">
-            <img src="./pics/items/pic${i ? i : index}.png" alt="pic${i ? i : index}" srcset="./pics/items/pic${i ? i : index}.png">
+            <img id='pic${i ? i : index}' src="./pics/items/pic${i ? i : index}.png" alt="pic${i ? i : index}" srcset="./pics/items/pic${i ? i : index}.png">
           </div>
           <i class="fa fa-chevron-right fa-4x" aria-hidden="true"></i>
         </div>

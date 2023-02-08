@@ -30,10 +30,11 @@ const dbDelete = (cartOrHistory=true /*true=cart, false=history*/) => {
 }
 
 class dbItemClass {
-  constructor (item, price, quantity) {
+  constructor (item, price, quantity, img) {
     this.item = item;
     this.price = price;
     this.quantity = quantity;
+    this.img = img;
   };
 }
 

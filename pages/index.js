@@ -13,4 +13,5 @@ export const pages = {
   checkout : {...await import('./cart/checkout.js')}.checkout, 
   paymentFns : {...await import('./cart/payment.js')}.paymentFns, 
   emailsjs : {...await import('./emailsjs/emails.js')}.emailsjs, 
+  imgToDataURLjs : {...await import('./imgToDataURL.js')}.imgToDataURLjs, 
 };

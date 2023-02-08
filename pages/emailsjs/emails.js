@@ -1,6 +1,5 @@
 import { pk } from './env.js';
 
-
 export const emailsjs = (info) => {
   
   const emailjsBody = {
@@ -14,3 +13,4 @@ export const emailsjs = (info) => {
   emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
 
 }
+

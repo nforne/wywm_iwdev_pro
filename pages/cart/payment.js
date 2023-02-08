@@ -167,7 +167,7 @@ const payment = (total) => {
 
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder=""  required>
+              <input type="text" class="form-control" id="cc-number" placeholder="e.g : 4242 4242 4242 4242"  required>
               <div class="invalid-feedback">
                 Credit card number is required
               </div>

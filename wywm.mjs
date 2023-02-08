@@ -357,8 +357,15 @@ $(window).ready(() => {
             // payform input validity check
             if ($('.paymentForm')[0].checkValidity()) {
               let delay = 0;
+
               // write dbData to db
               pages.dbRW.dbWrite(dbData, message, false)
+              // firebase --------------------------------------------------------------------?
+
+              // - image processing             
+
+              /* - send mailing pk to production and set a rate limiting function to 10 emails.
+                   set the rate limit in db-persist it So they don't out use monthly quoter. */
               
               // email notification
               if (transactionData.email) {
@@ -368,7 +375,14 @@ $(window).ready(() => {
                   body :  JSON.stringify(transactionData), 
                   attachments: []
                 }
-                pages.emailsjs(emailData);
+
+                if (pages.dbRW.emailRate()) {
+                  pages.emailsjs(emailData);
+                  pages.dbRW.emailRate(1);
+                } else {
+                  message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                }
+                
               } else {
                 message(['You should consider adding an email for receipts', 'Print and or save this receipt page before leaving']);
                 delay += 1;
@@ -390,6 +404,7 @@ $(window).ready(() => {
               $('#cartCount').html(0).css('visibility', 'hidden');
 
               // return home
+              $('#paymentBack2Cart').trigger('click');
               setTimeout(() => {
                 $("#home").trigger("click");
               }, 10000)

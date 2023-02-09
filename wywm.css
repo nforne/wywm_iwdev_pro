@@ -724,9 +724,9 @@ footer p {
 }
 
 .homeImgs .q2Logo {
-  margin: 1em;
+  margin: 2.5em;
   box-shadow: 0 0 50px black;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .homeImgs, .homeImgs div div  {
@@ -740,8 +740,11 @@ footer p {
   background-color: gray;
   border-radius: 10px;
   border: 0;
-  background-image: url('./pics/headerImg.png');
   background-size: cover;
+}
+
+div.motto {
+  height: 17.5em;
 }
 
 .homeImgs div {
@@ -751,9 +754,10 @@ footer p {
   align-items: center;
   width: 100%;
   margin: 1em 0;
-  padding: 2em 2em;
+  padding: 1em 2em;
   border-radius: 10px;
   border: 2px dashed black;
+  background-image: url('./pics/headerImg.png');
 }
 
 .itemCardSlide {

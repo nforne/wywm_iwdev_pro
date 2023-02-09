@@ -1,4 +1,4 @@
-import { msTime } from "./msTime.js";
+import { msTime } from "./dbHelpers.js";
 
 const dbWrite = (data, msg=(e)=>{}, cartOrHistory=true /*true=cart, false=history*/) => {
   if (typeof(Storage) !== "undefined") {

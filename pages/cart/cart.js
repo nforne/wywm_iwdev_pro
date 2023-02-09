@@ -1,4 +1,4 @@
-import { cartElements } from "./cartItemAndLine.js";
+import { cartElements } from "./cartItems.js";
 
 export const shoppingCart = (dataList) => {
 

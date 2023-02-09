@@ -285,6 +285,7 @@ $(window).ready(() => {
           }
   
           $('#total').html(`$${calculateTotal()}`);
+          
         })
   
         // For +/- cart items buttons click listeners
@@ -307,6 +308,7 @@ $(window).ready(() => {
         $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
           addSubBtns(0, cartIem.id);
         })
+
       }
 
     } 

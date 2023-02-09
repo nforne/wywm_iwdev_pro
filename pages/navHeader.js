@@ -8,6 +8,7 @@ export const navHeader = `
     <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SignUp</button>
     <button id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | About Us</button>
     <button id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | Contact Us</button>
+    <button id="admin"><i class="fa fa-user-o fa-1x" aria-hidden="true"></i> | Admin </button>
   </div>
 </div>
 

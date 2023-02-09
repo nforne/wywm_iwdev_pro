@@ -285,7 +285,7 @@ $(window).ready(() => {
           }
   
           $('#total').html(`$${calculateTotal()}`);
-          
+
         })
   
         // For +/- cart items buttons click listeners
@@ -370,7 +370,8 @@ $(window).ready(() => {
 
               // write dbData to db local
               pages.dbRW.dbWrite(dbData, message, false)
-              // firebase --------------------------------------------------------------------?            
+              // firebase --------------------------------------------------------------------?  
+              // payform validaition regex 
 
               /* 
 

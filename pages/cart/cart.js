@@ -29,7 +29,7 @@ export const shoppingCart = (dataList) => {
 
       <hr class="lineA">
 
-      <div class="cartItemsBox">
+      <div class="cartItemsBox bg-dark">
         <div class="cartItemsHeader">
           <div class='cartFirstAttr'>
             <span>[ Name ]</span>

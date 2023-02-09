@@ -6,9 +6,13 @@ export const home = `
 
   <div class="homeImgs">
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
-    <img class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
-    <span class="welcome">OUR OCCUPATION?</span>
-    <span class="welcome">QUALITY & QUANTITY FOR YOU!</span>
+    <div class='bg-light'>
+      <img class="q2Logo" src="./pics/Q2bgfront.png" alt="q2Logo" srcset="./pics/Q2bgfront.png">
+      <div class="">
+        <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span>
+        <span class="welcome">[&nbsp;🌼 | &nbsp; QUALITY & QUANTITY, &nbsp; 🌷 FOR YOU! 🍃 &nbsp; | 🚚&nbsp;]</span>
+      </div>
+    </div>
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
   </div>
 
@@ -22,7 +26,7 @@ export const home = `
 
 <hr class="line3">
 
-<div class="itemCardSlide">
+<div class="itemCardSlide bg-dark">
   <i id='slideL' class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
   <div id="itemCards" class="itemCards">
     <!-- make a slide show of available item pictures -->

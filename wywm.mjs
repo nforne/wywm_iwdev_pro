@@ -135,7 +135,7 @@ $(window).ready(() => {
         
         bsToast("Success!", new Date().getTime(),  `Item: pic${item.id.slice(4)} has been added successfully 😁 !!!`);
       }
-    }, false)
+    }, true)
 
   }
 
@@ -336,18 +336,11 @@ $(window).ready(() => {
         });
         
         $('#chkOutBtn').on('click', () => {
-
-          const order = pages.dbRW.dbRead(message);
-          // with the image(s) DataURL(s), the transaction data exceeds 40kB the email size limit
-          // so we strip them off
-          for (let item in order) {  
-            delete order[item]['img'];
-          }
         
           const transactionData = {
             id: `userSignInID-${new Date().getTime()}`, 
             uuid : crypto.randomUUID(),
-            purchase : order,
+            purchase : pages.dbRW.dbRead(message),
           };
 
           $('#homeBox').html(payment(`$${calculateTotal().toFixed(2)}`));
@@ -358,34 +351,47 @@ $(window).ready(() => {
             $("#shoppingCartBtn").trigger("click");
           });
           
-          $('#pay').on('click', (e) => {
-
-            // redact cc-number
-            transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+          $('#pay').on('click', (e) => {                       
            
-            // add cart data to transactionData and safe to database
-            const dbData = pages.dbRW.dbRead(message, false); 
-            dbData[transactionData.id] = transactionData;
-
             // payform input validity check
-            if ($('.paymentForm')[0].checkValidity()) {
-              let delay = 0;
-
-              // write dbData to db
-              pages.dbRW.dbWrite(dbData, message, false)
-              // firebase --------------------------------------------------------------------?
-
-              // - image processing             
-
-              /* - send mailing pk to production and set a rate limiting function to 10 emails.
-                   set the rate limit in db-persist it So they don't out use monthly quoter. */
+            if ($(".paymentForm")[0].checkValidity()) {
               
+              const checks = { delay: 0 };
+
+              // redact cc-number cc-cvv
+              transactionData['cc\-cvv'] = '**' + transactionData['cc\-cvv'].slice(2);
+              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+            
+              // add cart data to transactionData and safe to database
+              const dbData = pages.dbRW.dbRead(message, false); 
+              dbData[transactionData.id] = transactionData;
+
+              // write dbData to db local
+              pages.dbRW.dbWrite(dbData, message, false)
+              // firebase --------------------------------------------------------------------?            
+
+              /* 
+
+              - send mailing pk to production and set a rate limiting function to 10 emails.
+                set the rate limit in db-persist it So they don't out use monthly quoter. 
+
+              */
+                            
               // email notification
               if (transactionData.email) {
+
+                // with the image(s) DataURL(s), the transaction data exceeds 40kB the email size limit so we strip them off
+                const order = pages.dbRW.dbRead(message);
+                for (let item in order) {  
+                  delete order[item]['img'];
+                }
+                const emailBody = {...transactionData}
+                emailBody['purchase'] = order;
+
                 const emailData = {
-                  email : transactionData.email,
-                  subject : `${transactionData.id}:   Q2-Shop! | Receipt`,
-                  body :  JSON.stringify(transactionData), 
+                  email : emailBody.email,
+                  subject : `${emailBody.id}:   Q2-Shop! | Receipt`,
+                  body :  JSON.stringify(emailBody), 
                   attachments: []
                 }
 
@@ -398,15 +404,16 @@ $(window).ready(() => {
                 
               } else {
                 message(['You should consider adding an email for receipts', 'Print and or save this receipt page before leaving']);
-                delay += 1;
+                checks['delay'] += 1;
               }
               
-              // flash notification
-              bsToast('Success!', new Date().getTime(), 'Your purchase has been successfully processed. Check your email for details!', 15000);
+              // Success flash notification toast
+              bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
+              
               if (delay > 0) {
                 setTimeout(() => {
                   message(['Thank you for your buisness! 📝',  'Come back soon!']);
-                  delay = 0;
+                  checks['delay'] = 0;
                 }, 15000)
               } else {
                 message(['Thank you for your buisness! 📝',  'Come back soon!']);
@@ -421,6 +428,7 @@ $(window).ready(() => {
               setTimeout(() => {
                 $("#home").trigger("click");
               }, 10000)
+
             };           
               
           });

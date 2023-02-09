@@ -142,7 +142,7 @@ const payment = (total) => {
           <hr class="lineB">
           <div class="my-3">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input"  required>
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" required>
               <label class="form-check-label" for="credit">Credit card</label>
             </div>
             <div class="form-check">
@@ -191,7 +191,7 @@ const payment = (total) => {
           </div>
 
           <hr class="my-4">
-          <div id='pay'>
+          <div class='pay'>
             <button id='paymentBack2Cart' class="back2Cart"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i> <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i></button>
             <button id='pay' class="w-100 btn btn-primary btn-lg" type="submit"><i class="fa fa-credit-card-alt fa-1x" aria-hidden="true"></i> &nbsp | &nbsp Proceed with Payment! </button>
           </div>
@@ -205,8 +205,6 @@ const payment = (total) => {
 const paymentInputListeners = (purchaseObj) => {
   $('.paymentContainer input, .paymentContainer select').each((index, item) => {
     $(`#${item.id}`).on('change', () => {
-      // let key = item.id;
-      // key.includes('-') ? key.replace('-', '') : '';
       purchaseObj[item.id] = $(`#${item.id}`).val();
     })
   })
@@ -235,6 +233,5 @@ const payFormValidationListeners = () => {
   })();
 
 }
-
 
 export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners };

@@ -581,14 +581,14 @@ Payment
   }
 }
 
-#pay {
+.pay {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-#pay .w-100 {
+.pay .w-100 {
   width: 60%;
   text-align: center;
   background-color: gray;
@@ -596,11 +596,12 @@ Payment
   font-size: 1.75em;
 }
 
-#pay .back2Cart {
+.pay .back2Cart {
   width: 40%;
   font-size: 1.5em;
   margin-right: 1em;
   border-radius: 10px;
+  height: 2.5em;
 }
 
 .form-check, .row {

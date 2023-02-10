@@ -14,4 +14,5 @@ export const pages = {
   paymentFns : {...await import('./cart/payment.js')}.paymentFns, 
   emailsjs : {...await import('./emailsjs/emails.js')}.emailsjs, 
   imgToDataURLjs : {...await import('../pics/imgToDataURL.js')}.imgToDataURLjs, 
+  dbRWFirebase : {...await import('./fireBasejs/gFirebase.js')}.dbRWFirebase, 
 };

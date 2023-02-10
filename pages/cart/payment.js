@@ -234,4 +234,17 @@ const payFormValidationListeners = () => {
 
 }
 
+const payFormValidationRegex = (formData) => {
+  let outPut = {faultyInput : 'wrongInputLabel', message: 'direction to correct errror'};
+
+  if (1 /* regex check*/) outPut['email'] = 'Please enter a velid email. e.g. janedoe@exmaple.com'
+  if (1 /* regex check*/) outPut['cc\-number'] = 'Please enter a velid card number. e.g. 4242 4242 4242 4242. It must be 16-digits'
+  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
+  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
+  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
+
+
+  return outPut;
+}
+
 export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners };

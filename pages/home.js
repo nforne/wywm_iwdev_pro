@@ -9,8 +9,8 @@ export const home = `
     <div class='bg-light'>
       <img class="q2Logo" src="./pics/Q2bgfront.png" alt="q2Logo" srcset="./pics/Q2bgfront.png">
       <div class="motto">
-        <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span>
-        <span class="welcome">[&nbsp; 🛒 | &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; | 🚚&nbsp;]</span>
+        <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>
+        <span class="welcome">&nbsp; 🛒 | &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; | 🚚&nbsp;</span>
       </div>
     </div>
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">

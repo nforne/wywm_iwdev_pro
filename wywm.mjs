@@ -228,7 +228,7 @@ $(window).ready(() => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
     if (cartDataList.length === 0 ) {
-      message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
+      message(['Your cart is empty.', 'Lets go pickup some items, as you please!🤗'], 'wheat', 5000);
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
@@ -341,6 +341,7 @@ $(window).ready(() => {
         
           const transactionData = {
             id: `userSignInID-${new Date().getTime()}`, 
+            userID: 'userSignInID',
             uuid : crypto.randomUUID(),
             purchase : pages.dbRW.dbRead(message),
           };
@@ -370,7 +371,9 @@ $(window).ready(() => {
 
               // write dbData to db local
               pages.dbRW.dbWrite(dbData, message, false)
-              // firebase --------------------------------------------------------------------?  
+              // firebase realtime data persistence
+              pages.dbRWFirebase(transactionData, false);
+
               // payform validaition regex 
 
               /* 
@@ -405,22 +408,13 @@ $(window).ready(() => {
                 //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
                 // }
                 
+                // Success flash notification toast
+                bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
               } else {
-                message(['You should consider adding an email for receipts', 'Print and or save this receipt page before leaving']);
-                checks['delay'] += 1;
+                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 5000);
               }
               
-              // Success flash notification toast
-              bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
-              
-              if (delay > 0) {
-                setTimeout(() => {
-                  message(['Thank you for your buisness! 📝',  'Come back soon!']);
-                  checks['delay'] = 0;
-                }, 15000)
-              } else {
-                message(['Thank you for your buisness! 📝',  'Come back soon!']);
-              }
+              bsToast('SignOff!', new Date().getTime(), 'Thank you for your buisness! 📝',  'Come back soon!', 5000);
               
               // clear cart
               pages.dbRW.dbDelete();

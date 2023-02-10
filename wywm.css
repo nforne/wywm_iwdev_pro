@@ -704,16 +704,16 @@ footer p {
 }
 
 .homeImgs .welcome {
-  color: wheat;
+  color: white;
   border: 1px solid wheat;  
-  border-radius: 5px;
-  background-color: rgba(87, 84, 84, 0.75);
-  box-shadow: 0 0 50px black;
+  border-radius: 50px;
+  background-color: rgba(72, 71, 71, 0.75);
+  box-shadow: 0 0 50px rgb(64, 63, 63);
   height: 2.5em;
   padding: 0.5em 1em;
-  margin: 0.5em 0;
-  text-align: center;
   font-size: 1.5em;
+  margin: 0.2em;
+  z-index: 5;
 }
 
 .q2Logo {
@@ -724,40 +724,48 @@ footer p {
 }
 
 .homeImgs .q2Logo {
-  margin: 2.5em;
-  box-shadow: 0 0 50px black;
+  box-shadow: 0 0 50px aqua;
   padding: 0.5em;
+  border-radius: 50%;
+  height: 22em;
+  width: 22em;
+  position: absolute;
+  margin-right: 75% !important;
 }
 
-.homeImgs, .homeImgs div div  {
+.homeImgs {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.homeImgs div div {
-  background-color: gray;
-  border-radius: 10px;
-  border: 0;
-  background-size: cover;
-}
-
 div.motto {
-  height: 17.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(246, 242, 242);
+  background-image: url('./pics/headerImg.png');
+  background-size: cover;
+  border: 3px solid aqua ;
+  border-radius: 10px;
+  height:min-content;
+  width: 90%;
+  padding: 0.5em 1em;
+  margin-left: 10em;
+  color: azure;
 }
 
-.homeImgs div {
+.homeImgs div.bg-light {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 10px;
+  padding: 0.75em 1em;
   border: 2px dashed black;
-  background-image: url('./pics/headerImg.png');
 }
 
 .itemCardSlide {
@@ -1294,6 +1302,15 @@ MEDIA QUERIES to make the design responsive
     display: flex;
     flex-direction: column;
     font-size: 0.45em;
+  }
+
+  div.motto {
+    flex-direction: column;
+    margin-right: 4em;
+  }
+
+  .homeImgs .welcome {
+    margin: 1em;
   }
 
 }

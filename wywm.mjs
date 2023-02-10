@@ -369,6 +369,7 @@ $(window).ready(() => {
               // pages.dbRWFirebase(transactionData, false);
 
               // payform validaition regex 
+              // two additional media querries
                             
               // email notification
               if (transactionData.email) {

@@ -738,6 +738,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: inherit;
 }
 
 div.motto {
@@ -1061,7 +1062,7 @@ MEDIA QUERIES to make the design responsive
 ======================================================
 */
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 760px) {
   html body {
     display: flex;
     flex-direction: column;
@@ -1300,17 +1301,26 @@ MEDIA QUERIES to make the design responsive
 
   .homeImgs div.bg-light {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-size: 0.45em;
+    height: 17.5em;
   }
 
   div.motto {
     flex-direction: column;
-    margin-right: 4em;
+    width: fit-content;
+    margin-left: 12em;
+    font-size: 0.9em;
   }
 
   .homeImgs .welcome {
-    margin: 1em;
+    margin: 0.75em;
+  }
+
+  .homeImgs .q2Logo {
+    z-index: 1;
+    height: 25em;
+    width: 25em;
   }
 
 }

@@ -13,7 +13,7 @@ const dialogFn = (id) => {
     title : id.toUpperCase(),
     dialogClass: "dialogBoxBR",
     buttons: [{
-        text: ` [ ✖ ] ➖ Close 💬 `,
+        text: `[ ✖ ] | Close! 💬`,
         click: function () {                  
           $( this ).dialog( "destroy" );
         }}],
@@ -40,9 +40,11 @@ const dialogFn = (id) => {
 // for notifications/alerts
 const message = (textsList, color='wheat', time=10000) => {
   const msg = document.getElementById('messages');
-  let txt = '';
-  for (let text of textsList) { txt += `<p>${text}</p>`; };
-  msg.innerHTML = `<div style="color:${color};">${txt}</div>`;
+  let msgs = '';
+  for (let text of textsList) { 
+    msgs += `<p>${text}</p>`;
+  } 
+  msg.innerHTML = `<div style="color:${color};">${msgs}</div>`;
   setTimeout(() => {
     msg.innerHTML = '';
   }, time)
@@ -56,4 +58,29 @@ const randomDMessage = (item, msgs=[], chances) => {
   })
 }
 
-export const dialogsFns = {dialogFn, message, randomDMessage};
+// bootstrap modal: toast notification
+const bsToast = (title, timeStarted, msg, ttl=5000) => {
+  const time = new Date();
+  $('#toastBox').append(
+    `<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="./pics/Q2.ico" class="rounded mr-2" alt="...">
+        <strong class="mr-auto">${title}</strong>
+        <small class="text-muted">${((time.getTime() - timeStarted)/60000).toFixed(2)} mins ago</small>
+      </div>
+      <div class="toast-body">
+        ${msg}
+      </div>
+    </div>`);
+    
+  $('#messages').empty();
+  $(".toast").toast("show");
+  
+  if (toastTTL) clearTimeout(toastTTL);
+  var toastTTL = setTimeout(() => {
+    $('#toastBox').empty();
+  }, ttl)
+
+};
+
+export const dialogsFns = {dialogFn, message, randomDMessage, bsToast};

@@ -1,6 +1,14 @@
 const pages = {...await import('./pages/index.js')}.pages;
-const { dialogFn, message, randomDMessage } = pages.dialogsFns;
+const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
+const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
 
+// -----------------------------------------------------------------------------------
+const print = (...args) => { //----------------------------------------------dev-t00ls
+  console.log(...args);
+}
+// pages.dbRW.dbDelete(true); // db flush cart
+// pages.dbRW.dbDelete(false); // db flush history
+// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
 
@@ -112,16 +120,23 @@ $(window).ready(() => {
   
   // Fn to add addToCart click listers to shop items add to cart buttons
   const addToCartClickListener = (item) => {
-    $(`#addToCart${item.id.slice(4)}`).on('click', () => {
+
+    const shopItem = document.getElementById(`addToCart${item.id.slice(4)}`);
+    shopItem.addEventListener('click', () => {
       const db = pages.dbRW.dbRead(message); 
       if (db && db[`pic${item.id.slice(4)}`]) { // search db to eliminate duplication and avoid errors
         message([`Item: PIC${item.id.slice(4)} is already in the Cart.`, 'You can add the +quantity when you get to the cart for checkout!'], 'wheat', 3000);
       } else {
-        db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1);
+        const imgAsDataURL = pages.imgToDataURLjs(item); // image processing
+        
+        db[`pic${item.id.slice(4)}`] = new pages.dbRW.dbItemClass(`pic${item.id.slice(4)}`, `${Number(item.id.slice(4)) * 55.5}`, 1, imgAsDataURL);
         pages.dbRW.dbWrite(db, message);
         $('#cartCount').html(Number($('#cartCount').html()) + 1).css('visibility', 'visible');
+        
+        bsToast("Success!", new Date().getTime(),  `Item: pic${item.id.slice(4)} has been added successfully 😁 !!!`);
       }
-    })
+    }, true)
+
   }
 
   // Fn for modal view of shop items 
@@ -130,6 +145,8 @@ $(window).ready(() => {
     for (let item of items) {
       $(item).on('dblclick', () => {
         dialogMode.innerHTML = `<dialog id="dialogBox" class="dialogBox"> ${pages.itemCard(item.id.slice(4))} </dialog> `;
+
+
         addToCartClickListener(item);
         dialogFn(item.id);
       })
@@ -144,7 +161,7 @@ $(window).ready(() => {
   $('#shop').on('click', () => {
     shop(container);
     if (q2ShopSetTimeOuts['S1']) clearTimeout(q2ShopSetTimeOuts['S1']);
-    message(['Double click to zoom-in on item!'], 'wheat', 5000);
+    message(['Double click to zoom-in on item!'], 'wheat', 2500);
 
     // to enable dialog for all shop items
     shopItemListener();
@@ -211,7 +228,7 @@ $(window).ready(() => {
     const cartDataList = Object.values(pages.dbRW.dbRead(message));
 
     if (cartDataList.length === 0 ) {
-      message(['Your cart is empty.', 'Lets go pickup some items!'], 'wheat', 5000);
+      message(['Your cart is empty.', 'Lets go pickup some items, as you please!🤗'], 'wheat', 5000);
       q2ShopSetTimeOuts['S1'] = setTimeout(() => {
         $("#shop").trigger("click");
       }, 5000);
@@ -268,6 +285,7 @@ $(window).ready(() => {
           }
   
           $('#total').html(`$${calculateTotal()}`);
+
         })
   
         // For +/- cart items buttons click listeners
@@ -290,6 +308,7 @@ $(window).ready(() => {
         $(`#sub${cartIem.id.slice(7).toUpperCase()}`).on('click', () => {
           addSubBtns(0, cartIem.id);
         })
+
       }
 
     } 
@@ -317,6 +336,101 @@ $(window).ready(() => {
         $('#back2Cart').on('click', () => {
           $("#shoppingCartBtn").trigger("click");
         });
+        
+        $('#chkOutBtn').on('click', () => {
+        
+          const transactionData = {
+            id: `userSignInID-${new Date().getTime()}`, 
+            userID: 'userSignInID',
+            uuid : crypto.randomUUID(),
+            purchase : pages.dbRW.dbRead(message),
+          };
+
+          $('#homeBox').html(payment(`$${calculateTotal().toFixed(2)}`));
+          paymentInputListeners(transactionData);
+          payFormValidationListeners();
+          
+          $('#paymentBack2Cart').on('click', () => {
+            $("#shoppingCartBtn").trigger("click");
+          });
+          
+          $('#pay').on('click', (e) => {                       
+           
+            // payform input validity check
+            if ($(".paymentForm")[0].checkValidity()) {
+              
+              const checks = { delay: 0 };
+
+              // redact cc-number cc-cvv
+              transactionData['cc\-cvv'] = '**' + transactionData['cc\-cvv'].slice(2);
+              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+            
+              // add cart data to transactionData and safe to database
+              const dbData = pages.dbRW.dbRead(message, false); 
+              dbData[transactionData.id] = transactionData;
+
+              // write dbData to db local
+              pages.dbRW.dbWrite(dbData, message, false)
+              // firebase realtime data persistence
+              pages.dbRWFirebase(transactionData, false);
+
+              // payform validaition regex 
+
+              /* 
+
+              - send mailing pk to production and set a rate limiting function to 10 emails.
+                set the rate limit in db-persist it So they don't out use monthly quoter. 
+
+              */
+                            
+              // email notification
+              if (transactionData.email) {
+
+                // with the image(s) DataURL(s), the transaction data exceeds 40kB the email size limit so we strip them off
+                const order = pages.dbRW.dbRead(message);
+                for (let item in order) {  
+                  delete order[item]['img'];
+                }
+                const emailBody = {...transactionData}
+                emailBody['purchase'] = order;
+
+                const emailData = {
+                  email : emailBody.email,
+                  subject : `${emailBody.id}:   Q2-Shop! | Receipt`,
+                  body :  JSON.stringify(emailBody), 
+                  attachments: []
+                }
+
+                // if (pages.dbRW.emailRate()) {
+                //   pages.emailsjs(emailData);
+                //   pages.dbRW.emailRate(1);
+                // } else {
+                //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                // }
+                
+                // Success flash notification toast
+                bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
+              } else {
+                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 5000);
+              }
+              
+              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 5000);
+              
+              // clear cart
+              pages.dbRW.dbDelete();
+              $('#cartCount').html(0).css('visibility', 'hidden');
+
+              // return home
+              $('#paymentBack2Cart').trigger('click');
+              setTimeout(() => {
+                $("#home").trigger("click");
+              }, 10000)
+
+            };           
+              
+          });
+          
+        });
 
       };
       
@@ -326,6 +440,7 @@ $(window).ready(() => {
   
   })
  
+
 })
 
 

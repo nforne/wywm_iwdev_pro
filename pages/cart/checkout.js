@@ -19,7 +19,7 @@ export const checkout = (data) => {
 
     <hr class="lineA">
 
-    <div class="cartItemsBox">
+    <div class="cartItemsBox bg-dark">
 
       <div id='checkoutItemTop' class="checkoutItem">
         <div>

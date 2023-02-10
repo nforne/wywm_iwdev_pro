@@ -1,4 +1,4 @@
-import { pk } from './env.js';
+// import { pk } from './env.js';
 
 export const emailsjs = (info) => {
   
@@ -9,7 +9,7 @@ export const emailsjs = (info) => {
   }
 
   // https://dashboard.emailjs.com/admin/account
-  emailjs.init(pk);   
+  // emailjs.init(pk);   
   emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
 
 }

@@ -2,13 +2,6 @@ const pages = {...await import('./pages/index.js')}.pages;
 const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
 const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
 
-// -----------------------------------------------------------------------------------
-const print = (...args) => { //----------------------------------------------dev-t00ls
-  console.log(...args);
-}
-// pages.dbRW.dbDelete(true); // db flush cart
-// pages.dbRW.dbDelete(false); // db flush history
-// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
 
@@ -371,17 +364,11 @@ $(window).ready(() => {
 
               // write dbData to db local
               pages.dbRW.dbWrite(dbData, message, false)
+
               // firebase realtime data persistence
-              pages.dbRWFirebase(transactionData, false);
+              // pages.dbRWFirebase(transactionData, false);
 
               // payform validaition regex 
-
-              /* 
-
-              - send mailing pk to production and set a rate limiting function to 10 emails.
-                set the rate limit in db-persist it So they don't out use monthly quoter. 
-
-              */
                             
               // email notification
               if (transactionData.email) {

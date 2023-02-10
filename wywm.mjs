@@ -101,7 +101,7 @@ $(window).ready(() => {
   // home button and logo event listeners
   $('#logo, #home').on('click', () => {
     if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-      message(['Welcome Home!', 'Click on "SHOP" above to choose and add items to your shopping cart!'], 'rgb(247, 239, 229)', 5000);
+      message(['Welcome Home!🕊', 'Your cart is empty. Lets go pickup some items, as you please!🤗','click "SHOP" above!☝'], 'rgb(247, 239, 229)', 5000);
     }
     home(container);
     slideLR();

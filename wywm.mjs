@@ -414,7 +414,7 @@ $(window).ready(() => {
                 bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 5000);
               }
               
-              bsToast('SignOff!', new Date().getTime(), 'Thank you for your buisness! 📝',  'Come back soon!', 5000);
+              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 5000);
               
               // clear cart
               pages.dbRW.dbDelete();

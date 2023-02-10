@@ -2,6 +2,14 @@ const pages = {...await import('./pages/index.js')}.pages;
 const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
 const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
 
+// -----------------------------------------------------------------------------------
+const print = (...args) => { //----------------------------------------------dev-t00ls
+  console.log(...args);
+}
+// pages.dbRW.dbDelete(true); // db flush cart
+// pages.dbRW.dbDelete(false); // db flush history
+// -----------------------------------------------------------------------------------
+
 
 $(window).ready(() => {
 

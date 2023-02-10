@@ -26,7 +26,7 @@ export const home = `
 
 <hr class="line3">
 
-<div class="itemCardSlide bg-dark">
+<div class="itemCardSlide">
   <i id='slideL' class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
   <div id="itemCards" class="itemCards">
     <!-- make a slide show of available item pictures -->

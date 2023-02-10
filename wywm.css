@@ -24,8 +24,8 @@ Contact Us
 */
 
 body {
-  /* background-color: rgb(32, 40, 42); */
   background-color: rgb(12, 12, 12);
+  /* background-color: rgb(32, 40, 42); */
   background-image: url('./pics/Q2bgt.png');
   font-family: 'Ubuntu', sans-serif;
   color: rgb(86, 83, 83);
@@ -738,7 +738,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: inherit;
+  background-color: rgb(12, 12, 12);
 }
 
 div.motto {

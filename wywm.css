@@ -24,8 +24,8 @@ Contact Us
 */
 
 body {
-/*   background-color: rgb(12, 12, 12); */
-  background-color: rgb(32, 40, 42);
+  background-color: rgb(12, 12, 12);
+  /* background-color: rgb(32, 40, 42); */
   background-image: url('./pics/Q2bgt.png');
   font-family: 'Ubuntu', sans-serif;
   color: rgb(86, 83, 83);
@@ -635,6 +635,7 @@ footer {
   flex-direction: column;
   width: 100%;
   bottom: 0;
+  background-color: rgba(12, 12, 12, 0.75);
 }
 
 footer .footer {
@@ -777,6 +778,7 @@ div.motto {
   align-items: center;
   border-radius: 10px;
   border-top: 2px dashed wheat;
+  background-color: rgba(12, 12, 12, 0.75);
 }
 
 .itemCardSlide i {
@@ -865,7 +867,7 @@ Products
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   margin: 2em 0;
@@ -1418,6 +1420,99 @@ MEDIA QUERIES to make the design responsive
     z-index: 1;
     height: 25em;
     width: 25em;
+  }
+
+}
+
+@media only screen and (min-width:761px) and (max-width: 1300px) {
+
+  .navbar .container-fluid {
+    flex-direction: column;
+    margin-right: 20em;
+    width: fit-content;
+    align-self: center;
+    flex-wrap: nowrap;
+    
+    margin: 3em;
+  }
+  .navBtns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  
+  }
+
+  .navBtns button {
+    margin: 0.24em;
+    width: 17.5em;
+    height: 2.75em;
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .signAndLogo .q2Logo {
+    margin-top: 10em;
+    border-radius: 50%;
+  }
+
+  .signBtns {
+    width: 60%;
+    justify-content: right;
+    align-items: center;
+  }
+
+  
+
+  .H .H {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .H .H .item {
+    width: 45%;
+  }
+
+  .nav {
+    height: 7em;
+    align-content: center;
+    justify-content: center;
+
+  }
+
+  #container {
+    margin-top: 15em;
+  }
+
+  .gold, .silver, .premium {
+    width: 100%;
+  }
+
+  .item .V3 {
+    flex-direction: column;
+  }
+
+  .itemCardSlide .itemCards {
+    flex-wrap: wrap;
+  }
+
+  .aboutUs {
+    width: 97.5%;
+  }
+
+  .aboutUsImg img {
+    width: inherit;
+    height: 12em;
+  }
+
+  .aboutUsImg{
+    flex-wrap: wrap;
+    margin: 0.1em 3em;
+  }
+  
+  .aboutUs div span {
+    margin: inherit 0;
+    width: 100%;
   }
 
 }

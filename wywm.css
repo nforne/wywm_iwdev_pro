@@ -781,6 +781,10 @@ div.motto {
   background-color: rgba(12, 12, 12, 0.75);
 }
 
+.itemCardSlide .itemCards {
+  flex-wrap: wrap;
+}
+
 .itemCardSlide i {
   color: wheat;
   -webkit-text-stroke: 2px black; /* width and color */

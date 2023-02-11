@@ -1,0 +1,1424 @@
+/*
+CSS File
+
+Sections are as follow:
+
+Globals
+Header
+Footer
+Main
+Shop
+About Us
+Contact Us
+*/ 
+
+
+/*                                        
+ #     #                                    
+ #     # ######   ##   #####  ###### #####  
+ #     # #       #  #  #    # #      #    # 
+ ####### #####  #    # #    # #####  #    # 
+ #     # #      ###### #    # #      #####  
+ #     # #      #    # #    # #      #   #  
+ #     # ###### #    # #####  ###### #    #    
+*/
+
+body {
+/*   background-color: rgb(12, 12, 12); */
+  background-color: rgb(32, 40, 42);
+  background-image: url('./pics/Q2bgt.png');
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(86, 83, 83);
+  text-align: justify;
+  padding-top: 1em;
+  margin: 0;
+  padding: 0;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}
+
+button {
+  background-color: gray;
+  border: 2px solid wheat;
+  border-radius: 10px;
+}
+
+button:hover {
+  border: 2px solid green;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(circle at 10% 10%, rgb(0, 0, 0),  rgb(255, 255, 255));
+  border-bottom: 2px solid white;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index: 15;
+  height: 5.5em;
+}
+
+.signAndLogo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  border-radius: 10px;
+  width: 97.5%;
+  height: 4.5em;
+}
+
+.signAndLogo .q2Logo, .V1 .q2Logo {
+  border: 0.25em solid green;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  align-self: center;
+}
+
+.signAndLogo .q2Logo {
+  width: 11em;
+  height: 11em;
+  z-index: 50;
+  margin-top: 7em;
+  box-shadow: 0 0 50px rgba(3, 247, 247, 0.3);
+}
+
+.homeRose {
+  position: absolute;
+}
+
+.signBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+.signBtns button {
+  width: 8em;
+  font-size: 0.85em;
+  border-radius: 5px;
+}
+
+#shop {
+  color: white;
+  box-shadow: 0 0 50px rgb(0, 255, 255);
+}
+#shop:hover {
+  color: white;
+  box-shadow: 0 0 50px greenyellow;
+}
+
+.line1 {
+  border: 2px dashed gray;
+  align-self: center;
+  width: 90%;
+}
+
+.line2 {
+  border: 1px dashed wheat;
+  align-self: center;
+  width: 90%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: center;
+  width: 63%;
+  height: 3em;
+}
+
+.navBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.d-flex button, .d-flex input {
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgba(132, 130, 130, 0.5);
+}
+
+.d-flex button {
+  background-color: rgba(65, 62, 62, 0.5);
+  border: 2px solid wheat;
+  color: white;
+}
+
+.d-flex input {
+  background-color: rgba(65, 62, 62, 0.5);
+  border: 2px solid wheat;
+  color: white;
+}
+
+/* 
+shopping Cart
+=================================================================
+*/
+
+#shoppingCartBtn {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  border: 0.25em solid wheat;
+  box-shadow: 0 0 50px #ccc;
+}
+
+#cartCount {
+  visibility: hidden;
+  color: wheat;
+  border-radius: 10px;
+  background-color: red;
+  border: 2px solid wheat;
+  width: 1.9em;
+  text-align: center;
+  position: absolute;
+  margin-left: 2em;
+}
+
+#cartCount:hover {
+  box-shadow: 0 0 50px white;
+}
+
+.homeBox, .cartItemsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cartItemsBox {
+  border: 2px dashed wheat;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.shoppingCart {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.cartTop .q2Logo {
+  border-radius: 50%;
+  border: 0.1em solid green;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.cartTop, .cartItemsHeader {
+  font-size: 3em;
+  height: 3em;
+}
+
+.cartItemsHeader {
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.cartTopR {
+  margin-right: 2em;
+}
+
+.cartItemsHeader, .total {
+  padding-left: 0.25em;
+}
+ 
+.cartItemsHeader, 
+.total, .cartTop, .cartCheckoutBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: wheat;
+  font-size: 1.5em;
+  align-self: center;
+}
+
+.cartCheckoutBtn .checkoutCRUDs {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.5em;
+  border-radius: 5px;
+  width: 40%; /*--*/
+}
+
+.cartCheckoutBtn .checkoutCRUDs button {
+  margin: 0.25em;
+}
+
+.cartIem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.cartIem .itemValuesAndCRUDs {
+  display: flex;
+  padding: 0.5em 0;
+  flex-direction: column;
+  background-color: bisque;
+  border: 2px dashed black;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.cartIem .itemValuesAndCRUDs .cartCRUDBtns button {
+  width: 12%;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues,
+.cartIem .itemValuesAndCRUDs .cartCRUDBtns  {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues {
+  height: 63%;
+  align-items: center;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues div {
+  align-items: center;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues .cartItemClick {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues .cartItemClick img {
+  height: 2.5em;
+  width: 2.5em;
+  padding: 1px;
+  border-radius: 50%;
+  border: 0.25px solid black;
+}
+
+.cartIem .itemValuesAndCRUDs .itemValues .cartItemClick span {
+  height: 30%;
+  font-size: 0.75em;
+}
+
+.cartIem .itemValuesAndCRUDs .cartCRUDBtns {
+  height: 35%;
+}
+
+.cartIem .itemValuesAndCRUDs .lineB {
+  height: 2%;
+  width: 95%;
+  border: 2px dashed black ;
+}
+
+.cartIem .itemValuesAndCRUDs div button,
+.cartIem .itemValuesAndCRUDs div div {
+  width: 33%;
+  margin: 0 0.5em;
+  font-size: 1em;
+  border-radius: 5px;
+  color: black;
+}
+
+.cartFirstAttr, #totalL {
+  text-align: left;
+}
+
+.cartItemsHeader div, .cartIem div {
+ width: 20%;
+}
+
+#totalL{
+  width: 60%;
+}
+
+#total {
+  background-color: gray;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  width: 40%;
+}
+
+.line0 {
+  border: 2px solid wheat;
+  align-self: center;
+  width: 100%;
+}
+
+.lineA {
+  border: 1px dashed wheat;
+  align-self: center;
+  width: 100%;
+}
+
+.lineB {
+  border: 0.5px dashed gray;
+  align-self: center;
+  width: 100%;
+}
+
+.cartPhoneHeader {
+ display: none;
+}
+
+.cartCheckoutBtn button {
+  width: 40%;
+  font-size: 1.25em;
+  color: white;
+}
+
+.cartIem .addSubBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+}
+
+.addSubBtns button {
+  border-radius: 5px;
+}
+
+/* 
+checkout
+===============================================
+*/
+
+#checkoutItemTop, .checkoutItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  color: wheat;
+  width: 100%;
+  height: 3em;
+}
+
+#checkoutItemTop {
+  background-color: gray;
+  font-size: 1.5em;
+}
+
+.checkoutItem .checkoutItemName {
+  color: wheat;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+#checkoutItemTop div, .checkoutItem div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+}
+
+#totalC {
+  padding-left: 2em;
+}
+
+.total {
+  border: 1px dashed wheat;
+  padding: 0.25em;
+}
+
+.chkOutBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#chkOutBtn {
+  width: 40%;
+  height: 2.5em;
+  font-size: 1.5em;
+  color: white;
+}
+
+#back2Cart {
+  width: 10%;
+  height: 2.5em;
+  font-size: 1.5em;
+  color: black;
+}
+
+.chkOutBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chkPaymentCardTypes {
+  width: 50%;
+}
+
+.chkPaymentCardTypes i {
+  margin: 2px;
+  color: white;
+}
+
+.checkoutItem div img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 0.25em;
+}
+
+/* 
+==========================================
+*/
+
+.navBtns button {
+  width: 7em;
+  height: 2.75em;
+  text-align: center;
+  font-size: 1em;
+  background-color: rgba(65, 62, 62, 0.5);
+}
+
+.container-fluid ul {
+  width: 50%;
+}
+
+.messages, .toastBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  top: 10.5em;
+  width: 100%;
+  height:fit-content;
+  position: fixed;
+  z-index: 2;
+  padding: 1em;
+}
+
+.messages div {
+  background-color: rgba(63, 61, 61, 0.8);
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1em;
+  border-radius: 10px;
+  width: 90%;
+  height: fit-content;
+  margin-top: 1em;
+}
+
+#toastBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast {
+  border-radius: 10px;
+  background-color: rgba(63, 61, 61, 0.8);
+  color: wheat;
+  margin-left: 80%;
+  margin-bottom: 0.5em;
+  width: fit-content;
+  height: fit-content;
+}
+
+.toast-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  color: green;
+}
+
+/* 
+Payment
+=========================================
+*/
+
+.paymentContainer {
+  border-radius: 10px;
+  border: 2px dashed black;
+  background-color: rgb(125, 130, 130);
+  text-align: center;
+  padding: 1em;
+  max-width: 960px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.pay {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pay .w-100 {
+  width: 60%;
+  text-align: center;
+  background-color: gray;
+  border-radius: 10px;
+  font-size: 1.75em;
+}
+
+.pay .back2Cart {
+  width: 40%;
+  font-size: 1.5em;
+  margin-right: 1em;
+  border-radius: 10px;
+  height: 2.5em;
+}
+
+.form-check, .row {
+  text-align: left;
+  text-indent: 0.1em;
+}
+
+.col-md-7 {
+  border-right: 0.5px dashed gray;
+}
+
+.paymentContainer .cartTop {
+  background-color: gray;
+  border-radius: 10px;
+}
+
+/*                                
+ #######                                   
+ #        ####   ####  ##### ###### #####  
+ #       #    # #    #   #   #      #    # 
+ #####   #    # #    #   #   #####  #    # 
+ #       #    # #    #   #   #      #####  
+ #       #    # #    #   #   #      #   #  
+ #        ####   ####    #   ###### #    #    
+*/
+
+    
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  bottom: 0;
+}
+
+footer .footer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  height: fit-content;
+  padding-top: 0.5em;
+  z-index: 10;
+}
+
+footer .footer div {
+  font-size: 0.75em;
+}
+
+.shopnCartBBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.shopnCartBBtn img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 2px solid wheat;
+  box-shadow: 0 0 50px white;
+  margin: 2em;
+  z-index: 15;
+  cursor: pointer;
+}
+
+.shopnCartBBtn img:hover {
+  box-shadow: 0 0 50px aqua;
+  border: 2px solid black;
+}
+
+footer p {
+  align-self: center;
+}
+
+/*                      
+ #     #                 
+ ##   ##   ##   # #    # 
+ # # # #  #  #  # ##   # 
+ #  #  # #    # # # #  # 
+ #     # ###### # #  # # 
+ #     # #    # # #   ## 
+ #     # #    # # #    # 
+*/
+
+.container {
+  margin-top: 12em;
+  text-align: center;
+}
+
+.welcome {
+  text-align: center;
+  font-size: 3em;
+  color: wheat;
+}
+
+.homeImgs .welcome {
+  color: white;
+  border: 1px solid wheat;  
+  border-radius: 50px;
+  background-color: rgba(72, 71, 71, 0.75);
+  box-shadow: 0 0 50px rgb(64, 63, 63);
+  height: 2.5em;
+  padding: 0.5em 1em;
+  font-size: 1.5em;
+  margin: 0.2em;
+  z-index: 5;
+}
+
+.q2Logo {
+  width: 15em;
+  height: 15em;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.homeImgs .q2Logo {
+  box-shadow: 0 0 50px aqua;
+  padding: 0.5em;
+  border-radius: 50%;
+  height: 22em;
+  width: 22em;
+  position: absolute;
+  margin-right: 75% !important;
+}
+
+.homeImgs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(12, 12, 12);
+}
+
+div.motto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(246, 242, 242);
+  background-image: url('./pics/headerImg.png');
+  background-size: cover;
+  border: 3px solid aqua ;
+  border-radius: 10px;
+  height:min-content;
+  width: 90%;
+  padding: 0.5em 1em;
+  margin-left: 10em;
+  color: azure;
+}
+
+.homeImgs div.bg-light {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 7em 0;
+  padding: 0.75em 1em;
+  border: 2px dashed black;
+
+}
+
+.itemCardSlide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  border-top: 2px dashed wheat;
+}
+
+.itemCardSlide i {
+  color: wheat;
+  -webkit-text-stroke: 2px black; /* width and color */
+  width: 10%;
+  background-color: transparent;
+}
+.itemCardSlide i:hover, .sLeft:hover, .sRight:hover {
+  color: aquamarine;
+}
+
+/*
+Products
+===========================================================
+*/
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px dashed black;
+  background-color: bisque;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.gameHeader {
+  justify-content: flex-start;
+  align-items: center;
+  background-color: gray;
+  border-radius: 5px;
+  padding: 0.25em;
+  width: 100%;
+  margin: 0.5em;
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.gameBgPic img {
+  margin: 0.5em;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 20em;
+  height: 20em;
+}
+
+.gameDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.gameDetails div {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25em;
+  font-size: 1em;
+}
+
+.gameDetails .gDetailsKeys {
+  width: 35%;
+}
+.gameDetails .gDetailsValues {
+  width: 65%;
+}
+
+.gDetailsKeys span {
+  text-align: right;
+}
+.gDetailsValues span {
+  text-align: left;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+}
+
+.games {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin: 2em 0;
+}
+
+.games .game {
+  margin: 1em;
+}
+
+
+
+
+
+/*
+  #####                       
+ #     # #    #  ####  #####  
+ #       #    # #    # #    # 
+  #####  ###### #    # #    # 
+       # #    # #    # #####  
+ #     # #    # #    # #      
+  #####  #    #  ####  #       
+*/ 
+
+.item {
+  border: 0.25em dashed grey;
+  border-radius: 10px;
+  color: black;
+  font-size: 0.45em;
+  background-color: bisque;
+  padding: 0.25em 1em;
+  width: fit-content;
+  height: fit-content;
+  margin: 2em;
+}
+
+#dialogBox .item  {
+  box-shadow: 0 0 50px aqua;
+  color: green;
+  width: fit-content;
+  height: fit-content;
+}
+
+.gold .H, .silver .H, .premium .H {
+  margin: 1em 0;
+}
+
+.H .H {
+  margin: 0 0.5em;
+}
+
+.itemCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+}
+
+.itemCards img {
+  width: 19.5em;
+  height: 19.5em;
+  border-radius: 10px;
+  border: 2px solid wheat;
+  margin: 1em;
+}
+
+.itemPic img {
+  width: 28em;
+  height: 28em;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 0.5em;
+}
+
+.itemValuesAndCRUDs:hover, .item:hover {
+  box-shadow: 0 0 50px aqua;
+}
+
+.item, .item .V2, .item .V5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.item .V1, .item .V3, .item .V6, .V1 div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.V1 div {
+  width: 20%;
+  padding-right: 2em;
+  justify-items: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.item .V6 {
+  width: 90%;
+  align-self: center;
+}
+
+.V6 button {
+  font-size: 1.2em;
+  margin: 1em;
+  border-radius: 7.5px;
+  background-color: rgb(228, 254, 245);
+  color: black;
+  border: 2px solid grey;
+  height: 4em;
+}
+
+.V6 button:hover {
+  border: 2px solid green;
+}
+
+.shop {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+}
+
+.shop span {
+  color: wheat;
+  font-size: 3em;
+}
+
+.gold, .silver, .premium {
+  display: flex;
+  flex-direction: column;
+}
+
+.H {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.H .item {
+  margin: 1em;
+}
+
+.item div span {
+  font-size: 2em;
+  color: gray;
+}
+
+.sLeft, .sRight {
+  margin: 0.1em;
+  color: wheat;
+  -webkit-text-stroke: 2px black; /* width and color */
+}
+
+
+                                          
+/*
+    #                                 #     #        
+   # #   #####   ####  #    # #####   #     #  ####  
+  #   #  #    # #    # #    #   #     #     # #      
+ #     # #####  #    # #    #   #     #     #  ####  
+ ####### #    # #    # #    #   #     #     #      # 
+ #     # #    # #    # #    #   #     #     # #    # 
+ #     # #####   ####   ####    #      #####   ####  
+*/
+
+.homeBox .aboutUs {
+  display: flex;
+  flex-direction: column;
+  color: wheat;
+  text-align: justify;
+  font-size: 2em;
+  padding: 0 3em;
+}
+
+.aboutUs .aboutUsImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.aboutUs .aboutUsImg img {
+  margin: 1em;
+}
+
+/* 
+  #####                                            #     #        
+ #     #  ####  #    # #####   ##    ####  #####   #     #  ####  
+ #       #    # ##   #   #    #  #  #    #   #     #     # #      
+ #       #    # # #  #   #   #    # #        #     #     #  ####  
+ #       #    # #  # #   #   ###### #        #     #     #      # 
+ #     # #    # #   ##   #   #    # #    #   #     #     # #    # 
+  #####   ####  #    #   #   #    #  ####    #      #####   ####  
+*/
+
+.contactUs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contactUs span, .info div {
+  color: wheat;
+  font-size: 3em;
+  padding: 1em;
+  align-self: center;
+}
+
+.info {
+  width: 70%;
+  align-self: center;
+  color: wheat;
+}
+
+.info #footerInfoText {
+  text-align: justify;
+  color: aqua;
+  font-size: 1em;
+}
+
+.info p, .info div {
+  font-size: 1.5em;
+}
+
+.info div {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+}
+
+.info div div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 0.25px;
+  width: 0.25px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.info div div:hover {
+  border-color: aqua;
+}
+
+/* 
+MODALS
+======================================================
+*/
+
+#dialogBox .homeSlidesLR {
+  width: 16em;
+  height: 16em;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+.dialogBoxBR {
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgb(0, 255, 255);
+  width: 10em;
+  position: fixed;
+}
+
+.dialogBoxBR .ui-dialog-titlebar-close {
+  display: none;
+}
+
+#dialogBox {
+  border-radius: 10px;  
+}
+
+/* 
+MEDIA QUERIES to make the design responsive
+======================================================
+*/
+
+@media only screen and (max-width: 760px) {
+  html body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+    height: inherit;
+  }
+
+  body #header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: initial;
+  }
+
+  body #container {
+    margin-top: 0.5em;
+  }
+
+  .signAndLogo .q2Logo {
+    margin-top: 1em;
+  }
+
+  .signAndLogo {
+    width: 100%;
+    position: relative;
+  }
+
+  .signAndLogo .homeRose {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+    display: inline;
+  }
+
+  .container-fluid .navBtns {
+    flex-direction: row;
+  }
+
+  .signBtns {
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-top: 0.5em;
+  }
+ 
+  header .signAndLogo, 
+  header .signAndLogo, 
+  .nav nav, .nav nav div, .nav {
+    flex-direction: column;
+    height: initial;
+    width: 100%;
+  }
+
+  header .signAndLogo .signBtns, 
+  .container-fluid .navBtns, .nav nav div {
+    align-items: center;
+    z-index: 1;
+    width: initial;
+  }
+
+  header .signAndLogo .signBtns button {
+    margin: 0.15em;
+  }
+
+  .nav nav div ul button {
+    text-align: center;
+    font-size: 0.85em;
+    margin: 0.25em;
+  }
+
+  .nav nav, .gothicLine {
+    width: 100%;
+  }
+
+  #aboutUs, #contactUs {
+    display: none;
+  }
+
+  body .container .aboutUs {
+    margin-left: initial;
+    width: 100%;
+  }
+
+  .messages {
+    margin-top: 14em;
+    z-index: 50;
+  }
+
+  footer .footer, 
+  .container .itemCardSlide, 
+  .itemCardSlide .itemCards,
+  body .container .aboutUs .aboutUsImg, .H {
+    flex-direction: column;
+    align-items: center;
+  }
+  .aboutUsImg img {
+    width: 10em;
+    height: 10em;
+  }
+  .aboutUs img {
+    width: 10em;
+  }
+  .aboutUs .aboutUsImg span, .aboutUs span {
+    font-size: 0.6em;
+    width: 15em;
+  }
+ 
+  .aboutUs, .aboutUsImg {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info {
+    font-size: 0.5em;
+    width: 90%;
+  }
+  
+  footer .footer {
+    height: initial;
+  }
+  
+  /* shopping cart */
+
+  .shoppingCart {
+    width: 100%;
+    padding: initial;
+  }
+
+  .cartItemsHeader {
+    display: none;
+  }
+
+  .cartPhoneHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: wheat;
+    background-color: gray;
+    border-radius: 5px;
+    width: 100%;
+    height: 5em;
+    padding-left: 0.25em;
+  }
+
+  .cartPhoneHeader div {
+    width: 33%;
+  }
+
+  .cartIem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75em;
+    width: 100%;
+    border: 1px dashed wheat;
+    align-self: center;
+    margin: 0.1em 0;
+    padding: 0.25em;
+  }
+
+  .cartIem .addSubBtns {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 1em;
+  }
+
+  .cartIem .itemValuesAndCRUDs {
+    padding: 0;
+    width: 100%;
+  }
+  .cartIem .itemValuesAndCRUDs .cartCRUDBtns button,
+  .cartCheckoutBtn .checkoutCRUDs button {
+    width: 33%;
+  }
+
+  .cartIem div {
+    padding: 2px;
+    width: 100%;
+  }
+
+  .cartCheckoutBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cartCheckoutBtn .checkoutCRUDs {
+    width: 100%;
+  }
+
+  .cartCheckoutBtn button {
+    width: 97.5%;
+    font-weight: 1em;
+    height: 25%;
+    margin: 1em 0;
+  }
+
+  .checkoutCRUDs button {
+    height: inherit;
+  }
+
+  #checkoutItemTop  {
+    font-size: 1em;
+  }
+
+  #chkOutBtn {
+    font-size: 1em;
+    height: 3.5em;
+  }
+
+  #back2Cart {
+    display: none;
+  }
+
+  .checkoutItem .checkoutItemName {
+    flex-direction: column ;
+  }
+
+  .checkoutItemName span {
+    font-size: 0.75em;
+    color: wheat;
+  }
+
+  /* bootstrap toast */
+  .toast {
+    margin-left: inherit;
+    margin-bottom: 0.1em;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  #mod {
+    display: none !important;
+  }
+
+  .homeImgs div.bg-light {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.45em;
+    height: 17.5em;
+  }
+
+  div.motto {
+    flex-direction: column;
+    width: fit-content;
+    margin-left: 12em;
+    font-size: 0.9em;
+  }
+
+  .homeImgs .welcome {
+    margin: 0.75em;
+  }
+
+  .homeImgs .q2Logo {
+    z-index: 1;
+    height: 25em;
+    width: 25em;
+  }
+
+}
+

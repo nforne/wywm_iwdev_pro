@@ -1,6 +1,6 @@
 export const navHeader = `
 
-<div class=" container-fluid">
+<div class="signAndLogo container-fluid">
   <img id="logo" class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
   <img class="homeRose" src="./pics/headerImg.png" alt="headerImg" srcset="./pics/headerImg.png">
   <div class="signBtns">

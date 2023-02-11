@@ -1519,5 +1519,35 @@ MEDIA QUERIES to make the design responsive
     width: 100%;
   }
 
+  .cartItemsHeader {
+    font-size: 0.75em;
+  }
+
+  .checkoutCRUDs button {
+    font-size: 0.85em;
+  }
+
+  #cartChkOutBtn {
+    font-size: 1em;
+  }
+
+  .cartCRUDBtns, .checkoutItem {
+    width: 75%;
+  }
+
+  .cartCRUDBtns button {
+    font-size: 0.65em;
+    width: 33%;
+  }
+
+  .cartItemsBox .checkoutItem {
+    font-size: 0.95em !important;
+  }
+
+  .chkOutBtn button {
+    font-size: 0.8em !important;
+    height: fit-content !important;
+  }
+
 }
 

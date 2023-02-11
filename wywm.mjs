@@ -386,8 +386,6 @@ $(window).ready(() => {
 
               // firebase realtime data persistence
               // pages.dbRWFirebase(transactionData, false);
-              
-              // two additional media querries
                             
               // email notification
               if (transactionData.email) {
@@ -397,7 +395,7 @@ $(window).ready(() => {
                 for (let item in order) {  
                   delete order[item]['img'];
                 }
-                const emailBody = {...transactionData}
+                const emailBody = {...transactionData};
                 emailBody['purchase'] = order;
 
                 const emailData = {
@@ -417,20 +415,32 @@ $(window).ready(() => {
                 // Success flash notification toast
                 bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
               } else {
-                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 5000);
+                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 20000);
+                checks['delay'] += 1
               }
               
-              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 5000);
+              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 10000);
               
               // clear cart
-              pages.dbRW.dbDelete();
-              $('#cartCount').html(0).css('visibility', 'hidden');
+              const resetCart = () => {
+                pages.dbRW.dbDelete();
+                $('#cartCount').html(0).css('visibility', 'hidden');
+              }
 
               // return home
-              $('#paymentBack2Cart').trigger('click');
-              setTimeout(() => {
-                $("#home").trigger("click");
-              }, 10000)
+              if (checks['delay'] === 0) {
+                resetCart();
+                $('#paymentBack2Cart').trigger('click');
+                setTimeout(() => {
+                  $("#home").trigger("click");
+                }, 5000)
+              } else {
+                $('#paymentBack2Cart').trigger('click');
+                checks['delay'] = 0;
+                setTimeout(() => {
+                  resetCart();
+                }, 10000)
+              }
 
             };           
               
@@ -461,6 +471,4 @@ $(window).ready(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   })
 
-})
-
-
+});

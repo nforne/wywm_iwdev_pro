@@ -6,7 +6,7 @@ export const home = `
 
   <div class="homeImgs">
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
-    <div class='bg-light'>
+    <div class='bg-light homeFront'>
       <img class="q2Logo" src="./pics/shoppingCart.jpg" alt="q2Logo" srcset="./pics/shoppingCart.jpg">
       <div class="motto">
         <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>

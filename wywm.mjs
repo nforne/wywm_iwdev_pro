@@ -10,7 +10,6 @@ const print = (...args) => { //----------------------------------------------dev
 // pages.dbRW.dbDelete(false); // db flush history
 // -----------------------------------------------------------------------------------
 
-
 $(window).ready(() => {
 
   const q2ShopSetTimeOuts = {}; // for short burst events like auto redirects
@@ -436,6 +435,24 @@ $(window).ready(() => {
   
   })
  
+  // products page
+  $('#productsBtn, #productsF').on('click', async () => {
+    const structure = await pages.getProducts()
+    $('#container').html(structure);
+
+    $('.game').each((i, game) => {
+      $(`#${game.id}`).on('dblclick', () => {
+        const dialog = `
+          <dialog id="dialogBox" class="dialogBox"> 
+            ${$(`#${game.id}`).html()};
+          </dialog> `
+      $('#dialog').html(dialog); 
+      dialogFn(game.id);
+
+      })
+    })
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
 
 })
 

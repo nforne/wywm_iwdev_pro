@@ -17,11 +17,11 @@ export const navFooter = `
     </div>
     <hr>
     <div>
+    <a href="#"> <p id="productsF">PRODUCTS</p></a>
       <a href="#"> <p>DEVELOPERS</p></a>
       <a href="#"> <p>CAREERS</p></a>
       <a href="#"> <p>DOCUMENTATION</p></a>
-      <a href="#"> <p>TERMS OF USE</p></a>
-      <a href="#"> <p>SECURITY</p></a>
+      <a href="#"> <p>TERMS OF USE AND SECURITY</p></a>
     </div>
     <hr>
     <div>

@@ -235,16 +235,42 @@ const payFormValidationListeners = () => {
 }
 
 const payFormValidationRegex = (formData) => {
-  let outPut = {faultyInput : 'wrongInputLabel', message: 'direction to correct errror'};
+  let outPut = {};
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; 
+  if (!formData.email.match(emailRegex) ) outPut['email'] = 'Please enter a velid email. e.g. janedoe@exmaple.com'
 
-  if (1 /* regex check*/) outPut['email'] = 'Please enter a velid email. e.g. janedoe@exmaple.com'
-  if (1 /* regex check*/) outPut['cc\-number'] = 'Please enter a velid card number. e.g. 4242 4242 4242 4242. It must be 16-digits'
-  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
-  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
-  if (1 /* regex check*/) outPut['email'] = 'please enter a velid email. e.g. janedoe@exmaple.com'
+  const ValidateCreditCardNumber = (ccNum) => {
 
+    const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    const mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+    const amexpRegEx = /^(?:3[47][0-9]{13})$/;
+    const discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+    let isValid = false;
+  
+    if (visaRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(mastercardRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(amexpRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(discovRegEx.test(ccNum)) {
+      isValid = true;
+    }
+  
+    if(isValid) {
+       return
+    } else {
+      outPut['cc\-number'] = 'Please enter a velid card number. e.g. 4242 4242 4242 4242. It must be 16-digits'
+    }
+  }
 
+  ValidateCreditCardNumber(Number(formData['cc\-number'].replaceAll(' ', '')));
+  
+  // const mCard = /^(?:5[1-5][0-9]{14})$/;
+  // const vCard = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  // if (!formData['cc\-number'].match(mCard) && !formData['cc\-number'].match(vCard)) outPut['cc\-number'] = 'Please enter a velid card number. e.g. 4242 4242 4242 4242. It must be 16-digits'
+  
   return outPut;
 }
 
-export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners };
+export const paymentFns = {payment, paymentInputListeners, payFormValidationListeners, payFormValidationRegex };

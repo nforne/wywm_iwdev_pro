@@ -24,8 +24,8 @@ Contact Us
 */
 
 body {
-  background-color: rgb(12, 12, 12);
   /* background-color: rgb(32, 40, 42); */
+  background-color: rgb(12, 12, 12);
   background-image: url('./pics/Q2bgt.png');
   font-family: 'Ubuntu', sans-serif;
   color: rgb(86, 83, 83);
@@ -84,7 +84,7 @@ button:hover {
   width: 11em;
   height: 11em;
   z-index: 50;
-  margin-top: 7em;
+  margin-top: 8.5em;
   box-shadow: 0 0 50px rgba(3, 247, 247, 0.3);
 }
 
@@ -97,7 +97,7 @@ button:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 40%;
   flex-wrap: wrap;
   z-index: 10;
 }
@@ -738,7 +738,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(12, 12, 12);
+  background-color: inherit;
 }
 
 div.motto {
@@ -764,10 +764,9 @@ div.motto {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 7em 0;
+  margin: 1em 0;
   padding: 0.75em 1em;
   border: 2px dashed black;
-
 }
 
 .itemCardSlide {
@@ -788,95 +787,6 @@ div.motto {
 .itemCardSlide i:hover, .sLeft:hover, .sRight:hover {
   color: aquamarine;
 }
-
-/*
-Products
-===========================================================
-*/
-
-.game {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px dashed black;
-  background-color: bisque;
-  border-radius: 10px;
-  padding: 1em;
-}
-
-.gameHeader {
-  justify-content: flex-start;
-  align-items: center;
-  background-color: gray;
-  border-radius: 5px;
-  padding: 0.25em;
-  width: 100%;
-  margin: 0.5em;
-  text-align: left;
-  font-size: 1.5em;
-}
-
-.gameBgPic img {
-  margin: 0.5em;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 20em;
-  height: 20em;
-}
-
-.gameDetails {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.gameDetails div {
-  display: flex;
-  flex-direction: column;
-  padding: 0.25em;
-  font-size: 1em;
-}
-
-.gameDetails .gDetailsKeys {
-  width: 35%;
-}
-.gameDetails .gDetailsValues {
-  width: 65%;
-}
-
-.gDetailsKeys span {
-  text-align: right;
-}
-.gDetailsValues span {
-  text-align: left;
-}
-
-.products {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: fit-content;
-}
-
-.games {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10px;
-  margin: 2em 0;
-}
-
-.games .game {
-  margin: 1em;
-}
-
-
-
 
 
 /*
@@ -1194,16 +1104,9 @@ MEDIA QUERIES to make the design responsive
   .container-fluid .navBtns {
     flex-direction: row;
   }
-
-  .signBtns {
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   margin-top: 0.5em;
-  }
  
   header .signAndLogo, 
-  header .signAndLogo, 
+  header .signAndLogo .signBtns, 
   .nav nav, .nav nav div, .nav {
     flex-direction: column;
     height: initial;

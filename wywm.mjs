@@ -1,6 +1,6 @@
 const pages = {...await import('./pages/index.js')}.pages;
 const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
-const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
+const { payment, paymentInputListeners, payFormValidationListeners, payFormValidationRegex } = pages.paymentFns;
 
 // -----------------------------------------------------------------------------------
 const print = (...args) => { //----------------------------------------------dev-t00ls
@@ -361,6 +361,18 @@ $(window).ready(() => {
               
               const checks = { delay: 0 };
 
+              // payform validaition regex 
+              const formValidation = payFormValidationRegex(transactionData)
+              if (Object.keys(formValidation).length > 0) {
+                e.preventDefault();
+                const msges = [];
+                for (let msg of Object.values(formValidation)) {
+                  msges.push(msg);
+                }
+                message(msges, 'red', 5000);
+                return 
+              }
+
               // redact cc-number cc-cvv
               transactionData['cc\-cvv'] = '**' + transactionData['cc\-cvv'].slice(2);
               transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
@@ -374,8 +386,7 @@ $(window).ready(() => {
 
               // firebase realtime data persistence
               // pages.dbRWFirebase(transactionData, false);
-
-              // payform validaition regex 
+              
               // two additional media querries
                             
               // email notification
@@ -442,13 +453,9 @@ $(window).ready(() => {
 
     $('.game').each((i, game) => {
       $(`#${game.id}`).on('dblclick', () => {
-        const dialog = `
-          <dialog id="dialogBox" class="dialogBox"> 
-            ${$(`#${game.id}`).html()};
-          </dialog> `
-      $('#dialog').html(dialog); 
-      dialogFn(game.id);
-
+        const dialog = `<dialog id="dialogBox" class="dialogBox"> ${$(`#${game.id}`).html()} </dialog> `
+        $('#dialog').html(dialog); 
+        dialogFn(game.id);
       })
     })
     window.scrollTo({ top: 0, behavior: 'smooth' });

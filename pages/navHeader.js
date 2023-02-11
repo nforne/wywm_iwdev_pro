@@ -1,6 +1,6 @@
 export const navHeader = `
 
-<div class="signAndLogo container-fluid">
+<div class=" container-fluid">
   <img id="logo" class="q2Logo" src="./pics/Q2.png" alt="q2Logo" srcset="./pics/Q2.png">
   <img class="homeRose" src="./pics/headerImg.png" alt="headerImg" srcset="./pics/headerImg.png">
   <div class="signBtns">
@@ -17,7 +17,7 @@ export const navHeader = `
 
 <div class="nav">
   <nav class="navbar  navbar-dark">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         
         <ul class="navbar-nav navBtns">
             
@@ -45,9 +45,9 @@ export const navHeader = `
         </form>
       
     </div>
-    </nav>
+  </nav>
     
-  </div>
-  <hr id="line1" class="line1"></hr> 
+</div>
+<hr id="line1" class="line1"></hr> 
 
 `

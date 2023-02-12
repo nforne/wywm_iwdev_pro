@@ -59,6 +59,7 @@ const randomDMessage = (item, msgs=[], chances) => {
 }
 
 // bootstrap modal: toast notification
+let toastTTL = '';
 const bsToast = (title, timeStarted, msg, ttl=5000) => {
   const time = new Date();
   $('#toastBox').append(

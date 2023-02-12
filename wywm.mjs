@@ -404,8 +404,7 @@ $(window).ready(() => {
                   pages.dbRW.emailRate(1);
                 } else {
                   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
-                }
-                
+                } 
                 // Success flash notification toast
                 bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
               } else {
@@ -413,7 +412,7 @@ $(window).ready(() => {
                 checks['delay'] += 1
               }
               
-              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 10000);
+              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝, Come back soon!', 10000);
               
               // clear cart
               const resetCart = () => {

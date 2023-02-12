@@ -6,6 +6,7 @@ export const navHeader = `
   <div class="signBtns">
     <button><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i> | LogIn</button>
     <button><i class="fa fa-address-book-o fa-1x" aria-hidden="true"></i> | SignUp</button>
+    <button id="productsBtn"><i class="fa fa-check-square-o fa-1x" aria-hidden="true"></i> | Products</button>
     <button id="aboutUs"><i class="fa fa-id-badge fa-1x" aria-hidden="true"></i> | About Us</button>
     <button id="contactUs"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> | Contact Us</button>
     <button id="admin"><i class="fa fa-user-o fa-1x" aria-hidden="true"></i> | Admin </button>
@@ -16,7 +17,7 @@ export const navHeader = `
 
 <div class="nav">
   <nav class="navbar  navbar-dark">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         
         <ul class="navbar-nav navBtns">
             
@@ -44,9 +45,9 @@ export const navHeader = `
         </form>
       
     </div>
-    </nav>
+  </nav>
     
-  </div>
-  <hr id="line1" class="line1"></hr> 
+</div>
+<hr id="line1" class="line1"></hr> 
 
 `

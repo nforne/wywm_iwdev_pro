@@ -1,7 +1,14 @@
 const pages = {...await import('./pages/index.js')}.pages;
 const { dialogFn, message, randomDMessage, bsToast} = pages.dialogsFns;
-const { payment, paymentInputListeners, payFormValidationListeners } = pages.paymentFns;
+const { payment, paymentInputListeners, payFormValidationListeners, payFormValidationRegex } = pages.paymentFns;
 
+// -----------------------------------------------------------------------------------
+const print = (...args) => { //----------------------------------------------dev-t00ls
+  console.log(...args);
+}
+// pages.dbRW.dbDelete(true); // db flush cart
+// pages.dbRW.dbDelete(false); // db flush history
+// -----------------------------------------------------------------------------------
 
 $(window).ready(() => {
 
@@ -48,7 +55,7 @@ $(window).ready(() => {
         slides += `<img id="pic${index}" class="homeSlidesLR" src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png"> `
         if (indexTracker.length === 4) slideTracker = indexTracker;
       }
-    } while (indexTracker.length <= 3);
+    } while (indexTracker.length <= 2); // determine the number of slides
     slideBox.innerHTML = slides; 
     
     // to setup modal view for home pics
@@ -68,14 +75,10 @@ $(window).ready(() => {
 
   }
   slideLR();
-
   
   // slide left and right event listener for home and aboutUs carousel
   const slideLRListener = () => {
     $('#slideL, #slideR').on('click', () => {
-      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-        message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
-      }
       slideLR();
     }) 
   }
@@ -354,9 +357,18 @@ $(window).ready(() => {
               
               const checks = { delay: 0 };
 
+              // payform validaition regex 
+              const formValidation = payFormValidationRegex(transactionData)
+              if (Object.keys(formValidation).length > 0) {
+                e.preventDefault();
+                e.stopPropagation();
+                message(Object.values(formValidation), 'red', 5000);
+                return 
+              }
+
               // redact cc-number cc-cvv
               transactionData['cc\-cvv'] = '**' + transactionData['cc\-cvv'].slice(2);
-              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ','').slice(12);
             
               // add cart data to transactionData and safe to database
               const dbData = pages.dbRW.dbRead(message, false); 
@@ -366,10 +378,7 @@ $(window).ready(() => {
               pages.dbRW.dbWrite(dbData, message, false)
 
               // firebase realtime data persistence
-              // pages.dbRWFirebase(transactionData, false);
-
-              // payform validaition regex 
-              // two additional media querries
+              pages.dbRWFirebase(transactionData, false);
                             
               // email notification
               if (transactionData.email) {
@@ -379,40 +388,52 @@ $(window).ready(() => {
                 for (let item in order) {  
                   delete order[item]['img'];
                 }
-                const emailBody = {...transactionData}
+                const emailBody = {...transactionData};
                 emailBody['purchase'] = order;
 
                 const emailData = {
+                  user: emailBody.userID,
                   email : emailBody.email,
                   subject : `${emailBody.id}:   Q2-Shop! | Receipt`,
                   body :  JSON.stringify(emailBody), 
                   attachments: []
                 }
 
-                // if (pages.dbRW.emailRate()) {
-                //   pages.emailsjs(emailData);
-                //   pages.dbRW.emailRate(1);
-                // } else {
-                //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
-                // }
-                
+                if (pages.dbRW.emailRate()) {
+                  pages.emailsjs(emailData);
+                  pages.dbRW.emailRate(1);
+                } else {
+                  message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                } 
                 // Success flash notification toast
                 bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);
               } else {
-                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 5000);
+                bsToast('Suggestion!', new Date().getTime(), 'You should consider adding an email for receipts. Print and or save this receipt page before leaving', 20000);
+                checks['delay'] += 1
               }
               
-              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝',  'Come back soon!', 5000);
+              bsToast('SignOff!', new Date().getTime(), 'Successfully done!. Thank you for your buisness! 📝, Come back soon!', 10000);
               
               // clear cart
-              pages.dbRW.dbDelete();
-              $('#cartCount').html(0).css('visibility', 'hidden');
+              const resetCart = () => {
+                pages.dbRW.dbDelete();
+                $('#cartCount').html(0).css('visibility', 'hidden');
+              }
 
               // return home
-              $('#paymentBack2Cart').trigger('click');
-              setTimeout(() => {
-                $("#home").trigger("click");
-              }, 10000)
+              if (checks['delay'] === 0) {
+                resetCart();
+                $('#paymentBack2Cart').trigger('click');
+                setTimeout(() => {
+                  $("#home").trigger("click");
+                }, 5000)
+              } else {
+                $('#paymentBack2Cart').trigger('click');
+                checks['delay'] = 0;
+                setTimeout(() => {
+                  resetCart();
+                }, 10000)
+              }
 
             };           
               
@@ -428,7 +449,19 @@ $(window).ready(() => {
   
   })
  
+  // products page
+  $('#productsBtn, #productsF').on('click', async () => {
+    const structure = await pages.getProducts()
+    $('#container').html(structure);
 
-})
+    $('.game').each((i, game) => {
+      $(`#${game.id}`).on('dblclick', () => {
+        const dialog = `<dialog id="dialogBox" class="dialogBox"> ${$(`#${game.id}`).html()} </dialog> `
+        $('#dialog').html(dialog); 
+        dialogFn(game.id);
+      })
+    })
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
 
-
+});

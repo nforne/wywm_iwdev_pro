@@ -7,6 +7,5 @@ const firebaseConfig = {
   projectId: "Use Your projectId Here",
   storageBucket: "Use Your storageBucket Here",
   messagingSenderId: "Use Your messagingSenderId Here",
-  databaseURL : 'https:// "YOUR DB URL HERE" .firebaseio.com',
   appId: "Use Your appId Here"
 };

@@ -6,11 +6,11 @@ export const home = `
 
   <div class="homeImgs">
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
-    <div class='bg-light'>
+    <div class='bg-light homeFront'>
       <img class="q2Logo" src="./pics/shoppingCart.jpg" alt="q2Logo" srcset="./pics/shoppingCart.jpg">
       <div class="motto">
         <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>
-        <span class="welcome">&nbsp; 🛒 | &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; | 🚚&nbsp;</span>
+        <span class="welcome">&nbsp; 🛒 &nbsp;[ &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; ] &nbsp; 🚚</span>
       </div>
     </div>
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
@@ -26,7 +26,7 @@ export const home = `
 
 <hr class="line3">
 
-<div class="itemCardSlide bg-dark">
+<div class="itemCardSlide">
   <i id='slideL' class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
   <div id="itemCards" class="itemCards">
     <!-- make a slide show of available item pictures -->

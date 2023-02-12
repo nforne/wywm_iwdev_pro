@@ -1,4 +1,4 @@
-import { pk } from './env.js';
+// import { pk } from './env.js'; // -----------------uncomment as needed
 
 export const emailsjs = (info) => {
   
@@ -9,9 +9,9 @@ export const emailsjs = (info) => {
     Body: info.body,
   }
 
-  // https://dashboard.emailjs.com/admin/account
-  emailjs.init(pk);   
-  emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
+  // // https://dashboard.emailjs.com/admin/account  // -----------------uncomment as needed
+  // emailjs.init(pk);                        
+  // emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
 
 }
 

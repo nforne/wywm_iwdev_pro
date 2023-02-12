@@ -1052,6 +1052,7 @@ Products
   text-align: justify;
   font-size: 2em;
   padding: 0 3em;
+  background-color: rgba(12, 12, 12, 0.75);
 }
 
 .aboutUs .aboutUsImg {
@@ -1078,6 +1079,7 @@ Products
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: rgba(12, 12, 12, 0.75);
 }
 
 .contactUs span, .info div {

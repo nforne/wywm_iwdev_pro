@@ -224,8 +224,8 @@ const payFormValidationListeners = () => {
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
           if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
           }
           form.classList.add('was-validated')
         }, false)
@@ -235,7 +235,7 @@ const payFormValidationListeners = () => {
 }
 
 const payFormValidationRegex = (formData) => {
-  let outPut = {};
+  const outPut = {};
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; 
   if (!formData.email.match(emailRegex) ) outPut['email'] = 'Please enter a velid email. e.g. janedoe@exmaple.com'
 
@@ -264,7 +264,7 @@ const payFormValidationRegex = (formData) => {
     }
   }
 
-  ValidateCreditCardNumber(Number(formData['cc\-number'].replaceAll(' ', '')));
+  ValidateCreditCardNumber(Number(formData['cc\-number'].replaceAll(' ','')));
   
   // const mCard = /^(?:5[1-5][0-9]{14})$/;
   // const vCard = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;

@@ -55,7 +55,7 @@ $(window).ready(() => {
         slides += `<img id="pic${index}" class="homeSlidesLR" src="./pics/items/pic${index}.png" alt="pic${index}" srcset="./pics/items/pic${index}.png"> `
         if (indexTracker.length === 4) slideTracker = indexTracker;
       }
-    } while (indexTracker.length <= 3);
+    } while (indexTracker.length <= 2); // determine the number of slides
     slideBox.innerHTML = slides; 
     
     // to setup modal view for home pics
@@ -75,14 +75,10 @@ $(window).ready(() => {
 
   }
   slideLR();
-
   
   // slide left and right event listener for home and aboutUs carousel
   const slideLRListener = () => {
     $('#slideL, #slideR').on('click', () => {
-      if (Object.keys(pages.dbRW.dbRead(message)).length === 0) {
-        message(['Click on "SHOP" above to choose and add items to your shopping cart!'])
-      }
       slideLR();
     }) 
   }
@@ -365,17 +361,14 @@ $(window).ready(() => {
               const formValidation = payFormValidationRegex(transactionData)
               if (Object.keys(formValidation).length > 0) {
                 e.preventDefault();
-                const msges = [];
-                for (let msg of Object.values(formValidation)) {
-                  msges.push(msg);
-                }
-                message(msges, 'red', 5000);
+                e.stopPropagation();
+                message(Object.values(formValidation), 'red', 5000);
                 return 
               }
 
               // redact cc-number cc-cvv
               transactionData['cc\-cvv'] = '**' + transactionData['cc\-cvv'].slice(2);
-              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ', '').slice(12);
+              transactionData['cc\-number'] = '************' + transactionData['cc\-number'].replaceAll(' ','').slice(12);
             
               // add cart data to transactionData and safe to database
               const dbData = pages.dbRW.dbRead(message, false); 
@@ -385,7 +378,7 @@ $(window).ready(() => {
               pages.dbRW.dbWrite(dbData, message, false)
 
               // firebase realtime data persistence
-              // pages.dbRWFirebase(transactionData, false);
+              pages.dbRWFirebase(transactionData, false);
                             
               // email notification
               if (transactionData.email) {
@@ -399,18 +392,19 @@ $(window).ready(() => {
                 emailBody['purchase'] = order;
 
                 const emailData = {
+                  user: emailBody.userID,
                   email : emailBody.email,
                   subject : `${emailBody.id}:   Q2-Shop! | Receipt`,
                   body :  JSON.stringify(emailBody), 
                   attachments: []
                 }
 
-                // if (pages.dbRW.emailRate()) {
-                //   pages.emailsjs(emailData);
-                //   pages.dbRW.emailRate(1);
-                // } else {
-                //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
-                // }
+                if (pages.dbRW.emailRate()) {
+                  pages.emailsjs(emailData);
+                  pages.dbRW.emailRate(1);
+                } else {
+                  message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                }
                 
                 // Success flash notification toast
                 bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);

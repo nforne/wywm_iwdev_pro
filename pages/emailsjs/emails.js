@@ -3,9 +3,10 @@ import { pk } from './env.js';
 export const emailsjs = (info) => {
   
   const emailjsBody = {
+    user: info.user,
     To: info.email,
     Subject: info.subject,
-    Body: info.body
+    Body: info.body,
   }
 
   // https://dashboard.emailjs.com/admin/account

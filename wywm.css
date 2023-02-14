@@ -730,8 +730,6 @@ footer p {
   border-radius: 50%;
   height: 22em;
   width: 22em;
-  position: absolute;
-  margin-right: 75% !important;
 }
 
 .homeImgs {
@@ -740,23 +738,33 @@ footer p {
   justify-content: center;
   align-items: center;
   background-color: rgb(12, 12, 12);
+  height: fit-content;
 }
 
-div.motto {
+.q2Calls {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  margin: 2em 0;
+}
+
+.q2Calls div {
+  display: flex;
   flex-direction: column;
-  background-color: rgb(246, 242, 242);
+  justify-content: left;
+  align-items: center;
+  margin: 0.75em 0;
+  margin-left: 1.5em;
   background-image: url('./pics/headerImg.png');
   background-size: cover;
-  border: 3px solid aqua ;
   border-radius: 10px;
-  height:min-content;
-  width: 90%;
-  padding: 0.5em 1em;
-  margin-left: 10em;
-  color: azure;
+  padding: 1em;
+}
+
+.q2Calls .welcome {
+  margin: 0.25em;
+  box-shadow: 0 0 50px rgb(134, 134, 134);
 }
 
 .homeImgs div.bg-light {
@@ -864,6 +872,7 @@ Products
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: fit-content;
 }
 
 .games {
@@ -1427,6 +1436,20 @@ MEDIA QUERIES to make the design responsive
     width: 25em;
   }
 
+  .q2Calls {
+    flex-direction: column;
+  }
+
+  .q2Calls div {
+    font-size: 0.5em;
+    margin: 0;
+  }
+
+  .homeImgs .q2Logo {
+    height: 15em;
+    width: 15em;
+  }
+
 }
 
 @media only screen and (min-width:761px) and (max-width: 1300px) {
@@ -1548,6 +1571,10 @@ MEDIA QUERIES to make the design responsive
   .chkOutBtn button {
     font-size: 0.8em !important;
     height: fit-content !important;
+  }
+
+  .q2Calls {
+    flex-direction: column;
   }
 
 }

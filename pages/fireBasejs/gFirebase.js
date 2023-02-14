@@ -12,7 +12,7 @@ import { getDatabase, ref, set,  onValue} from "https://www.gstatic.com/firebase
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
-const app = initializeApp(process.env.GFB_ENV);
+const app = initializeApp(GFB_ENV);
 const analytics = getAnalytics(app);
 
 // Initialize Realtime Database and get a reference to the service

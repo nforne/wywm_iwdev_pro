@@ -1421,13 +1421,6 @@ MEDIA QUERIES to make the design responsive
     height: 17.5em;
   }
 
-  div.motto {
-    flex-direction: column;
-    width: fit-content;
-    margin-left: 12em;
-    font-size: 0.9em;
-  }
-
   .homeImgs .welcome {
     margin: 0.75em;
   }
@@ -1450,6 +1443,20 @@ MEDIA QUERIES to make the design responsive
   .homeImgs .q2Logo {
     height: 15em;
     width: 15em;
+  }
+
+  .products {
+    padding: auto;
+    align-items: center !important;
+  }
+
+  .products .games {
+    flex-direction: column;
+    margin: 0.25em;
+  }
+
+  .products .games .game {
+    width: fit-content;
   }
 
 }
@@ -1577,6 +1584,15 @@ MEDIA QUERIES to make the design responsive
 
   .q2Calls {
     flex-direction: column;
+  }
+
+  .products .games {
+    width: fit-content;
+  }
+
+  .products .games .game {
+    width: fit-content;
+    width: 45%;
   }
 
 }

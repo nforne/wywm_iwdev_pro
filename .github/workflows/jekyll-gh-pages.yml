@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Build with Jekyll
+      - name: Secrets with Jekyll
         env:
           EML_ENV: ${{ secrets.EML_ENV }}
           GFB_ENV: ${{ secrets.GFB_ENV }}        

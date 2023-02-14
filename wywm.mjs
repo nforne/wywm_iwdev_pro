@@ -369,8 +369,8 @@ $(window).ready(() => {
               // write dbData to db local
               pages.dbRW.dbWrite(dbData, message, false)
 
-              // // firebase realtime data persistence
-              // pages.dbRWFirebase(transactionData, false); // -----------------uncomment as needed
+              // firebase realtime data persistence
+              pages.dbRWFirebase(transactionData, false); // -----------------uncomment as needed
                             
               // email notification
               if (transactionData.email) {
@@ -391,12 +391,12 @@ $(window).ready(() => {
                   attachments: []
                 }
 
-                // if (pages.dbRW.emailRate()) { // -----------------uncomment as needed
-                //   pages.emailsjs(emailData);
-                //   pages.dbRW.emailRate(1);
-                // } else {
-                //   message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
-                // } 
+                if (pages.dbRW.emailRate()) { // -----------------uncomment as needed
+                  pages.emailsjs(emailData);
+                  pages.dbRW.emailRate(1);
+                } else {
+                  message(['Sorry, rate limit! You only get 10 chances in seven days for email receipts!']);
+                } 
                 
                 // Success flash notification toast
                 bsToast('Success!', new Date().getTime(), 'Your order has been successfully placed. Check your email for details!', 15000);

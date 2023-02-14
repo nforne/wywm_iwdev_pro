@@ -10,8 +10,9 @@ export const emailsjs = (info) => {
   }
 
   // // https://dashboard.emailjs.com/admin/account  // -----------------uncomment as needed
-  // emailjs.init(pk);                        
-  // emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
+  // emailjs.init(pk); 
+  emailjs.init(secrets.EML_ENV);                        
+  emailjs.send("q2ShopGmailjs-svc","q2ShopGmailjs-tmp", emailjsBody);
 
 }
 

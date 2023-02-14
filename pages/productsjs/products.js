@@ -7,20 +7,19 @@ import { gameProducts } from './games.js';
 
 export const getProducts = async () => {  // -----------------uncomment as needed
   const gamesDataList = [];
-  const pageNumber = Math.floor(Math.random() * 3) + 1;
+  // const pageNumber = Math.floor(Math.random() * 3) + 1;
   // const url = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&key=${apiKey}&page=${pageNumber}&platforms=18,1,7`;
-  const url = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&key=${GPR_ENV}&page=${pageNumber}&platforms=18,1,7`;
-  const response = await fetch(url);
-  const data = await response.json();
-  const products = data["results"];
-  for (let gameData of products) {
-    const { name, released, genres, background_image, updated } = gameData;
-    gamesDataList.push({
-      id:`game${products.indexOf(gameData)}`, 
-      name, released, genre: genres[0]['name'], 
-      background_image, updated
-    });
-  }
+  // const response = await fetch(url);
+  // const data = await response.json();
+  // const products = data["results"];
+  // for (let gameData of products) {
+  //   const { name, released, genres, background_image, updated } = gameData;
+  //   gamesDataList.push({
+  //     id:`game${products.indexOf(gameData)}`, 
+  //     name, released, genre: genres[0]['name'], 
+  //     background_image, updated
+  //   });
+  // }
   return gameProducts(gamesDataList);
 };
 

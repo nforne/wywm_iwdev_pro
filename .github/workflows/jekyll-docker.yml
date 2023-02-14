@@ -19,7 +19,7 @@ jobs:
         GFB_ENV: ${{ secrets.GFB_ENV }}        
         GPR_ENV: ${{ secrets.GPR_ENV }}
       run: |
-        docker run -u 0\
+        docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
         sudo find . -type f -name "*.js" -exec sed -i 's/EML_ENV/${{ secrets.EML_ENV }}/g' {} + 

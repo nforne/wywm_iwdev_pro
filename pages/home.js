@@ -6,13 +6,23 @@ export const home = `
 
   <div class="homeImgs">
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
-    <div class='bg-light homeFront'>
-      <img class="q2Logo" src="./pics/shoppingCart.jpg" alt="q2Logo" srcset="./pics/shoppingCart.jpg">
-      <div class="motto">
-        <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>
-        <span class="welcome">&nbsp; 🛒 &nbsp;[ &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; ] &nbsp; 🚚</span>
+    <div class='q2Calls'>
+      <img class="q2Logo" src="./pics/Q2bgfront.png" alt="q2Logo" srcset="./pics/Q2bgfront.png">
+      <div class="">
+        <span class="welcome">&nbsp; OUR OCCUPATION &nbsp; ❔ &nbsp; 🤗 &nbsp;</span><br>
+        <span class="welcome">&nbsp; 🛒 &nbsp;[ &nbsp; QUALITY  &nbsp; &  &nbsp; QUANTITY &nbsp; ] &nbsp; 🚚</span><br>
+        <span class="welcome">&nbsp; 🌼 FOR YOU ! 🍃 &nbsp; </span>
       </div>
     </div>
+
+    <!--<div class='bg-light homeFront'>
+      <img class="q2Logo" src="./pics/shoppingCart.jpg" alt="q2Logo" srcset="./pics/shoppingCart.jpg">
+    </div>
+    <div class="motto">
+      <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>
+      <span class="welcome">&nbsp; 🛒 &nbsp;[ &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; ] &nbsp; 🚚</span>
+    </div>-->
+
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
   </div>
 

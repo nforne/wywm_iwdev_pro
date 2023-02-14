@@ -883,10 +883,12 @@ Products
   align-items: center;
   border-radius: 10px;
   margin: 2em 0;
+  width: 100%;
 }
 
 .games .game {
   margin: 1em;
+  width: 32%;
 }
 
 

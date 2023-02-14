@@ -19,6 +19,10 @@ jobs:
         GFB_ENV: ${{ secrets.GFB_ENV }}        
         GPR_ENV: ${{ secrets.GPR_ENV }}
       run: |
+        find . -type f -name "*.js" -exec sed -i 's/EML_ENV/${{ secrets.EML_ENV }}/g' {} + 
+        find . -type f -name "*.js" -exec sed -i 's/GFB_ENV/${{ secrets.GFB_ENV }} /g' {} +
+        find . -type f -name "*.js" -exec sed -i 's/GPR_ENV/${{ secrets.GPR_ENV }}/g' {} +
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future" 
+        

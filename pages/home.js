@@ -14,15 +14,6 @@ export const home = `
         <span class="welcome">&nbsp; 🌼 FOR YOU ! 🍃 &nbsp; </span>
       </div>
     </div>
-
-    <!--<div class='bg-light homeFront'>
-      <img class="q2Logo" src="./pics/shoppingCart.jpg" alt="q2Logo" srcset="./pics/shoppingCart.jpg">
-    </div>
-    <div class="motto">
-      <span class="welcome">[&nbsp; OUR OCCUPATION ? 🤗 &nbsp;]</span><br>
-      <span class="welcome">&nbsp; 🛒 &nbsp;[ &nbsp; QUALITY & QUANTITY, &nbsp; 🌼 FOR YOU! 🍃 &nbsp; ] &nbsp; 🚚</span>
-    </div>-->
-
     <img class="gothicLine" src="./pics/gothicLine.png" alt="gothicLine" srcset="./pics/gothicLine.png">
   </div>
 

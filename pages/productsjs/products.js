@@ -9,7 +9,7 @@ export const getProducts = async () => {  // -----------------uncomment as neede
   const gamesDataList = [];
   const pageNumber = Math.floor(Math.random() * 3) + 1;
   // const url = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&key=${apiKey}&page=${pageNumber}&platforms=18,1,7`;
-  const url = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&key=${secrets.GPR_ENV}&page=${pageNumber}&platforms=18,1,7`;
+  const url = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&key=${process.env.GPR_ENV}&page=${pageNumber}&platforms=18,1,7`;
   const response = await fetch(url);
   const data = await response.json();
   const products = data["results"];

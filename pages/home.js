@@ -37,4 +37,4 @@ export const home = `
     <img src="./pics/items/pic4.png" alt="pic4" srcset="./pics/items/pic4.png">
   </div>
   <i id='slideR' class="fa fa-chevron-circle-right fa-5x" aria-hidden="true"></i>
-</div> `
+</div> `;
